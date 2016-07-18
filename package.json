@@ -9,7 +9,6 @@
   "author": "Jeff Huleatt",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.13.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
@@ -17,9 +16,6 @@
   },
   "devDependencies": {
     "source-map-loader": "^0.1.5",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "ts-loader": "^0.8.2"
   }
 }

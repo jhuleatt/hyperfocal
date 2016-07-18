@@ -1,11 +1,4 @@
 
 node_modules/*
-typings/globals/*
-
-SSH_KEY
-
-SSH_KEY.pub
-
-deploy_key
-
-deploy_key.pub
+dist/bundle*
+typings/*
