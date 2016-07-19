@@ -39107,16 +39107,27 @@
 	    function __() { this.constructor = d; }
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
 	var React = __webpack_require__(1);
 	var react_redux_1 = __webpack_require__(172);
 	var actions_1 = __webpack_require__(199);
+	var Form_1 = __webpack_require__(200);
+	var form_ts_1 = __webpack_require__(203);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement("h1", null, "Hello!"), React.createElement("h3", null, this.props.count), React.createElement("button", {onClick: this.props.increment(7)}, "Click Me"), React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: "https://github.com/jhuleatt/hyperfocal/tree/master"}, "github"), ". Check it out!")));
+	        var formProperties = new form_ts_1.FormProperties();
+	        return (React.createElement("div", null, React.createElement("h1", null, "Hello!"), React.createElement("h3", null, this.props.count), React.createElement("button", {onClick: this.props.increment(7)}, "Click Me"), React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: "https://github.com/jhuleatt/hyperfocal/tree/master"}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, formProperties))));
 	    };
 	    return App;
 	}(React.Component));
@@ -39153,6 +39164,151 @@
 	    return action;
 	}
 	exports.increment = increment;
+
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	var React = __webpack_require__(1);
+	var Select_1 = __webpack_require__(201);
+	var LabeledInput_1 = __webpack_require__(202);
+	var App = (function (_super) {
+	    __extends(App, _super);
+	    function App() {
+	        _super.apply(this, arguments);
+	    }
+	    App.prototype.render = function () {
+	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, this.props.cameraTypes.makeSelectProperties())), React.createElement(LabeledInput_1.default, {label: "focal length", value: this.props.selectedFocalLength + '', onChange: console.log.bind(null, 'change!')}), React.createElement(LabeledInput_1.default, {label: "aperture", value: this.props.selectedFStop + '', onChange: console.log.bind(null, 'change!')}), React.createElement(LabeledInput_1.default, {label: "subject distance", value: this.props.subjectDistance + '', onChange: console.log.bind(null, 'change!')})));
+	    };
+	    return App;
+	}(React.Component));
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = App;
+
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var React = __webpack_require__(1);
+	var Select = (function (_super) {
+	    __extends(Select, _super);
+	    function Select() {
+	        _super.apply(this, arguments);
+	    }
+	    Select.prototype.render = function () {
+	        return (React.createElement("select", {value: this.props.value, onChange: this.props.onChange}, this.props.values.map(function (val) {
+	            return React.createElement("option", {value: val.value, key: val.value}, val.display);
+	        })));
+	    };
+	    return Select;
+	}(React.Component));
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Select;
+
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var React = __webpack_require__(1);
+	var LabeledInput = (function (_super) {
+	    __extends(LabeledInput, _super);
+	    function LabeledInput() {
+	        _super.apply(this, arguments);
+	    }
+	    LabeledInput.prototype.render = function () {
+	        return (React.createElement("div", null, this.props.label, ": ", React.createElement("input", {value: this.props.value, onChange: this.props.onChange, type: "text"})));
+	    };
+	    return LabeledInput;
+	}(React.Component));
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = LabeledInput;
+
+
+/***/ },
+/* 203 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var CameraDetails = (function () {
+	    function CameraDetails(cameraName, cameraConfusion) {
+	        this.name = cameraName;
+	        this.confusion = cameraConfusion;
+	    }
+	    return CameraDetails;
+	}());
+	exports.CameraDetails = CameraDetails;
+	var CameraTypeList = (function () {
+	    function CameraTypeList() {
+	        this.cameraTypes = [];
+	        this.cameraTypes.push(new CameraDetails('Nikon D750', 7));
+	        this.cameraTypes.push(new CameraDetails('Canon 5DMkIII', 9));
+	    }
+	    CameraTypeList.prototype.makeSelectProperties = function () {
+	        var propsArr = this.cameraTypes.map(function (c) {
+	            return new SelectOption(c.name, c.name);
+	        });
+	        return new SelectProperties(propsArr);
+	    };
+	    return CameraTypeList;
+	}());
+	exports.CameraTypeList = CameraTypeList;
+	var FormProperties = (function () {
+	    function FormProperties() {
+	        this.cameraTypes = new CameraTypeList();
+	        this.selectedCameraName = 'Nikon D750';
+	        this.selectedFocalLength = 35;
+	        this.selectedFStop = 'f/16';
+	        this.subjectDistance = 28;
+	    }
+	    return FormProperties;
+	}());
+	exports.FormProperties = FormProperties;
+	var SelectOption = (function () {
+	    function SelectOption(value, display) {
+	        this.value = value;
+	        this.display = display;
+	    }
+	    return SelectOption;
+	}());
+	exports.SelectOption = SelectOption;
+	var SelectProperties = (function () {
+	    function SelectProperties(values) {
+	        this.values = values;
+	        this.value = values[0].value;
+	        this.onChange = console.log.bind(null, 'select Change!');
+	    }
+	    return SelectProperties;
+	}());
+	exports.SelectProperties = SelectProperties;
 
 
 /***/ }
