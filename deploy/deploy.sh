@@ -5,8 +5,7 @@ SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
 
 function doCompile {
-  pwd
-  deploy/compile.sh
+  ./deploy/compile.sh
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
