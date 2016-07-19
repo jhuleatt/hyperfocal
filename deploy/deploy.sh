@@ -30,6 +30,10 @@ echo "YO"
 pwd
 ls
 echo "WASSUP"
+cd out
+pwd
+ls
+cd ..
 # Run our compile script
 doCompile
 
