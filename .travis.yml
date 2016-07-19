@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - stable
 
-before_script: chmod a+x deploy.sh
+before_script: chmod a+x compile.sh
 script: bash ./deploy.sh
 env:
   global:
