@@ -11,6 +11,7 @@ export class App extends React.Component<any, {}> {
                 <h1>Hello!</h1>
                 <h3>{this.props.count}</h3>
                 <button onClick={this.props.increment(7)}>Click Me</button>
+                <p>The source can be found on <a href="https://github.com/jhuleatt/hyperfocal/tree/master">github</a>. Check it out!</p>
             </div>
         );
     }
