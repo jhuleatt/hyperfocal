@@ -20,18 +20,29 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
+mkdir pages
+cd pages
+
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
-git pull
+
+rm *
+cd ..
 
 # Run our compile script
 doCompile
+
+mv index.html pages/index.html
+mv dist/bundle.js pages/bundle.js
+mv dist/bundle.js.map pages/bundle.js.map
+mv dist/favicon.ico pages/favicon.ico
+cd pages
 
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
-git add --ignore-removal .
+git add -A .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
