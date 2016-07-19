@@ -4,5 +4,8 @@
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "react-redux": "registry:dt/react-redux#4.4.0+20160703120921",
     "redux": "registry:dt/redux#3.5.2+20160703092728"
+  },
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160701205107"
   }
 }
