@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 
 import { Hello } from "./components/Hello";
 
-console.log('WASSUP DAWG');
+console.log('WASSUP DUDE');
 
 ReactDOM.render(
     <Hello compiler="TypeScript" framework="React" />,
