@@ -20,13 +20,14 @@ REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
-mkdir pages
+git clone $REPO pages
+
 cd pages
 
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 
-rm *
 cd ..
+rm -r pages/* pages/.*
 
 # Run our compile script
 doCompile
