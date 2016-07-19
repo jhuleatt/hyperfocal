@@ -28,6 +28,7 @@ git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 echo "YO"
 pwd
+ls
 echo "WASSUP"
 # Run our compile script
 doCompile
