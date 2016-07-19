@@ -1,0 +1,12 @@
+
+node_modules/*
+dist/bundle*
+typings/*
+
+SSH_KEY
+
+SSH_KEY.pub
+
+deploy_key
+
+deploy_key.pub
