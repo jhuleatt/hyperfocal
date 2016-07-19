@@ -26,7 +26,9 @@ git clone $REPO out
 cd out
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
-
+echo "YO"
+pwd
+echo "WASSUP"
 # Run our compile script
 doCompile
 
