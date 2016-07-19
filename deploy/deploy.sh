@@ -21,6 +21,7 @@ SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
 SHA=`git rev-parse --verify HEAD`
 
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+git pull
 
 # Run our compile script
 doCompile
