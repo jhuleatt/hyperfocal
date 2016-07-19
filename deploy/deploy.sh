@@ -35,6 +35,7 @@ mv index.html pages/index.html
 mv dist/bundle.js pages/bundle.js
 mv dist/bundle.js.map pages/bundle.js.map
 mv dist/favicon.ico pages/favicon.ico
+mv deploy_key.enc pages/deploy_key.enc
 cd pages
 
 git config user.name "Travis CI"
