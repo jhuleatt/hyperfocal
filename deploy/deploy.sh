@@ -32,8 +32,8 @@ cd ..
 doCompile
 
 mv index.html pages/index.html
-mv dist/bundle.js pages/bundle.js
-mv dist/bundle.js.map pages/bundle.js.map
+mv dist/bundle.js pages/dist/bundle.js
+mv dist/bundle.js.map pages/dist/bundle.js.map
 mv dist/favicon.ico pages/favicon.ico
 mv deploy_key.enc pages/deploy_key.enc
 cd pages
