@@ -8,6 +8,9 @@ before_script:
   - typings install
 script: bash ./deploy/deploy.sh
 
+deploy:
+  skip_cleanup: true
+
 env:
   global:
   - ENCRYPTION_LABEL: "f51d41e88bc5"
