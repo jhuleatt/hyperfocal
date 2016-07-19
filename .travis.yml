@@ -2,12 +2,7 @@ language: node_js
 node_js:
 - stable
 
-before_script: 
-  - chmod a+x deploy/compile.sh
-  - npm install -g typings
-  - typings install
 script: bash ./deploy/deploy.sh
-
 env:
   global:
   - ENCRYPTION_LABEL: "f51d41e88bc5"
