@@ -39116,7 +39116,7 @@
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement("h1", null, "Hello!"), React.createElement("h3", null, this.props.count), React.createElement("button", {onClick: this.props.increment(7)}, "Click Me")));
+	        return (React.createElement("div", null, React.createElement("h1", null, "Hello!"), React.createElement("h3", null, this.props.count), React.createElement("button", {onClick: this.props.increment(7)}, "Click Me"), React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: "https://github.com/jhuleatt/hyperfocal/tree/master"}, "github"), ". Check it out!")));
 	    };
 	    return App;
 	}(React.Component));
