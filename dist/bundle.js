@@ -49,10 +49,12 @@
 	var react_dom_1 = __webpack_require__(33);
 	var react_redux_1 = __webpack_require__(172);
 	var redux_1 = __webpack_require__(179);
-	var rootReducer_1 = __webpack_require__(194);
-	var App_1 = __webpack_require__(198);
-	var store = redux_1.createStore(rootReducer_1.reducer);
-	react_dom_1.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(App_1.default, null)), document.getElementById("example"));
+	var redux_thunk_1 = __webpack_require__(194);
+	var rootReducer_1 = __webpack_require__(195);
+	var App_1 = __webpack_require__(200);
+	var redux_2 = __webpack_require__(196);
+	var store = redux_1.createStore(rootReducer_1.reducer, new redux_2.State(), redux_1.applyMiddleware(redux_thunk_1.default));
+	react_dom_1.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(App_1.default, null)), document.getElementById('example'));
 
 
 /***/ },
@@ -22641,17 +22643,51 @@
 
 /***/ },
 /* 194 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch;
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
+	
+	        return next(action);
+	      };
+	    };
+	  };
+	}
+	
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+	
+	exports['default'] = thunk;
+
+/***/ },
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var redux_1 = __webpack_require__(195);
-	var _ = __webpack_require__(196);
+	var redux_1 = __webpack_require__(196);
+	var _ = __webpack_require__(198);
 	exports.reducer = function (state, action) {
-	    if (state === void 0) { state = { count: 0 }; }
+	    if (state === void 0) { state = new redux_1.State(); }
+	    var newState = _.clone(state);
 	    switch (action.type) {
-	        case redux_1.ActionTypes.Increment:
-	            var newState = _.clone(state);
-	            newState.count += action.payload;
+	        case redux_1.ActionTypes.SetFocalLength:
+	            newState.focalLength = action.payload;
+	            return newState;
+	        case redux_1.ActionTypes.SetAperture:
+	            newState.aperture = action.payload;
+	            return newState;
+	        case redux_1.ActionTypes.SetSubjectDistance:
+	            newState.subjectDistance = action.payload;
 	            return newState;
 	        default:
 	            return state;
@@ -22660,18 +22696,92 @@
 
 
 /***/ },
-/* 195 */
-/***/ function(module, exports) {
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var formTypes = __webpack_require__(197);
 	(function (ActionTypes) {
-	    ActionTypes[ActionTypes["Increment"] = 0] = "Increment";
+	    ActionTypes[ActionTypes["SetCameraOptions"] = 0] = "SetCameraOptions";
+	    ActionTypes[ActionTypes["SetFocalLength"] = 1] = "SetFocalLength";
+	    ActionTypes[ActionTypes["SetAperture"] = 2] = "SetAperture";
+	    ActionTypes[ActionTypes["SetSubjectDistance"] = 3] = "SetSubjectDistance";
+	    ActionTypes[ActionTypes["SetCamera"] = 4] = "SetCamera";
 	})(exports.ActionTypes || (exports.ActionTypes = {}));
 	var ActionTypes = exports.ActionTypes;
+	var State = (function () {
+	    function State() {
+	        this.cameraOptions = new formTypes.CameraTypeList();
+	        this.focalLength = 5;
+	        this.aperture = 37;
+	        this.subjectDistance = 55;
+	        this.camera = this.cameraOptions.cameraTypes[0];
+	    }
+	    return State;
+	}());
+	exports.State = State;
 
 
 /***/ },
-/* 196 */
+/* 197 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var CameraDetails = (function () {
+	    function CameraDetails(cameraName, cameraConfusion) {
+	        this.name = cameraName;
+	        this.confusion = cameraConfusion;
+	    }
+	    return CameraDetails;
+	}());
+	exports.CameraDetails = CameraDetails;
+	var CameraTypeList = (function () {
+	    function CameraTypeList() {
+	        this.cameraTypes = [];
+	        this.cameraTypes.push(new CameraDetails('Nikon D750', 7));
+	        this.cameraTypes.push(new CameraDetails('Canon 5DMkIII', 9));
+	    }
+	    CameraTypeList.prototype.makeSelectProperties = function () {
+	        var propsArr = this.cameraTypes.map(function (c) {
+	            return new SelectOption(c.name, c.name);
+	        });
+	        return new SelectProperties(propsArr);
+	    };
+	    return CameraTypeList;
+	}());
+	exports.CameraTypeList = CameraTypeList;
+	var FormProperties = (function () {
+	    function FormProperties(cameraTypes, selectedCameraName, selectedFocalLength, selectedFStop, subjectDistance) {
+	        this.cameraTypes = cameraTypes;
+	        this.selectedCameraName = selectedCameraName;
+	        this.selectedFocalLength = selectedFocalLength;
+	        this.selectedFStop = selectedFStop;
+	        this.subjectDistance = subjectDistance;
+	    }
+	    return FormProperties;
+	}());
+	exports.FormProperties = FormProperties;
+	var SelectOption = (function () {
+	    function SelectOption(value, display) {
+	        this.value = value;
+	        this.display = display;
+	    }
+	    return SelectOption;
+	}());
+	exports.SelectOption = SelectOption;
+	var SelectProperties = (function () {
+	    function SelectProperties(values) {
+	        this.values = values;
+	        this.value = values[0].value;
+	        this.onChange = console.log.bind(null, 'select Change!');
+	    }
+	    return SelectProperties;
+	}());
+	exports.SelectProperties = SelectProperties;
+
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -39079,10 +39189,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(197)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(199)(module), (function() { return this; }())))
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -39095,75 +39205,6 @@
 		}
 		return module;
 	}
-
-
-/***/ },
-/* 198 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var __assign = (this && this.__assign) || Object.assign || function(t) {
-	    for (var s, i = 1, n = arguments.length; i < n; i++) {
-	        s = arguments[i];
-	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-	            t[p] = s[p];
-	    }
-	    return t;
-	};
-	var React = __webpack_require__(1);
-	var react_redux_1 = __webpack_require__(172);
-	var actions_1 = __webpack_require__(199);
-	var Form_1 = __webpack_require__(200);
-	var form_ts_1 = __webpack_require__(203);
-	var App = (function (_super) {
-	    __extends(App, _super);
-	    function App() {
-	        _super.apply(this, arguments);
-	    }
-	    App.prototype.render = function () {
-	        var formProperties = new form_ts_1.FormProperties();
-	        return (React.createElement("div", null, React.createElement("h1", null, "Hello!"), React.createElement("h3", null, this.props.count), React.createElement("button", {onClick: this.props.increment(7)}, "Click Me"), React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: "https://github.com/jhuleatt/hyperfocal/tree/master"}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, formProperties))));
-	    };
-	    return App;
-	}(React.Component));
-	exports.App = App;
-	var mapStateToProps = function (state) {
-	    return {
-	        count: state.count
-	    };
-	};
-	var mapDispatchToProps = function (dispatch) {
-	    return {
-	        increment: function (amount) {
-	            return function () {
-	                dispatch(actions_1.increment(amount));
-	            };
-	        }
-	    };
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(App);
-
-
-/***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var redux_1 = __webpack_require__(195);
-	function increment(amount) {
-	    var action = {
-	        type: redux_1.ActionTypes.Increment,
-	        payload: amount
-	    };
-	    return action;
-	}
-	exports.increment = increment;
 
 
 /***/ },
@@ -39185,15 +39226,103 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var Select_1 = __webpack_require__(201);
-	var LabeledInput_1 = __webpack_require__(202);
+	var react_redux_1 = __webpack_require__(172);
+	var actions_1 = __webpack_require__(201);
+	var Form_1 = __webpack_require__(202);
+	var form_ts_1 = __webpack_require__(197);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, this.props.cameraTypes.makeSelectProperties())), React.createElement(LabeledInput_1.default, {label: "focal length", value: this.props.selectedFocalLength + '', onChange: console.log.bind(null, 'change!')}), React.createElement(LabeledInput_1.default, {label: "aperture", value: this.props.selectedFStop + '', onChange: console.log.bind(null, 'change!')}), React.createElement(LabeledInput_1.default, {label: "subject distance", value: this.props.subjectDistance + '', onChange: console.log.bind(null, 'change!')})));
+	        return (React.createElement("div", null, React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: 'https://github.com/jhuleatt/hyperfocal/tree/master'}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, this.props.formProperties, {setFocalLength: this.props.setFocalLength, setAperture: this.props.setAperture, setSubjectDistance: this.props.setSubjectDistance}))));
+	    };
+	    return App;
+	}(React.Component));
+	exports.App = App;
+	var mapStateToProps = function (state) {
+	    return {
+	        formProperties: new form_ts_1.FormProperties(state.cameraOptions, state.camera.name, state.focalLength, state.aperture, state.subjectDistance)
+	    };
+	};
+	var mapDispatchToProps = function (dispatch) {
+	    return {
+	        setFocalLength: function (focalLength) {
+	            dispatch(actions_1.setFocalLength(focalLength));
+	        },
+	        setAperture: function (aperture) {
+	            dispatch(actions_1.setAperture(aperture));
+	        },
+	        setSubjectDistance: function (distance) {
+	            dispatch(actions_1.setSubjectDistance(distance));
+	        }
+	    };
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var redux_1 = __webpack_require__(196);
+	function setFocalLength(focalLength) {
+	    var action = {
+	        type: redux_1.ActionTypes.SetFocalLength,
+	        payload: focalLength
+	    };
+	    return action;
+	}
+	exports.setFocalLength = setFocalLength;
+	function setAperture(aperture) {
+	    var action = {
+	        type: redux_1.ActionTypes.SetAperture,
+	        payload: aperture
+	    };
+	    return action;
+	}
+	exports.setAperture = setAperture;
+	function setSubjectDistance(distance) {
+	    var action = {
+	        type: redux_1.ActionTypes.SetSubjectDistance,
+	        payload: distance
+	    };
+	    return action;
+	}
+	exports.setSubjectDistance = setSubjectDistance;
+
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var __assign = (this && this.__assign) || Object.assign || function(t) {
+	    for (var s, i = 1, n = arguments.length; i < n; i++) {
+	        s = arguments[i];
+	        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+	            t[p] = s[p];
+	    }
+	    return t;
+	};
+	var React = __webpack_require__(1);
+	var Select_1 = __webpack_require__(203);
+	var LabeledInput_1 = __webpack_require__(204);
+	var App = (function (_super) {
+	    __extends(App, _super);
+	    function App() {
+	        _super.apply(this, arguments);
+	    }
+	    App.prototype.render = function () {
+	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, this.props.cameraTypes.makeSelectProperties())), React.createElement(LabeledInput_1.default, {label: 'focal length', value: this.props.selectedFocalLength + '', onChange: this.props.setFocalLength}), React.createElement(LabeledInput_1.default, {label: 'aperture', value: this.props.selectedFStop + '', onChange: this.props.setAperture}), React.createElement(LabeledInput_1.default, {label: 'subject distance', value: this.props.subjectDistance + '', onChange: this.props.setSubjectDistance})));
 	    };
 	    return App;
 	}(React.Component));
@@ -39202,7 +39331,7 @@
 
 
 /***/ },
-/* 201 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39229,7 +39358,7 @@
 
 
 /***/ },
-/* 202 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39242,73 +39371,21 @@
 	var LabeledInput = (function (_super) {
 	    __extends(LabeledInput, _super);
 	    function LabeledInput() {
+	        var _this = this;
 	        _super.apply(this, arguments);
+	        this.valueChange = function (e) {
+	            var eventElement = e.target;
+	            var newValue = eventElement.value;
+	            _this.props.onChange(newValue);
+	        };
 	    }
 	    LabeledInput.prototype.render = function () {
-	        return (React.createElement("div", null, this.props.label, ": ", React.createElement("input", {value: this.props.value, onChange: this.props.onChange, type: "text"})));
+	        return (React.createElement("div", null, this.props.label, ": ", React.createElement("input", {value: this.props.value, onChange: this.valueChange, type: 'text'})));
 	    };
 	    return LabeledInput;
 	}(React.Component));
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = LabeledInput;
-
-
-/***/ },
-/* 203 */
-/***/ function(module, exports) {
-
-	"use strict";
-	var CameraDetails = (function () {
-	    function CameraDetails(cameraName, cameraConfusion) {
-	        this.name = cameraName;
-	        this.confusion = cameraConfusion;
-	    }
-	    return CameraDetails;
-	}());
-	exports.CameraDetails = CameraDetails;
-	var CameraTypeList = (function () {
-	    function CameraTypeList() {
-	        this.cameraTypes = [];
-	        this.cameraTypes.push(new CameraDetails('Nikon D750', 7));
-	        this.cameraTypes.push(new CameraDetails('Canon 5DMkIII', 9));
-	    }
-	    CameraTypeList.prototype.makeSelectProperties = function () {
-	        var propsArr = this.cameraTypes.map(function (c) {
-	            return new SelectOption(c.name, c.name);
-	        });
-	        return new SelectProperties(propsArr);
-	    };
-	    return CameraTypeList;
-	}());
-	exports.CameraTypeList = CameraTypeList;
-	var FormProperties = (function () {
-	    function FormProperties() {
-	        this.cameraTypes = new CameraTypeList();
-	        this.selectedCameraName = 'Nikon D750';
-	        this.selectedFocalLength = 35;
-	        this.selectedFStop = 'f/16';
-	        this.subjectDistance = 28;
-	    }
-	    return FormProperties;
-	}());
-	exports.FormProperties = FormProperties;
-	var SelectOption = (function () {
-	    function SelectOption(value, display) {
-	        this.value = value;
-	        this.display = display;
-	    }
-	    return SelectOption;
-	}());
-	exports.SelectOption = SelectOption;
-	var SelectProperties = (function () {
-	    function SelectProperties(values) {
-	        this.values = values;
-	        this.value = values[0].value;
-	        this.onChange = console.log.bind(null, 'select Change!');
-	    }
-	    return SelectProperties;
-	}());
-	exports.SelectProperties = SelectProperties;
 
 
 /***/ }
