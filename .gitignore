@@ -1,7 +1,6 @@
 
 node_modules/*
 dist/bundle*
-typings/globals/*
 
 SSH_KEY
 
