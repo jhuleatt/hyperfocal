@@ -3,14 +3,14 @@ export enum ActionTypes {
 }
 
 export interface Action {
-  type: ActionTypes,
-  payload: any
+  type: ActionTypes;
+  payload: any;
 }
 
 export interface IncrementAction extends Action {
-  payload: number
+  payload: number;
 }
 
 export interface State {
-  count: Number
+  count: Number;
 }

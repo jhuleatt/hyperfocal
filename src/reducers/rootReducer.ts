@@ -7,7 +7,7 @@ export const reducer = (state: State = {count: 0}, action: Action) => {
       const newState: State = _.clone(state);
       newState.count += action.payload;
       return newState;
-    default: 
+    default:
       return state;
   }
 };

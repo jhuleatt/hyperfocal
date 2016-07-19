@@ -4,7 +4,7 @@ export function increment(amount: number): IncrementAction {
   const action: IncrementAction = {
     type: ActionTypes.Increment,
     payload: amount
-  }
+  };
 
   return action;
 }
