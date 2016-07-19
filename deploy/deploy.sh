@@ -27,7 +27,6 @@ cd pages
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 
 cd ..
-rm -r pages/* pages/.*
 
 # Run our compile script
 doCompile
