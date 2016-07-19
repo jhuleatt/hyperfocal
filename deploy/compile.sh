@@ -1,3 +1,3 @@
 #!/bin/bash
-typings install
+./node_modules/typings install
 webpack
