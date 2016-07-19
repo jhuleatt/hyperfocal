@@ -7,7 +7,7 @@ export default class Select extends React.Component<SelectProperties, {}> {
             <select value={this.props.value} onChange={this.props.onChange}>
               {
                 this.props.values.map((val) => {
-                  return <option value={val.value} key={val.value}>{val.display}</option>
+                  return <option value={val.value} key={val.value}>{val.display}</option>;
                 })
               }
             </select>

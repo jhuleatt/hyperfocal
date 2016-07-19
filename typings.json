@@ -6,6 +6,7 @@
     "redux": "registry:dt/redux#3.5.2+20160703092728"
   },
   "dependencies": {
-    "lodash": "registry:npm/lodash#4.0.0+20160701205107"
+    "lodash": "registry:npm/lodash#4.0.0+20160701205107",
+    "redux-thunk": "registry:npm/redux-thunk#2.0.0+20160525185520"
   }
 }

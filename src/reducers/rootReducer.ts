@@ -1,11 +1,17 @@
 import { Action, ActionTypes, State } from '../models/redux';
 import * as _ from 'lodash';
 
-export const reducer = (state: State = {count: 0}, action: Action) => {
+export const reducer = (state: State = new State(), action: Action) => {
+  const newState: State = _.clone(state);
   switch (action.type) {
-    case ActionTypes.Increment:
-      const newState: State = _.clone(state);
-      newState.count += action.payload;
+    case ActionTypes.SetFocalLength:
+      newState.focalLength = action.payload;
+      return newState;
+    case ActionTypes.SetAperture:
+      newState.aperture = action.payload;
+      return newState;
+    case ActionTypes.SetSubjectDistance:
+      newState.subjectDistance = action.payload;
       return newState;
     default:
       return state;

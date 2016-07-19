@@ -28,15 +28,22 @@ export class FormProperties {
   cameraTypes: CameraTypeList;
   selectedCameraName: string;
   selectedFocalLength: number;
-  selectedFStop: string;
+  selectedFStop: number;
   subjectDistance: number;
+  setFocalLength: Function;
+  setAperture: Function;
+  setSubjectDistance: Function;
 
-  constructor() {
-    this.cameraTypes = new CameraTypeList();
-    this.selectedCameraName = 'Nikon D750';
-    this.selectedFocalLength = 35;
-    this.selectedFStop = 'f/16';
-    this.subjectDistance = 28;
+  constructor(cameraTypes: CameraTypeList,
+              selectedCameraName: string,
+              selectedFocalLength: number,
+              selectedFStop: number,
+              subjectDistance: number) {
+    this.cameraTypes = cameraTypes;
+    this.selectedCameraName = selectedCameraName;
+    this.selectedFocalLength = selectedFocalLength;
+    this.selectedFStop = selectedFStop;
+    this.subjectDistance = subjectDistance;
   }
 }
 
