@@ -35,6 +35,8 @@ cd out
 git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
+git status
+
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
 git add --ignore-removal .
