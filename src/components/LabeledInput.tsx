@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {InputProperties} from '../models/form';
+import { unwrapEvent } from '../util/reactHelpers';
 
 export default class LabeledInput extends React.Component<InputProperties, {}> {
     valueChange = (e: React.SyntheticEvent) => {
-      const eventElement: HTMLInputElement = (e.target as HTMLInputElement);
-      const newValue = eventElement.value;
+      const newValue = unwrapEvent(e);
       this.props.onChange(newValue);
     }
 

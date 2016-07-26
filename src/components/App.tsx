@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from '../models/redux';
-import { setFocalLength, setAperture, setSubjectDistance } from '../actions/actions';
+import { setFocalLength, setAperture, setSubjectDistance, setCameraMake, setCameraModel } from '../actions/actions';
 import * as _ from 'lodash';
 import Form from './Form';
-import { FormProperties } from '../models/form.ts';
+import Visualization from './Visualization';
+import { FormProperties, VizProperties } from '../models/form.ts';
 
 export class App extends React.Component<any, {}> {
     render() {
@@ -16,6 +17,11 @@ export class App extends React.Component<any, {}> {
                     setFocalLength={this.props.setFocalLength}
                     setAperture={this.props.setAperture}
                     setSubjectDistance={this.props.setSubjectDistance}
+                    setCameraMake={this.props.setCameraMake}
+                    setCameraModel={this.props.setCameraModel}
+                />
+                <Visualization
+                    {...this.props.visualizationProperties}
                 />
             </div>
         );
@@ -24,7 +30,8 @@ export class App extends React.Component<any, {}> {
 
 const mapStateToProps = (state: State) => {
     return {
-        formProperties: new FormProperties(state.cameraOptions, state.camera.name, state.focalLength, state.aperture, state.subjectDistance)
+        formProperties: new FormProperties(state.cameraOptions, state.focalLength, state.aperture, state.subjectDistance, state.camera),
+        visualizationProperties: new VizProperties(state.camera, state.focalLength, state.aperture, state.subjectDistance)
     };
 };
 
@@ -38,6 +45,12 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     setSubjectDistance: (distance: number) => {
         dispatch(setSubjectDistance(distance));
+    },
+    setCameraMake: (make: string) => {
+        dispatch(setCameraMake(make));
+    },
+    setCameraModel: (model: string) => {
+        dispatch(setCameraModel(model));
     }
   };
 };
