@@ -11,9 +11,9 @@ export default class App extends React.Component<FormProperties, {}> {
             <div>
                 <Select {...cameraMakes} onChange={this.props.setCameraMake}/>
                 <Select {...cameraModels} onChange={this.props.setCameraModel}/>
-                <LabeledInput label='focal length' value={this.props.selectedFocalLength + ''} onChange={this.props.setFocalLength} />
-                <LabeledInput label='aperture' value={this.props.selectedFStop + ''} onChange={this.props.setAperture} />
-                <LabeledInput label='subject distance' value={this.props.subjectDistance + ''} onChange={this.props.setSubjectDistance} />
+                <LabeledInput label='focal length (mm)' value={this.props.selectedFocalLength + ''} onChange={this.props.setFocalLength} />
+                <LabeledInput label='aperture f/' value={this.props.selectedFStop + ''} onChange={this.props.setAperture} />
+                <LabeledInput label='subject distance (mm)' value={this.props.subjectDistance + ''} onChange={this.props.setSubjectDistance} />
             </div>
         );
     }
