@@ -49,10 +49,10 @@
 	var react_dom_1 = __webpack_require__(33);
 	var react_redux_1 = __webpack_require__(172);
 	var redux_1 = __webpack_require__(179);
-	var redux_thunk_1 = __webpack_require__(194);
-	var rootReducer_1 = __webpack_require__(195);
-	var App_1 = __webpack_require__(200);
-	var redux_2 = __webpack_require__(196);
+	var redux_thunk_1 = __webpack_require__(195);
+	var rootReducer_1 = __webpack_require__(196);
+	var App_1 = __webpack_require__(202);
+	var redux_2 = __webpack_require__(197);
 	var store = redux_1.createStore(rootReducer_1.reducer, new redux_2.State(), redux_1.applyMiddleware(redux_thunk_1.default));
 	react_dom_1.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(App_1.default, null)), document.getElementById('example'));
 
@@ -21273,11 +21273,11 @@
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _hoistNonReactStatics = __webpack_require__(192);
+	var _hoistNonReactStatics = __webpack_require__(193);
 	
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 	
-	var _invariant = __webpack_require__(193);
+	var _invariant = __webpack_require__(194);
 	
 	var _invariant2 = _interopRequireDefault(_invariant);
 	
@@ -21700,23 +21700,23 @@
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(187);
+	var _combineReducers = __webpack_require__(188);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(189);
+	var _bindActionCreators = __webpack_require__(190);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(190);
+	var _applyMiddleware = __webpack_require__(191);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(191);
+	var _compose = __webpack_require__(192);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(188);
+	var _warning = __webpack_require__(189);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -21753,7 +21753,7 @@
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _symbolObservable = __webpack_require__(185);
+	var _symbolObservable = __webpack_require__(186);
 	
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 	
@@ -22011,8 +22011,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var getPrototype = __webpack_require__(182),
-	    isHostObject = __webpack_require__(183),
-	    isObjectLike = __webpack_require__(184);
+	    isHostObject = __webpack_require__(184),
+	    isObjectLike = __webpack_require__(185);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -22084,8 +22084,10 @@
 
 /***/ },
 /* 182 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
+	var overArg = __webpack_require__(183);
+	
 	/* Built-in method references for those with the same name as other `lodash` methods. */
 	var nativeGetPrototype = Object.getPrototypeOf;
 	
@@ -22096,15 +22098,34 @@
 	 * @param {*} value The value to query.
 	 * @returns {null|Object} Returns the `[[Prototype]]`.
 	 */
-	function getPrototype(value) {
-	  return nativeGetPrototype(Object(value));
-	}
+	var getPrototype = overArg(nativeGetPrototype, Object);
 	
 	module.exports = getPrototype;
 
 
 /***/ },
 /* 183 */
+/***/ function(module, exports) {
+
+	/**
+	 * Creates a function that invokes `func` with its first argument transformed.
+	 *
+	 * @private
+	 * @param {Function} func The function to wrap.
+	 * @param {Function} transform The argument transform.
+	 * @returns {Function} Returns the new function.
+	 */
+	function overArg(func, transform) {
+	  return function(arg) {
+	    return func(transform(arg));
+	  };
+	}
+	
+	module.exports = overArg;
+
+
+/***/ },
+/* 184 */
 /***/ function(module, exports) {
 
 	/**
@@ -22130,7 +22151,7 @@
 
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports) {
 
 	/**
@@ -22165,18 +22186,18 @@
 
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
 	'use strict';
 	
-	module.exports = __webpack_require__(186)(global || window || this);
+	module.exports = __webpack_require__(187)(global || window || this);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22201,7 +22222,7 @@
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22215,7 +22236,7 @@
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(188);
+	var _warning = __webpack_require__(189);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -22334,7 +22355,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22364,7 +22385,7 @@
 	}
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22420,7 +22441,7 @@
 	}
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22431,7 +22452,7 @@
 	
 	exports["default"] = applyMiddleware;
 	
-	var _compose = __webpack_require__(191);
+	var _compose = __webpack_require__(192);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -22483,7 +22504,7 @@
 	}
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22528,7 +22549,7 @@
 	}
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports) {
 
 	/**
@@ -22584,7 +22605,7 @@
 
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22642,7 +22663,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22670,24 +22691,43 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var redux_1 = __webpack_require__(196);
-	var _ = __webpack_require__(198);
+	var redux_1 = __webpack_require__(197);
+	var _ = __webpack_require__(200);
+	function verifyNumber(input) {
+	    return /^\d+$/.test(input);
+	}
+	;
 	exports.reducer = function (state, action) {
 	    if (state === void 0) { state = new redux_1.State(); }
 	    var newState = _.clone(state);
 	    switch (action.type) {
 	        case redux_1.ActionTypes.SetFocalLength:
+	            if (!verifyNumber(action.payload)) {
+	                return state;
+	            }
 	            newState.focalLength = action.payload;
 	            return newState;
 	        case redux_1.ActionTypes.SetAperture:
+	            if (!verifyNumber(action.payload)) {
+	                return state;
+	            }
 	            newState.aperture = action.payload;
 	            return newState;
 	        case redux_1.ActionTypes.SetSubjectDistance:
+	            if (!verifyNumber(action.payload)) {
+	                return state;
+	            }
 	            newState.subjectDistance = action.payload;
+	            return newState;
+	        case redux_1.ActionTypes.SetMake:
+	            newState.camera = newState.cameraOptions.getCameraDetails(action.payload, '');
+	            return newState;
+	        case redux_1.ActionTypes.SetModel:
+	            newState.camera = newState.cameraOptions.getCameraDetails(newState.camera.make, action.payload);
 	            return newState;
 	        default:
 	            return state;
@@ -22696,26 +22736,27 @@
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var formTypes = __webpack_require__(197);
+	var formTypes = __webpack_require__(198);
 	(function (ActionTypes) {
 	    ActionTypes[ActionTypes["SetCameraOptions"] = 0] = "SetCameraOptions";
 	    ActionTypes[ActionTypes["SetFocalLength"] = 1] = "SetFocalLength";
 	    ActionTypes[ActionTypes["SetAperture"] = 2] = "SetAperture";
 	    ActionTypes[ActionTypes["SetSubjectDistance"] = 3] = "SetSubjectDistance";
-	    ActionTypes[ActionTypes["SetCamera"] = 4] = "SetCamera";
+	    ActionTypes[ActionTypes["SetMake"] = 4] = "SetMake";
+	    ActionTypes[ActionTypes["SetModel"] = 5] = "SetModel";
 	})(exports.ActionTypes || (exports.ActionTypes = {}));
 	var ActionTypes = exports.ActionTypes;
 	var State = (function () {
 	    function State() {
 	        this.cameraOptions = new formTypes.CameraTypeList();
-	        this.focalLength = 5;
-	        this.aperture = 37;
-	        this.subjectDistance = 55;
-	        this.camera = this.cameraOptions.cameraTypes[0];
+	        this.focalLength = 50;
+	        this.aperture = 11;
+	        this.subjectDistance = 3000;
+	        this.camera = this.cameraOptions.findCameraDetails('Nikon', '');
 	    }
 	    return State;
 	}());
@@ -22723,40 +22764,77 @@
 
 
 /***/ },
-/* 197 */
-/***/ function(module, exports) {
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	var cameras_1 = __webpack_require__(199);
+	var VizProperties = (function () {
+	    function VizProperties(camera, focalLength, aperture, subjectDistance) {
+	        this.camera = camera;
+	        this.focalLength = focalLength;
+	        this.aperture = aperture;
+	        this.subjectDistance = subjectDistance;
+	    }
+	    return VizProperties;
+	}());
+	exports.VizProperties = VizProperties;
 	var CameraDetails = (function () {
-	    function CameraDetails(cameraName, cameraConfusion) {
-	        this.name = cameraName;
+	    function CameraDetails(make, model, cameraConfusion) {
+	        this.make = make;
+	        this.model = model;
 	        this.confusion = cameraConfusion;
 	    }
+	    CameraDetails.prototype.prettyPrint = function () {
+	        return this.make + " " + this.model;
+	    };
 	    return CameraDetails;
 	}());
 	exports.CameraDetails = CameraDetails;
 	var CameraTypeList = (function () {
 	    function CameraTypeList() {
-	        this.cameraTypes = [];
-	        this.cameraTypes.push(new CameraDetails('Nikon D750', 7));
-	        this.cameraTypes.push(new CameraDetails('Canon 5DMkIII', 9));
+	        this.cameraTypes = cameras_1.cameras;
 	    }
-	    CameraTypeList.prototype.makeSelectProperties = function () {
-	        var propsArr = this.cameraTypes.map(function (c) {
-	            return new SelectOption(c.name, c.name);
-	        });
-	        return new SelectProperties(propsArr);
+	    CameraTypeList.prototype.findCameraDetails = function (make, model) {
+	        for (var i = 0; i < this.cameraTypes.length; i++) {
+	            if (this.cameraTypes[i].make === make && (model === '' || this.cameraTypes[i].model === model)) {
+	                return new CameraDetails(this.cameraTypes[i].make, this.cameraTypes[i].model, this.cameraTypes[i].confusion);
+	            }
+	        }
+	        console.warn("no camera details found for make \"" + make + "\" and model \"" + model + "\"");
+	        return null;
+	    };
+	    CameraTypeList.prototype.getCameraMakes = function () {
+	        return this.cameraTypes.map(function (cameraDetails) { return cameraDetails.make; })
+	            .reduce(function (prev, current) {
+	            if (prev.indexOf(current) === -1) {
+	                prev.push(current);
+	            }
+	            return prev;
+	        }, [])
+	            .map(function (make) { return new SelectOption(make, make); });
+	    };
+	    CameraTypeList.prototype.getCameraModels = function (make) {
+	        return this.cameraTypes
+	            .filter(function (cameraType) { return (cameraType.make === make); })
+	            .map(function (cameraType) { return (new SelectOption(cameraType.model, cameraType.model)); });
+	    };
+	    CameraTypeList.prototype.getCameraDetails = function (make, model) {
+	        return this.findCameraDetails(make, model || '');
+	    };
+	    CameraTypeList.prototype.getConfusion = function (make, model) {
+	        return this.findCameraDetails(make, model).confusion;
 	    };
 	    return CameraTypeList;
 	}());
 	exports.CameraTypeList = CameraTypeList;
 	var FormProperties = (function () {
-	    function FormProperties(cameraTypes, selectedCameraName, selectedFocalLength, selectedFStop, subjectDistance) {
+	    function FormProperties(cameraTypes, selectedFocalLength, selectedFStop, subjectDistance, camera) {
 	        this.cameraTypes = cameraTypes;
-	        this.selectedCameraName = selectedCameraName;
 	        this.selectedFocalLength = selectedFocalLength;
 	        this.selectedFStop = selectedFStop;
 	        this.subjectDistance = subjectDistance;
+	        this.selectedCamera = camera;
 	    }
 	    return FormProperties;
 	}());
@@ -22770,9 +22848,9 @@
 	}());
 	exports.SelectOption = SelectOption;
 	var SelectProperties = (function () {
-	    function SelectProperties(values) {
+	    function SelectProperties(values, value) {
 	        this.values = values;
-	        this.value = values[0].value;
+	        this.value = value;
 	        this.onChange = console.log.bind(null, 'select Change!');
 	    }
 	    return SelectProperties;
@@ -22781,10 +22859,1524 @@
 
 
 /***/ },
-/* 198 */
+/* 199 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.cameras = [
+	    { 'make': 'Agfa', 'model': 'ePhoto CL-18', 'confusion': 0.005 },
+	    { 'make': 'AgfaPhoto', 'model': 'DC-600uw', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': '1D', 'confusion': 0.023 },
+	    { 'make': 'Canon', 'model': '1D Mark II', 'confusion': 0.023 },
+	    { 'make': 'Canon', 'model': '1D Mark II N', 'confusion': 0.023 },
+	    { 'make': 'Canon', 'model': '1D Mark III', 'confusion': 0.023 },
+	    { 'make': 'Canon', 'model': '1D Mark IV', 'confusion': 0.023 },
+	    { 'make': 'Canon', 'model': '1D X', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '1D C', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '1DS', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '1Ds Mark II', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '1Ds Mark III', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '5D', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '5D Mark II', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '5D Mark III', 'confusion': 0.030 },
+	    { 'make': 'Canon', 'model': '7D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '10D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '20D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '20Da', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '30D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '40D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '50D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '60D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': '60Da', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'D30', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'D60', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel / 300D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel T1i / 500D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel T2i / 550D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel T3i / 600D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel T4i / 650D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel T3 / 1100D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel XS / 1000D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel XT / 350D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel XTi / 400D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'Digital Rebel XSi / 450D', 'confusion': 0.019 },
+	    { 'make': 'Canon', 'model': 'PowerShot A10', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A20', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A30', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A40', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A60', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A70', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A75', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A80', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A85', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A95', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A100', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A200', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A300', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A310', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A400', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A430', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A450', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A460', 'confusion': 0.004 },
+	    { 'make': 'Canon', 'model': 'PowerShot A470', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A480', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A490', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A495', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A510', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A520', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A530', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A540', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A550', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A560', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A570 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A580', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A590 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A610', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A620', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A630', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A640', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A650', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A650 IS', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot A700', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A710 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A720 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A800', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A810', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A820', 'confusion': 0.007 },
+	    { 'make': 'Canon', 'model': 'PowerShot A900', 'confusion': 0.007 },
+	    { 'make': 'Canon', 'model': 'PowerShot A1000 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A1100 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A1200', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A1300', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A2000 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A2100 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A2300 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A2400 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A3000 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A3100 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A3200 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A3400 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A3300 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot A4000 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot D10', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot D20', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot E1', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot G1', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G1X', 'confusion': 0.016 },
+	    { 'make': 'Canon', 'model': 'PowerShot G2', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G3', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G5', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G6', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G7', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G9', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot G10', 'confusion': 0.007 },
+	    { 'make': 'Canon', 'model': 'PowerShot G11', 'confusion': 0.007 },
+	    { 'make': 'Canon', 'model': 'PowerShot G12', 'confusion': 0.007 },
+	    { 'make': 'Canon', 'model': 'Powershot Pro1', 'confusion': 0.008 },
+	    { 'make': 'Canon', 'model': 'PowerShot Pro 90 IS', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot S1 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot S2 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot S3 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot S5 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S30', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S40', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S45', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S50', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S60', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S70', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S80', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S90', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S95', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S110 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S200 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S230 Elf', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S300 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S330 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'PowerShot S400', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S410', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'PowerShot S500', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD10 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD20 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD30 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD40', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD100 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD110 Elph', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD200', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD300', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD400', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD430 Wireless', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD450', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD500', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD550', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD600', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD630', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD700 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD750', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD770 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD780 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD790 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD800 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD850 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD870 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD880 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD890 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD900', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD940 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD950 IS', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD960 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD970 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD980 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD990 IS', 'confusion': 0.006 },
+	    { 'make': 'Canon', 'model': 'Powershot SD1000', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD1100 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD1200', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD1300 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD1400 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD3500 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD4000 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SD4500 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX1 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX10 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX20 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX30 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX100 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX110 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX120 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX130 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX200 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX210 IS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX240 HS', 'confusion': 0.005 },
+	    { 'make': 'Canon', 'model': 'Powershot SX260 HS', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-F1', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-FC100', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-FH20', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-FH25', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-FH100', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-FS10', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-G1', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-H5', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-H10', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-H15', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-H20G', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-H30', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-M2', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-P505', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-P600', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-P700', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S2', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S5', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S7', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S10', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S12', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S100', 'confusion': 0.004 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S200', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S500', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S600', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S600D', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S770', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-S880', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-V7', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-V8', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z5', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z16', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z29', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z30', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z35', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z40', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z50', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z55', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z57', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z60', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z70', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z75', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z77', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z80', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z85', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z90', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z100', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z110', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z120', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z200', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z250', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z270', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z300', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z400', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z450', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z500', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z550', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z600', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z700', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z750', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z800', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z850', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z1000', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z1050', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z1080', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z1200SR', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z2000', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-Z2300', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZR10', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZR15', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZR100', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZR200', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZR300', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS5', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS6', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS10', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS12', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS15', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS20', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim EX-ZS150', 'confusion': 0.005 },
+	    { 'make': 'Casio', 'model': 'Exilim QV-R51', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim QV-R61', 'confusion': 0.006 },
+	    { 'make': 'Casio', 'model': 'Exilim QV-R62', 'confusion': 0.006 },
+	    { 'make': 'Contax', 'model': 'N Digital', 'confusion': 0.030 },
+	    { 'make': 'Contax', 'model': 'TVS Digital', 'confusion': 0.006 },
+	    { 'make': 'Contax', 'model': 'SL300RT', 'confusion': 0.005 },
+	    { 'make': 'Epson', 'model': 'PhotoPC 3100 Z', 'confusion': 0.006 },
+	    { 'make': 'Epson', 'model': 'PhotoPC L-410', 'confusion': 0.005 },
+	    { 'make': 'Epson', 'model': 'L-500V', 'confusion': 0.005 },
+	    { 'make': 'Epson', 'model': 'RD-1', 'confusion': 0.020 },
+	    { 'make': 'Epson', 'model': 'RD-1S', 'confusion': 0.020 },
+	    { 'make': 'Epson', 'model': 'RD-1X', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 30i', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A100', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A120', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A150', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A170', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A203', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A303', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A330', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A340', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A345', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A350', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A400', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A600', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A610', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A800', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix A920', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix AV200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix AV250', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix AX280', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix AX350', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix E500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix E510', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix E550', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix E900', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F10', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F11', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F20', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F30', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F31fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F40fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F50fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F60fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F70EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F80EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F100fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F200EXR', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F300EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F401', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F402', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F440', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F450', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F455', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F470', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F480', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F500EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F510', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F550', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F600EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F660EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F601', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F650', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F700', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F770EXR', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F710', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F750', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix F810', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix IS-1', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix IS Pro', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix HS-10', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix HS20EXR', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix HS30EXR', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix J30', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix J100', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix J120', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix J110W', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix J150W', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JV200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX300', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX350', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX370', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JX550', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JZ100', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JZ200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JZ300', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix JZ500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S100', 'confusion': 0.008 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S602', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 2600', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 2650', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 2800', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 3800', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 4800', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 4900', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S200EXR', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S1000fd', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S1500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S1600', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S1800', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S2000HD', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S2500HD', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S2800HD', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S2950', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3000', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3100', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S4000', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S4200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S4500', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S5000', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S5200 / S5600', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S5500 / S5100', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S5700', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix SL240', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix SL300', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 6800', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix 7000', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S6500fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S8000fd', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S8100fd', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S9000 / S9500', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S1 Pro', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S2 Pro', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3 Pro', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S3 Pro UVIR', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S5 Pro', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix S20 Pro', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix T200', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix T300', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix T400', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix V10', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix W3', 'confusion': 0.006 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix X10', 'confusion': 0.008 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix X100', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix XP30', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix XP50', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix XP150', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix X-Pro1', 'confusion': 0.020 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix X-S1', 'confusion': 0.008 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z1', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z2', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z3', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z20fd', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z33WP', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z35', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z50fd', 'confusion': 0.007 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z70', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z90', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z110', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z200fd', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z700EXR', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z900EXR', 'confusion': 0.005 },
+	    { 'make': 'Fujifilm', 'model': 'FinePix Z1000EXR', 'confusion': 0.005 },
+	    { 'make': 'GE', 'model': 'E1050', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 120', 'confusion': 0.008 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 318', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 320', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 435', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 620', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 635', 'confusion': 0.004 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 715', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 720', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 735', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 812', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 850', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 912', 'confusion': 0.007 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 935', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart 945', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart C215', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M22', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M23', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M307', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M407', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M417', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M425', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M437', 'confusion': 0.004 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M517', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M525', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M527', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart M537', 'confusion': 0.004 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R507', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R607', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R707', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R717', 'confusion': 0.006 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R817', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R818', 'confusion': 0.005 },
+	    { 'make': 'Hewlett Packard', 'model': 'PhotoSmart R837', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'CX-7430', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'CX-6330', 'confusion': 0.006 },
+	    { 'make': 'Kodak', 'model': 'CX-7330', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'CX-7530', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'DC-5000', 'confusion': 0.007 },
+	    { 'make': 'Kodak', 'model': 'DCS-14N', 'confusion': 0.030 },
+	    { 'make': 'Kodak', 'model': 'DCS-720X', 'confusion': 0.019 },
+	    { 'make': 'Kodak', 'model': 'DCS-760', 'confusion': 0.023 },
+	    { 'make': 'Kodak', 'model': 'DCS Pro', 'confusion': 0.030 },
+	    { 'make': 'Kodak', 'model': 'DX-4530', 'confusion': 0.006 },
+	    { 'make': 'Kodak', 'model': 'DX-6440', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'DX-6490', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'DX-7440', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'DX-7590', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'DX-7630', 'confusion': 0.007 },
+	    { 'make': 'Kodak', 'model': 'LS-743', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'LS-753', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'PalmPix 100/500', 'confusion': 0.004 },
+	    { 'make': 'Kodak', 'model': 'Z730', 'confusion': 0.005 },
+	    { 'make': 'Kodak', 'model': 'Z760', 'confusion': 0.006 },
+	    { 'make': 'Kodak', 'model': 'Z7590', 'confusion': 0.005 },
+	    { 'make': 'Konica', 'model': 'KD-310Z', 'confusion': 0.006 },
+	    { 'make': 'Konica', 'model': 'KD-400', 'confusion': 0.006 },
+	    { 'make': 'Konica', 'model': 'KD-500', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage 5', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage 7', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage 7i', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage 7Hi', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage A1', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage A2', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage A200', 'confusion': 0.008 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage E50', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage E223', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage F100', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage F300', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage G400', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage G600', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage S404', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage S414', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Xg', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Xi', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Xt', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X1', 'confusion': 0.006 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X20', 'confusion': 0.004 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X31', 'confusion': 0.004 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X50', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage X60', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z1', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z2', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z3', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z5', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z6', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z10', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Dimage Z20', 'confusion': 0.005 },
+	    { 'make': 'Konica Minolta', 'model': 'Maxxum 5D', 'confusion': 0.020 },
+	    { 'make': 'Konica Minolta', 'model': 'Maxxum 7D', 'confusion': 0.020 },
+	    { 'make': 'Kyocera', 'model': 'FineCam L4v', 'confusion': 0.005 },
+	    { 'make': 'Kyocera', 'model': 'FineCam M410R', 'confusion': 0.005 },
+	    { 'make': 'Kyocera', 'model': 'FineCam S3', 'confusion': 0.006 },
+	    { 'make': 'Kyocera', 'model': 'FineCam S3x', 'confusion': 0.006 },
+	    { 'make': 'Kyocera', 'model': 'FineCam S4', 'confusion': 0.006 },
+	    { 'make': 'Kyocera', 'model': 'FineCam S5', 'confusion': 0.006 },
+	    { 'make': 'Kyocera', 'model': 'FineCam SL300R', 'confusion': 0.005 },
+	    { 'make': 'Kyocera', 'model': 'FineCam SL400R', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'C-Lux 1', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'C-Lux 3', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'Digilux 1', 'confusion': 0.006 },
+	    { 'make': 'Leica', 'model': 'Digilux 2', 'confusion': 0.008 },
+	    { 'make': 'Leica', 'model': 'Digilux 3', 'confusion': 0.015 },
+	    { 'make': 'Leica', 'model': 'D-Lux', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'D-Lux 2', 'confusion': 0.007 },
+	    { 'make': 'Leica', 'model': 'D-Lux 3', 'confusion': 0.007 },
+	    { 'make': 'Leica', 'model': 'D-Lux 4', 'confusion': 0.006 },
+	    { 'make': 'Leica', 'model': 'D-Lux 5', 'confusion': 0.006 },
+	    { 'make': 'Leica', 'model': 'M8', 'confusion': 0.023 },
+	    { 'make': 'Leica', 'model': 'M8.2', 'confusion': 0.023 },
+	    { 'make': 'Leica', 'model': 'M9', 'confusion': 0.030 },
+	    { 'make': 'Leica', 'model': 'M9-P', 'confusion': 0.030 },
+	    { 'make': 'Leica', 'model': 'M-Monochrom', 'confusion': 0.030 },
+	    { 'make': 'Leica', 'model': 'V-LUX 1', 'confusion': 0.006 },
+	    { 'make': 'Leica', 'model': 'V-LUX 2', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'V-LUX 3', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'V-LUX 20', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'V-LUX 30', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'V-LUX 40', 'confusion': 0.005 },
+	    { 'make': 'Leica', 'model': 'X1', 'confusion': 0.023 },
+	    { 'make': 'Leica', 'model': 'X2', 'confusion': 0.023 },
+	    { 'make': 'Mamiya', 'model': 'ZD', 'confusion': 0.039 },
+	    { 'make': 'Microtek', 'model': 'Take-it D1', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage 5', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage 7', 'confusion': 0.008 },
+	    { 'make': 'Minolta', 'model': 'Dimage 7i', 'confusion': 0.008 },
+	    { 'make': 'Minolta', 'model': 'Dimage 7Hi', 'confusion': 0.008 },
+	    { 'make': 'Minolta', 'model': 'Dimage A1', 'confusion': 0.008 },
+	    { 'make': 'Minolta', 'model': 'Dimage A2', 'confusion': 0.008 },
+	    { 'make': 'Minolta', 'model': 'Dimage E223', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage F100', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage F300', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage G400', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage G600', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage S404', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage S414', 'confusion': 0.006 },
+	    { 'make': 'Minolta', 'model': 'Dimage X', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage Xg', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage Xi', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage Xt', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage X20', 'confusion': 0.004 },
+	    { 'make': 'Minolta', 'model': 'Dimage X50', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage Z1', 'confusion': 0.005 },
+	    { 'make': 'Minolta', 'model': 'Dimage Z2', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 2000', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 2100', 'confusion': 0.004 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 2200', 'confusion': 0.004 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 2500', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 3100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 3200', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 3500', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 3700', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4200', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4300', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4500', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4600', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 4800', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5000', 'confusion': 0.008 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5200', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5400', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5600', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5700', 'confusion': 0.008 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 5900', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 7600', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 7900', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 8400', 'confusion': 0.008 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 8700', 'confusion': 0.008 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 8800', 'confusion': 0.008 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S9600 / S9100', 'confusion': 0.007 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 775', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 885', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix 995', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix AW100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L1', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L2', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L3', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L4', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L5', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L6', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L10', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L11', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L12', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L14', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L15', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L16', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L18', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L19', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L20', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L21', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L22', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L24', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L26', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L110', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L120', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix L810', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P1', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P2', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P3', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P4', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P50', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P60', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P80', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P90', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P300', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P310', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P500', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P510', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P5000', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P5100', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P6000', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P7000', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix P7100', 'confusion': 0.006 },
+	    { 'make': 'Nikon', 'model': 'Coolpix SQ', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S1', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S2', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S3', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S4', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S5', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S6', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S7c', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S9', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S10', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S30', 'confusion': 0.004 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S50', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S50c', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S51', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S51c', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S52c', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S60', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S70', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S80', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S200', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S210', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S220', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S230', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S500', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S510', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S520', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S520', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S550', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S560', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S570', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S600', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S610', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S610c', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S620', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S630', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S640', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S1100pj', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S1200pj', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S3000', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S3000', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S3100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S3300', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S4100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S4300', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S5100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S6000', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S6100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S6200', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S6300', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S8000', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S8200', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S8100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S9100', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': 'Coolpix S9300', 'confusion': 0.005 },
+	    { 'make': 'Nikon', 'model': '1 J1', 'confusion': 0.011 },
+	    { 'make': 'Nikon', 'model': '1 V1', 'confusion': 0.011 },
+	    { 'make': 'Nikon', 'model': 'D1H', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D1X', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D2H', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D2Hs', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D2X', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D2Xs', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D3', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D3x', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D3s', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D4', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D40', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D40x', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D50', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D60', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D70', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D70s', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D80', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D90', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D100', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D200', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D300', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D300S', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D700', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D800', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D800E', 'confusion': 0.030 },
+	    { 'make': 'Nikon', 'model': 'D3000', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D3100', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D3200', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D5000', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D5100', 'confusion': 0.020 },
+	    { 'make': 'Nikon', 'model': 'D7000', 'confusion': 0.020 },
+	    { 'make': 'Olympus', 'model': 'AZ-1', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Brio D-230', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-160', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'C-2500L', 'confusion': 0.008 },
+	    { 'make': 'Olympus', 'model': 'C-3020', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-3040', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-460 ZOOM del Sol', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-4000', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-4040Z', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-50', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-55 / C-5500', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-60', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-70 / C-7000', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-500', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-5000', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-5050', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-5060', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-5500', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-700 ZU', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-7070', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-7000', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'C-730 CZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-720', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-730', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-740', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-750', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-765', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-770', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'C-8080', 'confusion': 0.008 },
+	    { 'make': 'Olympus', 'model': 'D-40', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'D-100 Brio', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-150 Brio', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-370', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-380', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-390', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-395', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-425', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-435', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-510', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-520', 'confusion': 0.004 },
+	    { 'make': 'Olympus', 'model': 'D-535 / C-370', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-540', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-545', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-550', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-560', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-580', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-590', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-595', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'D-630', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'E-1', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-3', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-5', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-10', 'confusion': 0.008 },
+	    { 'make': 'Olympus', 'model': 'E-100 RS', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'E-20', 'confusion': 0.008 },
+	    { 'make': 'Olympus', 'model': 'E-30', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-300', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-330', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-400', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-410', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-420', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-450', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-500', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-510', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-520', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-600', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-620', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-M5', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-P1', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-P2', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-P3', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-PL1', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-PL1s', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-PL2', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-PL3', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'E-PM1', 'confusion': 0.015 },
+	    { 'make': 'Olympus', 'model': 'Ferrari DIGITAL MODEL 2004', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-20', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-25', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-26', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-45', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-46', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-47', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-100', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-110', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-115', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-120', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-130', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-140', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-150', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-170', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-180', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-200', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-210', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-230', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-240', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-250', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'FE-270', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-280', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-290', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-300', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'FE-310', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-340', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-350', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-360', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-370', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-3000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-4000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-4030', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-4040', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-5000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-5010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-5020', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'FE-5500', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'ImageLink', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'IR-300', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'IR-500', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-310', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'SP-320', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'SP-350', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'SP-500 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-510 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-550 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-560 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-565 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-570 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-590 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-600 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-610 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-620 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-700', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-800 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SP-810 UZ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 300', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 410', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 500', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 550WP', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 600', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 700', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 720 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 725 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 730', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 740', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 750', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 760', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 770', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 780', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 790 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 800', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'Stylus 810', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'Stylus 820', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 830', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 840', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 850 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1000', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1020', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1030 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1040', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1050 SW', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 1200', 'confusion': 0.006 },
+	    { 'make': 'Olympus', 'model': 'Stylus 5000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 5010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 5050', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 7000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 7030', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 7010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 7040', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 7050', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 9000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus 9010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 3000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 6000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 6010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 6020', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 8000', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough 8010', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Tough TG-1 iHS ', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Verve', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'Stylus Verve s', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SH-21', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SZ-10', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SZ-11', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SZ-12', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SZ-30MR', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'SZ-31MR', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'TG-310', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'TG-320', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'TG-610', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'TG-810', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'TG-820 His', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VG-110', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VG-120', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VG-145', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VG-160', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VR-320', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VR-330', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'VR-340', 'confusion': 0.005 },
+	    { 'make': 'Olympus', 'model': 'XZ-1', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-3D1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-F7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH6', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH25', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FH27', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FP8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS11', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS12', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS15', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS16', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS20', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS25', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS30', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS33', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS42', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FS62', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX01', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX07', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX9', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX12', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX30', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX33', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX35', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX37', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX48', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX50', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX55', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX66', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX65', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX75', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX78', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX90', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX100', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX150', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX500', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX580', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FX700', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ1', 'confusion': 0.004 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ3', 'confusion': 0.004 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ4', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ18', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ20', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ28', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ30', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ35', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ40', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ47', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ50', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ100', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-FZ150', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-G1', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-G2', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-G3', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-G10', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GF1', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GF2', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GF3', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GF5', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GH1', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GH2', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-GX1', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-L1', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-L10', 'confusion': 0.015 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC1', 'confusion': 0.008 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC20', 'confusion': 0.004 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC40', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC5', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC50', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC70', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LC80', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS60', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS75', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS80', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LS85', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LX1', 'confusion': 0.007 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LX2', 'confusion': 0.007 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LX3', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LX5', 'confusion': 0.006 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ6', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-LZ10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-S1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-S2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-S3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-SZ1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-SZ7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS2', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS4', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TS20', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ1', 'confusion': 0.004 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ2', 'confusion': 0.004 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ3', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ4', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ6', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-TZ50', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZR1', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS5', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS7', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS8', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS10', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS15', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZS20', 'confusion': 0.005 },
+	    { 'make': 'Panasonic', 'model': 'Lumix DMC-ZX3', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'EI-100', 'confusion': 0.004 },
+	    { 'make': 'Pentax', 'model': 'Optio 30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 33WR', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 43WR', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 33LF', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 50', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 60', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 230', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 330', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 330GS', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio 430', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 430 RS', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 450', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 550', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 555', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio 750Z', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio A10', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio A20', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio A30', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio A40', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio E10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E20', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E40', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E50', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E60', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E70', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E80', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio E90', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio H90', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio I-10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio LS465', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio MX4', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M20', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M40', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M50', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M60', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio M90', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio P70', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio P80', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio RS1500', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio RZ10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio RZ18', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S1', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S4i', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S5i', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S5n', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S5z', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S6', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S7', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S10', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio S12', 'confusion': 0.006 },
+	    { 'make': 'Pentax', 'model': 'Optio S30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S40', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S45', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S50', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S55', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio S60', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio SV', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio SVi ', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio T10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio T20', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio T30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio V10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio VS20', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio X', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio W10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio W20', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio W30', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio W80', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio W90', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WG-1', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WG-1 GPS', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WG-2', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WG-2 GPS', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WP', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WPi ', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio WS80', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'Optio Z10', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': '645D', 'confusion': 0.050 },
+	    { 'make': 'Pentax', 'model': '*ist D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': '*ist DL', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': '*ist DL2', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': '*ist DS', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': '*ist DS2', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K-r', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K-x', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K-01', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K-5', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K7', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K10D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K20D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K-30', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K100D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K100D Super', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K110D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K200D', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'K2000', 'confusion': 0.020 },
+	    { 'make': 'Pentax', 'model': 'Q', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'X70', 'confusion': 0.005 },
+	    { 'make': 'Pentax', 'model': 'X90', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX1', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX2', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX3', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX4', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX5', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'CX6', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio 500G wide', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'Caplio RX', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R2', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R3', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R4', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R5', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R6', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R7', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R8', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R30', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio R40', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio RR530', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio RR770', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio G600', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'Caplio GX', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'Caplio GX8', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'Caplio GX100', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'Caplio GX200', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'G700SE', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'GR', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'GR Digital II', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'GR Digital III', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'GR Digital IV', 'confusion': 0.006 },
+	    { 'make': 'Ricoh', 'model': 'GXR (50mm)', 'confusion': 0.020 },
+	    { 'make': 'Ricoh', 'model': 'GXR (28mm - 300mm)', 'confusion': 0.005 },
+	    { 'make': 'Ricoh', 'model': 'GXR (28mm)', 'confusion': 0.020 },
+	    { 'make': 'Ricoh', 'model': 'GXR Mount A12', 'confusion': 0.020 },
+	    { 'make': 'Ricoh', 'model': 'GXR (24mm - 85mm) A16', 'confusion': 0.020 },
+	    { 'make': 'Ricoh', 'model': 'PX', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'AQ100', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax 230', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax 410', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax 240', 'confusion': 0.004 },
+	    { 'make': 'Samsung', 'model': 'Digimax A4', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A5', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax A6', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax A7', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax A40', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A50', 'confusion': 0.004 },
+	    { 'make': 'Samsung', 'model': 'Digimax A55W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A400', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A302', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A402', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax A502', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax i5', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax i50 MP3', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax L50', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax L60', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax L55W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax L700', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax U-CA 4', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax U-CA 5', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'Digimax V3', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V4', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V6', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V50', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V70', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V700', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'Digimax V800', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'CL5', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'CL80', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'DV300F', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'GX-1L', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'GX-1S', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'GX-10', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'GX-20', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'HZ15', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'HZ25W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'HZ30W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'HZ35W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'HZ50W', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'i85', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L73', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L77', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L100', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L110', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L210', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'L310W', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'MV800', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'NV3', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'NV4', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'NV7 OPS', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'NV10', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'NV11', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'NV30', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'NV40', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'NX5', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX10', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX11', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX20', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX100', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX200', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX210', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'NX1000', 'confusion': 0.020 },
+	    { 'make': 'Samsung', 'model': 'PL120', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'PL170', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'PL200', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'PL210', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'PRO815', 'confusion': 0.008 },
+	    { 'make': 'Samsung', 'model': 'S630', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'S730', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'S830', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'S1030', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'S1050', 'confusion': 0.006 },
+	    { 'make': 'Samsung', 'model': 'SH100', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'SL30', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'SL620', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'SL820', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST30', 'confusion': 0.004 },
+	    { 'make': 'Samsung', 'model': 'ST65', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST66', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST76', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST80', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST90', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST95', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST97', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST100', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST200F', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST600', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST700', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'ST6500', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL205', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL210', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL220', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL225', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL240', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL320', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL350', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'TL500', 'confusion': 0.007 },
+	    { 'make': 'Samsung', 'model': 'WB150F', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'WB210', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'WB700', 'confusion': 0.005 },
+	    { 'make': 'Samsung', 'model': 'WB750', 'confusion': 0.005 },
+	    { 'make': 'Sanyo', 'model': 'Xacti DSC-S1', 'confusion': 0.005 },
+	    { 'make': 'Sanyo', 'model': 'Xacti DSC-S3', 'confusion': 0.005 },
+	    { 'make': 'Sanyo', 'model': 'Xacti DSC-S4', 'confusion': 0.005 },
+	    { 'make': 'Sanyo', 'model': 'Xacti J4', 'confusion': 0.005 },
+	    { 'make': 'Sanyo', 'model': 'VPC-AZ3', 'confusion': 0.006 },
+	    { 'make': 'Sanyo', 'model': 'VPC-J1', 'confusion': 0.005 },
+	    { 'make': 'Sigma', 'model': 'DP1', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'DP1 Merrill', 'confusion': 0.020 },
+	    { 'make': 'Sigma', 'model': 'DP1s', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'DP1x', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'DP2x', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'DP2', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'DP2 Merrill', 'confusion': 0.020 },
+	    { 'make': 'Sigma', 'model': 'DP2s', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'SD1', 'confusion': 0.020 },
+	    { 'make': 'Sigma', 'model': 'SD1 Merrill', 'confusion': 0.020 },
+	    { 'make': 'Sigma', 'model': 'SD-9', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'SD-10', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'SD-14', 'confusion': 0.018 },
+	    { 'make': 'Sigma', 'model': 'SD-15', 'confusion': 0.018 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A100', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A200', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A230', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A290', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A300', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A330', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A350', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A380', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A390', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A450', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A500', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A550', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A560', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A580', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A700', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A850', 'confusion': 0.030 },
+	    { 'make': 'Sony', 'model': 'Alpha DSLR-A900', 'confusion': 0.030 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-F88', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-F707', 'confusion': 0.008 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-F717', 'confusion': 0.008 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-F828', 'confusion': 0.008 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-G1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-G3', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H2', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H3', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H5', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H7', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H7V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H9', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H9V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H10', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H20', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H50', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H55', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H70', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-H90', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX10V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX20V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX30V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX100V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-HX200V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-L1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-M1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-M2', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-N1', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-N2', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P2', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P3', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P30', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P31', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P32', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P41', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P5', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P7', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P8', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P9', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P10', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P50', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P51', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P52', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P71', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P72', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P73', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P92', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P93', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P100', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P120', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P150', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-P200', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-R1', 'confusion': 0.018 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-RX100', 'confusion': 0.011 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S40', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S60', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S75', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S85', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S90', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S600', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S650', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S700', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S730', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S750', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S780', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-S800', 'confusion': 0.007 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T2', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T3', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T5', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T7', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T9', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T10', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T11', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T20', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T30', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T33', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T50', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T70', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T77', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T90', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T100', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T110', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T200', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T300', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T500', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T700', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-T900', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX5', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX9', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX10', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX20', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX55', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX66', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX100V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-TX200V', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-U20', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-U40', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-U60', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-V1', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-V3', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W1', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W5', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W7', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W20', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W30', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W35', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W50', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W55', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W70', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W80', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W90', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W100', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W120', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W130', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W150', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W170', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W200', 'confusion': 0.007 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W230', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W290', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W300', 'confusion': 0.007 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W510', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W530', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W550', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W560', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W570', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W610', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W620', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W650', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-W690', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX5', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX9', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX10', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX30', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX50', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX70', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX150', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'NEX-3', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'NEX-5', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'NEX-5N', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'NEX-C3', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'NEX-F3', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'NEX-7', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'Cyber Shot DSC-WX1', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD200', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD250', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD300', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD350', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD400', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-CD500', 'confusion': 0.006 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-FD100', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'Mavica MVC-FD200', 'confusion': 0.005 },
+	    { 'make': 'Sony', 'model': 'SLT-A33', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A35', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A37', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A55', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A57', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A65', 'confusion': 0.020 },
+	    { 'make': 'Sony', 'model': 'SLT-A77', 'confusion': 0.020 },
+	    { 'make': 'Vivitar', 'model': 'Vivicam 3330', 'confusion': 0.006 },
+	];
+
+
+/***/ },
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
+	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
 	 * @license
 	 * lodash <https://lodash.com/>
 	 * Copyright jQuery Foundation and other contributors <https://jquery.org/>
@@ -22798,7 +24390,7 @@
 	  var undefined;
 	
 	  /** Used as the semantic version number. */
-	  var VERSION = '4.13.1';
+	  var VERSION = '4.14.0';
 	
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
@@ -22812,7 +24404,7 @@
 	  /** Used as the internal argument placeholder. */
 	  var PLACEHOLDER = '__lodash_placeholder__';
 	
-	  /** Used to compose bitmasks for wrapper metadata. */
+	  /** Used to compose bitmasks for function metadata. */
 	  var BIND_FLAG = 1,
 	      BIND_KEY_FLAG = 2,
 	      CURRY_BOUND_FLAG = 4,
@@ -22851,6 +24443,19 @@
 	  var MAX_ARRAY_LENGTH = 4294967295,
 	      MAX_ARRAY_INDEX = MAX_ARRAY_LENGTH - 1,
 	      HALF_MAX_ARRAY_LENGTH = MAX_ARRAY_LENGTH >>> 1;
+	
+	  /** Used to associate wrap methods with their bit flags. */
+	  var wrapFlags = [
+	    ['ary', ARY_FLAG],
+	    ['bind', BIND_FLAG],
+	    ['bindKey', BIND_KEY_FLAG],
+	    ['curry', CURRY_FLAG],
+	    ['curryRight', CURRY_RIGHT_FLAG],
+	    ['flip', FLIP_FLAG],
+	    ['partial', PARTIAL_FLAG],
+	    ['partialRight', PARTIAL_RIGHT_FLAG],
+	    ['rearg', REARG_FLAG]
+	  ];
 	
 	  /** `Object#toString` result references. */
 	  var argsTag = '[object Arguments]',
@@ -22915,6 +24520,11 @@
 	  var reTrim = /^\s+|\s+$/g,
 	      reTrimStart = /^\s+/,
 	      reTrimEnd = /\s+$/;
+	
+	  /** Used to match wrap detail comments. */
+	  var reWrapComment = /\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,
+	      reWrapDetails = /\{\n\/\* \[wrapped with (.+)\] \*/,
+	      reSplitDetails = /,? & /;
 	
 	  /** Used to match non-compound words composed of alphanumeric characters. */
 	  var reBasicWord = /[a-zA-Z0-9]+/g;
@@ -23035,7 +24645,7 @@
 	    'Function', 'Int8Array', 'Int16Array', 'Int32Array', 'Map', 'Math', 'Object',
 	    'Promise', 'Reflect', 'RegExp', 'Set', 'String', 'Symbol', 'TypeError',
 	    'Uint8Array', 'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap',
-	    '_', 'isFinite', 'parseInt', 'setTimeout'
+	    '_', 'clearTimeout', 'isFinite', 'parseInt', 'setTimeout'
 	  ];
 	
 	  /** Used to make template sourceURLs easier to identify. */
@@ -23128,8 +24738,17 @@
 	  var freeParseFloat = parseFloat,
 	      freeParseInt = parseInt;
 	
+	  /** Detect free variable `global` from Node.js. */
+	  var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+	
+	  /** Detect free variable `self`. */
+	  var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+	
+	  /** Used as a reference to the global object. */
+	  var root = freeGlobal || freeSelf || Function('return this')();
+	
 	  /** Detect free variable `exports`. */
-	  var freeExports = typeof exports == 'object' && exports;
+	  var freeExports = freeGlobal && typeof exports == 'object' && exports;
 	
 	  /** Detect free variable `module`. */
 	  var freeModule = freeExports && typeof module == 'object' && module;
@@ -23137,17 +24756,23 @@
 	  /** Detect the popular CommonJS extension `module.exports`. */
 	  var moduleExports = freeModule && freeModule.exports === freeExports;
 	
-	  /** Detect free variable `global` from Node.js. */
-	  var freeGlobal = checkGlobal(typeof global == 'object' && global);
+	  /** Detect free variable `process` from Node.js. */
+	  var freeProcess = moduleExports && freeGlobal.process;
 	
-	  /** Detect free variable `self`. */
-	  var freeSelf = checkGlobal(typeof self == 'object' && self);
+	  /** Used to access faster Node.js helpers. */
+	  var nodeUtil = (function() {
+	    try {
+	      return freeProcess && freeProcess.binding('util');
+	    } catch (e) {}
+	  }());
 	
-	  /** Detect `this` as the global object. */
-	  var thisGlobal = checkGlobal(typeof this == 'object' && this);
-	
-	  /** Used as a reference to the global object. */
-	  var root = freeGlobal || freeSelf || thisGlobal || Function('return this')();
+	  /* Node.js helper references. */
+	  var nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer,
+	      nodeIsDate = nodeUtil && nodeUtil.isDate,
+	      nodeIsMap = nodeUtil && nodeUtil.isMap,
+	      nodeIsRegExp = nodeUtil && nodeUtil.isRegExp,
+	      nodeIsSet = nodeUtil && nodeUtil.isSet,
+	      nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
 	
 	  /*--------------------------------------------------------------------------*/
 	
@@ -23160,7 +24785,7 @@
 	   * @returns {Object} Returns `map`.
 	   */
 	  function addMapEntry(map, pair) {
-	    // Don't return `Map#set` because it doesn't return the map instance in IE 11.
+	    // Don't return `map.set` because it's not chainable in IE 11.
 	    map.set(pair[0], pair[1]);
 	    return map;
 	  }
@@ -23174,6 +24799,7 @@
 	   * @returns {Object} Returns `set`.
 	   */
 	  function addSetEntry(set, value) {
+	    // Don't return `set.add` because it's not chainable in IE 11.
 	    set.add(value);
 	    return set;
 	  }
@@ -23189,8 +24815,7 @@
 	   * @returns {*} Returns the result of `func`.
 	   */
 	  function apply(func, thisArg, args) {
-	    var length = args.length;
-	    switch (length) {
+	    switch (args.length) {
 	      case 0: return func.call(thisArg);
 	      case 1: return func.call(thisArg, args[0]);
 	      case 2: return func.call(thisArg, args[0], args[1]);
@@ -23507,7 +25132,7 @@
 	   */
 	  function baseIndexOf(array, value, fromIndex) {
 	    if (value !== value) {
-	      return indexOfNaN(array, fromIndex);
+	      return baseFindIndex(array, baseIsNaN, fromIndex);
 	    }
 	    var index = fromIndex - 1,
 	        length = array.length;
@@ -23543,6 +25168,17 @@
 	  }
 	
 	  /**
+	   * The base implementation of `_.isNaN` without support for number objects.
+	   *
+	   * @private
+	   * @param {*} value The value to check.
+	   * @returns {boolean} Returns `true` if `value` is `NaN`, else `false`.
+	   */
+	  function baseIsNaN(value) {
+	    return value !== value;
+	  }
+	
+	  /**
 	   * The base implementation of `_.mean` and `_.meanBy` without support for
 	   * iteratee shorthands.
 	   *
@@ -23554,6 +25190,32 @@
 	  function baseMean(array, iteratee) {
 	    var length = array ? array.length : 0;
 	    return length ? (baseSum(array, iteratee) / length) : NAN;
+	  }
+	
+	  /**
+	   * The base implementation of `_.property` without support for deep paths.
+	   *
+	   * @private
+	   * @param {string} key The key of the property to get.
+	   * @returns {Function} Returns the new accessor function.
+	   */
+	  function baseProperty(key) {
+	    return function(object) {
+	      return object == null ? undefined : object[key];
+	    };
+	  }
+	
+	  /**
+	   * The base implementation of `_.propertyOf` without support for deep paths.
+	   *
+	   * @private
+	   * @param {Object} object The object to query.
+	   * @returns {Function} Returns the new accessor function.
+	   */
+	  function basePropertyOf(object) {
+	    return function(key) {
+	      return object == null ? undefined : object[key];
+	    };
 	  }
 	
 	  /**
@@ -23656,7 +25318,7 @@
 	  }
 	
 	  /**
-	   * The base implementation of `_.unary` without support for storing wrapper metadata.
+	   * The base implementation of `_.unary` without support for storing metadata.
 	   *
 	   * @private
 	   * @param {Function} func The function to cap arguments for.
@@ -23730,17 +25392,6 @@
 	  }
 	
 	  /**
-	   * Checks if `value` is a global object.
-	   *
-	   * @private
-	   * @param {*} value The value to check.
-	   * @returns {null|Object} Returns `value` if it's a global object, else `null`.
-	   */
-	  function checkGlobal(value) {
-	    return (value && value.Object === Object) ? value : null;
-	  }
-	
-	  /**
 	   * Gets the number of `placeholder` occurrences in `array`.
 	   *
 	   * @private
@@ -23767,9 +25418,7 @@
 	   * @param {string} letter The matched letter to deburr.
 	   * @returns {string} Returns the deburred letter.
 	   */
-	  function deburrLetter(letter) {
-	    return deburredLetters[letter];
-	  }
+	  var deburrLetter = basePropertyOf(deburredLetters);
 	
 	  /**
 	   * Used by `_.escape` to convert characters to HTML entities.
@@ -23778,9 +25427,7 @@
 	   * @param {string} chr The matched character to escape.
 	   * @returns {string} Returns the escaped character.
 	   */
-	  function escapeHtmlChar(chr) {
-	    return htmlEscapes[chr];
-	  }
+	  var escapeHtmlChar = basePropertyOf(htmlEscapes);
 	
 	  /**
 	   * Used by `_.template` to escape characters for inclusion in compiled string literals.
@@ -23803,28 +25450,6 @@
 	   */
 	  function getValue(object, key) {
 	    return object == null ? undefined : object[key];
-	  }
-	
-	  /**
-	   * Gets the index at which the first occurrence of `NaN` is found in `array`.
-	   *
-	   * @private
-	   * @param {Array} array The array to search.
-	   * @param {number} fromIndex The index to search from.
-	   * @param {boolean} [fromRight] Specify iterating from right to left.
-	   * @returns {number} Returns the index of the matched `NaN`, else `-1`.
-	   */
-	  function indexOfNaN(array, fromIndex, fromRight) {
-	    var length = array.length,
-	        index = fromIndex + (fromRight ? 1 : -1);
-	
-	    while ((fromRight ? index-- : ++index < length)) {
-	      var other = array[index];
-	      if (other !== other) {
-	        return index;
-	      }
-	    }
-	    return -1;
 	  }
 	
 	  /**
@@ -23878,6 +25503,20 @@
 	      result[++index] = [key, value];
 	    });
 	    return result;
+	  }
+	
+	  /**
+	   * Creates a function that invokes `func` with its first argument transformed.
+	   *
+	   * @private
+	   * @param {Function} func The function to wrap.
+	   * @param {Function} transform The argument transform.
+	   * @returns {Function} Returns the new function.
+	   */
+	  function overArg(func, transform) {
+	    return function(arg) {
+	      return func(transform(arg));
+	    };
 	  }
 	
 	  /**
@@ -23975,9 +25614,7 @@
 	   * @param {string} chr The matched character to unescape.
 	   * @returns {string} Returns the unescaped character.
 	   */
-	  function unescapeHtmlChar(chr) {
-	    return htmlUnescapes[chr];
-	  }
+	  var unescapeHtmlChar = basePropertyOf(htmlUnescapes);
 	
 	  /*--------------------------------------------------------------------------*/
 	
@@ -24021,7 +25658,8 @@
 	    context = context ? _.defaults({}, context, _.pick(root, contextProps)) : root;
 	
 	    /** Built-in constructor references. */
-	    var Date = context.Date,
+	    var Array = context.Array,
+	        Date = context.Date,
 	        Error = context.Error,
 	        Math = context.Math,
 	        RegExp = context.RegExp,
@@ -24075,19 +25713,22 @@
 	        Symbol = context.Symbol,
 	        Uint8Array = context.Uint8Array,
 	        enumerate = Reflect ? Reflect.enumerate : undefined,
-	        getOwnPropertySymbols = Object.getOwnPropertySymbols,
-	        iteratorSymbol = typeof (iteratorSymbol = Symbol && Symbol.iterator) == 'symbol' ? iteratorSymbol : undefined,
-	        objectCreate = Object.create,
+	        iteratorSymbol = Symbol ? Symbol.iterator : undefined,
+	        objectCreate = context.Object.create,
 	        propertyIsEnumerable = objectProto.propertyIsEnumerable,
-	        splice = arrayProto.splice;
+	        splice = arrayProto.splice,
+	        spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
 	
 	    /** Built-in method references that are mockable. */
-	    var setTimeout = function(func, wait) { return context.setTimeout.call(root, func, wait); };
+	    var clearTimeout = function(id) { return context.clearTimeout.call(root, id); },
+	        setTimeout = function(func, wait) { return context.setTimeout.call(root, func, wait); };
 	
 	    /* Built-in method references for those with the same name as other `lodash` methods. */
 	    var nativeCeil = Math.ceil,
 	        nativeFloor = Math.floor,
 	        nativeGetPrototype = Object.getPrototypeOf,
+	        nativeGetSymbols = Object.getOwnPropertySymbols,
+	        nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
 	        nativeIsFinite = context.isFinite,
 	        nativeJoin = arrayProto.join,
 	        nativeKeys = Object.keys,
@@ -24105,7 +25746,15 @@
 	        Promise = getNative(context, 'Promise'),
 	        Set = getNative(context, 'Set'),
 	        WeakMap = getNative(context, 'WeakMap'),
-	        nativeCreate = getNative(Object, 'create');
+	        nativeCreate = getNative(context.Object, 'create');
+	
+	    /* Used to set `toString` methods. */
+	    var defineProperty = (function() {
+	      var func = getNative(context.Object, 'defineProperty'),
+	          name = getNative.name;
+	
+	      return (name && name.length > 2) ? func : undefined;
+	    }());
 	
 	    /** Used to store function metadata. */
 	    var metaMap = WeakMap && new WeakMap;
@@ -24196,16 +25845,16 @@
 	     *
 	     * The wrapper methods that are **not** chainable by default are:
 	     * `add`, `attempt`, `camelCase`, `capitalize`, `ceil`, `clamp`, `clone`,
-	     * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `deburr`, `divide`, `each`,
-	     * `eachRight`, `endsWith`, `eq`, `escape`, `escapeRegExp`, `every`, `find`,
-	     * `findIndex`, `findKey`, `findLast`, `findLastIndex`, `findLastKey`, `first`,
-	     * `floor`, `forEach`, `forEachRight`, `forIn`, `forInRight`, `forOwn`,
-	     * `forOwnRight`, `get`, `gt`, `gte`, `has`, `hasIn`, `head`, `identity`,
-	     * `includes`, `indexOf`, `inRange`, `invoke`, `isArguments`, `isArray`,
-	     * `isArrayBuffer`, `isArrayLike`, `isArrayLikeObject`, `isBoolean`,
-	     * `isBuffer`, `isDate`, `isElement`, `isEmpty`, `isEqual`, `isEqualWith`,
-	     * `isError`, `isFinite`, `isFunction`, `isInteger`, `isLength`, `isMap`,
-	     * `isMatch`, `isMatchWith`, `isNaN`, `isNative`, `isNil`, `isNull`,
+	     * `cloneDeep`, `cloneDeepWith`, `cloneWith`, `conformsTo`, `deburr`,
+	     * `defaultTo`, `divide`, `each`, `eachRight`, `endsWith`, `eq`, `escape`,
+	     * `escapeRegExp`, `every`, `find`, `findIndex`, `findKey`, `findLast`,
+	     * `findLastIndex`, `findLastKey`, `first`, `floor`, `forEach`, `forEachRight`,
+	     * `forIn`, `forInRight`, `forOwn`, `forOwnRight`, `get`, `gt`, `gte`, `has`,
+	     * `hasIn`, `head`, `identity`, `includes`, `indexOf`, `inRange`, `invoke`,
+	     * `isArguments`, `isArray`, `isArrayBuffer`, `isArrayLike`, `isArrayLikeObject`,
+	     * `isBoolean`, `isBuffer`, `isDate`, `isElement`, `isEmpty`, `isEqual`,
+	     * `isEqualWith`, `isError`, `isFinite`, `isFunction`, `isInteger`, `isLength`,
+	     * `isMap`, `isMatch`, `isMatchWith`, `isNaN`, `isNative`, `isNil`, `isNull`,
 	     * `isNumber`, `isObject`, `isObjectLike`, `isPlainObject`, `isRegExp`,
 	     * `isSafeInteger`, `isSet`, `isString`, `isUndefined`, `isTypedArray`,
 	     * `isWeakMap`, `isWeakSet`, `join`, `kebabCase`, `last`, `lastIndexOf`,
@@ -24908,8 +26557,13 @@
 	     */
 	    function stackSet(key, value) {
 	      var cache = this.__data__;
-	      if (cache instanceof ListCache && cache.__data__.length == LARGE_ARRAY_SIZE) {
-	        cache = this.__data__ = new MapCache(cache.__data__);
+	      if (cache instanceof ListCache) {
+	        var pairs = cache.__data__;
+	        if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+	          pairs.push([key, value]);
+	          return this;
+	        }
+	        cache = this.__data__ = new MapCache(pairs);
 	      }
 	      cache.set(key, value);
 	      return this;
@@ -25046,7 +26700,7 @@
 	    }
 	
 	    /**
-	     * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
+	     * The base implementation of `_.clamp` which doesn't coerce arguments.
 	     *
 	     * @private
 	     * @param {number} number The number to clamp.
@@ -25130,14 +26784,17 @@
 	      if (!isArr) {
 	        var props = isFull ? getAllKeys(value) : keys(value);
 	      }
-	      // Recursively populate clone (susceptible to call stack limits).
 	      arrayEach(props || value, function(subValue, key) {
 	        if (props) {
 	          key = subValue;
 	          subValue = value[key];
 	        }
+	        // Recursively populate clone (susceptible to call stack limits).
 	        assignValue(result, key, baseClone(subValue, isDeep, isFull, customizer, key, value, stack));
 	      });
+	      if (!isFull) {
+	        stack['delete'](value);
+	      }
 	      return result;
 	    }
 	
@@ -25149,26 +26806,37 @@
 	     * @returns {Function} Returns the new spec function.
 	     */
 	    function baseConforms(source) {
-	      var props = keys(source),
-	          length = props.length;
-	
+	      var props = keys(source);
 	      return function(object) {
-	        if (object == null) {
-	          return !length;
-	        }
-	        var index = length;
-	        while (index--) {
-	          var key = props[index],
-	              predicate = source[key],
-	              value = object[key];
-	
-	          if ((value === undefined &&
-	              !(key in Object(object))) || !predicate(value)) {
-	            return false;
-	          }
-	        }
-	        return true;
+	        return baseConformsTo(object, source, props);
 	      };
+	    }
+	
+	    /**
+	     * The base implementation of `_.conformsTo` which accepts `props` to check.
+	     *
+	     * @private
+	     * @param {Object} object The object to inspect.
+	     * @param {Object} source The object of property predicates to conform to.
+	     * @returns {boolean} Returns `true` if `object` conforms, else `false`.
+	     */
+	    function baseConformsTo(object, source, props) {
+	      var length = props.length;
+	      if (object == null) {
+	        return !length;
+	      }
+	      var index = length;
+	      while (index--) {
+	        var key = props[index],
+	            predicate = source[key],
+	            value = object[key];
+	
+	        if ((value === undefined &&
+	            !(key in Object(object))) || !predicate(value)) {
+	          return false;
+	        }
+	      }
+	      return true;
 	    }
 	
 	    /**
@@ -25184,13 +26852,13 @@
 	    }
 	
 	    /**
-	     * The base implementation of `_.delay` and `_.defer` which accepts an array
-	     * of `func` arguments.
+	     * The base implementation of `_.delay` and `_.defer` which accepts `args`
+	     * to provide to `func`.
 	     *
 	     * @private
 	     * @param {Function} func The function to delay.
 	     * @param {number} wait The number of milliseconds to delay invocation.
-	     * @param {Object} args The arguments to provide to `func`.
+	     * @param {Array} args The arguments to provide to `func`.
 	     * @returns {number} Returns the timer id.
 	     */
 	    function baseDelay(func, wait, args) {
@@ -25504,7 +27172,18 @@
 	    }
 	
 	    /**
-	     * The base implementation of `_.gt` which doesn't coerce arguments to numbers.
+	     * The base implementation of `getTag`.
+	     *
+	     * @private
+	     * @param {*} value The value to query.
+	     * @returns {string} Returns the `toStringTag`.
+	     */
+	    function baseGetTag(value) {
+	      return objectToString.call(value);
+	    }
+	
+	    /**
+	     * The base implementation of `_.gt` which doesn't coerce arguments.
 	     *
 	     * @private
 	     * @param {*} value The value to compare.
@@ -25546,7 +27225,7 @@
 	    }
 	
 	    /**
-	     * The base implementation of `_.inRange` which doesn't coerce arguments to numbers.
+	     * The base implementation of `_.inRange` which doesn't coerce arguments.
 	     *
 	     * @private
 	     * @param {number} number The number to check.
@@ -25660,6 +27339,28 @@
 	    }
 	
 	    /**
+	     * The base implementation of `_.isArrayBuffer` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is an array buffer, else `false`.
+	     */
+	    function baseIsArrayBuffer(value) {
+	      return isObjectLike(value) && objectToString.call(value) == arrayBufferTag;
+	    }
+	
+	    /**
+	     * The base implementation of `_.isDate` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is a date object, else `false`.
+	     */
+	    function baseIsDate(value) {
+	      return isObjectLike(value) && objectToString.call(value) == dateTag;
+	    }
+	
+	    /**
 	     * The base implementation of `_.isEqual` which supports partial comparisons
 	     * and tracks traversed objects.
 	     *
@@ -25743,6 +27444,17 @@
 	    }
 	
 	    /**
+	     * The base implementation of `_.isMap` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is a map, else `false`.
+	     */
+	    function baseIsMap(value) {
+	      return isObjectLike(value) && getTag(value) == mapTag;
+	    }
+	
+	    /**
 	     * The base implementation of `_.isMatch` without support for iteratee shorthands.
 	     *
 	     * @private
@@ -25813,6 +27525,40 @@
 	    }
 	
 	    /**
+	     * The base implementation of `_.isRegExp` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is a regexp, else `false`.
+	     */
+	    function baseIsRegExp(value) {
+	      return isObject(value) && objectToString.call(value) == regexpTag;
+	    }
+	
+	    /**
+	     * The base implementation of `_.isSet` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is a set, else `false`.
+	     */
+	    function baseIsSet(value) {
+	      return isObjectLike(value) && getTag(value) == setTag;
+	    }
+	
+	    /**
+	     * The base implementation of `_.isTypedArray` without Node.js optimizations.
+	     *
+	     * @private
+	     * @param {*} value The value to check.
+	     * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
+	     */
+	    function baseIsTypedArray(value) {
+	      return isObjectLike(value) &&
+	        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
+	    }
+	
+	    /**
 	     * The base implementation of `_.iteratee`.
 	     *
 	     * @private
@@ -25844,9 +27590,7 @@
 	     * @param {Object} object The object to query.
 	     * @returns {Array} Returns the array of property names.
 	     */
-	    function baseKeys(object) {
-	      return nativeKeys(Object(object));
-	    }
+	    var baseKeys = overArg(nativeKeys, Object);
 	
 	    /**
 	     * The base implementation of `_.keysIn` which doesn't skip the constructor
@@ -25874,7 +27618,7 @@
 	    }
 	
 	    /**
-	     * The base implementation of `_.lt` which doesn't coerce arguments to numbers.
+	     * The base implementation of `_.lt` which doesn't coerce arguments.
 	     *
 	     * @private
 	     * @param {*} value The value to compare.
@@ -26041,18 +27785,17 @@
 	          isCommon = false;
 	        }
 	      }
-	      stack.set(srcValue, newValue);
-	
 	      if (isCommon) {
 	        // Recursively merge objects and arrays (susceptible to call stack limits).
+	        stack.set(srcValue, newValue);
 	        mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
+	        stack['delete'](srcValue);
 	      }
-	      stack['delete'](srcValue);
 	      assignMergeValue(object, key, newValue);
 	    }
 	
 	    /**
-	     * The base implementation of `_.nth` which doesn't coerce `n` to an integer.
+	     * The base implementation of `_.nth` which doesn't coerce arguments.
 	     *
 	     * @private
 	     * @param {Array} array The array to query.
@@ -26104,12 +27847,9 @@
 	     */
 	    function basePick(object, props) {
 	      object = Object(object);
-	      return arrayReduce(props, function(result, key) {
-	        if (key in object) {
-	          result[key] = object[key];
-	        }
-	        return result;
-	      }, {});
+	      return basePickBy(object, props, function(value, key) {
+	        return key in object;
+	      });
 	    }
 	
 	    /**
@@ -26117,12 +27857,12 @@
 	     *
 	     * @private
 	     * @param {Object} object The source object.
+	     * @param {string[]} props The property identifiers to pick from.
 	     * @param {Function} predicate The function invoked per property.
 	     * @returns {Object} Returns the new object.
 	     */
-	    function basePickBy(object, predicate) {
+	    function basePickBy(object, props, predicate) {
 	      var index = -1,
-	          props = getAllKeysIn(object),
 	          length = props.length,
 	          result = {};
 	
@@ -26135,19 +27875,6 @@
 	        }
 	      }
 	      return result;
-	    }
-	
-	    /**
-	     * The base implementation of `_.property` without support for deep paths.
-	     *
-	     * @private
-	     * @param {string} key The key of the property to get.
-	     * @returns {Function} Returns the new accessor function.
-	     */
-	    function baseProperty(key) {
-	      return function(object) {
-	        return object == null ? undefined : object[key];
-	      };
 	    }
 	
 	    /**
@@ -26252,7 +27979,7 @@
 	
 	    /**
 	     * The base implementation of `_.range` and `_.rangeRight` which doesn't
-	     * coerce arguments to numbers.
+	     * coerce arguments.
 	     *
 	     * @private
 	     * @param {number} start The start of the range.
@@ -26299,6 +28026,35 @@
 	      } while (n);
 	
 	      return result;
+	    }
+	
+	    /**
+	     * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	     *
+	     * @private
+	     * @param {Function} func The function to apply a rest parameter to.
+	     * @param {number} [start=func.length-1] The start position of the rest parameter.
+	     * @returns {Function} Returns the new function.
+	     */
+	    function baseRest(func, start) {
+	      start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
+	      return function() {
+	        var args = arguments,
+	            index = -1,
+	            length = nativeMax(args.length - start, 0),
+	            array = Array(length);
+	
+	        while (++index < length) {
+	          array[index] = args[start + index];
+	        }
+	        index = -1;
+	        var otherArgs = Array(start + 1);
+	        while (++index < start) {
+	          otherArgs[index] = args[index];
+	        }
+	        otherArgs[start] = array;
+	        return apply(func, this, otherArgs);
+	      };
 	    }
 	
 	    /**
@@ -27080,9 +28836,9 @@
 	
 	        var newValue = customizer
 	          ? customizer(object[key], source[key], key, object, source)
-	          : source[key];
+	          : undefined;
 	
-	        assignValue(object, key, newValue);
+	        assignValue(object, key, newValue === undefined ? source[key] : newValue);
 	      }
 	      return object;
 	    }
@@ -27112,7 +28868,7 @@
 	        var func = isArray(collection) ? arrayAggregator : baseAggregator,
 	            accumulator = initializer ? initializer() : {};
 	
-	        return func(collection, setter, getIteratee(iteratee), accumulator);
+	        return func(collection, setter, getIteratee(iteratee, 2), accumulator);
 	      };
 	    }
 	
@@ -27124,7 +28880,7 @@
 	     * @returns {Function} Returns the new assigner function.
 	     */
 	    function createAssigner(assigner) {
-	      return rest(function(object, sources) {
+	      return baseRest(function(object, sources) {
 	        var index = -1,
 	            length = sources.length,
 	            customizer = length > 1 ? sources[length - 1] : undefined,
@@ -27208,14 +28964,13 @@
 	     *
 	     * @private
 	     * @param {Function} func The function to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper`
-	     *  for more details.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
 	     * @param {*} [thisArg] The `this` binding of `func`.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createBaseWrapper(func, bitmask, thisArg) {
+	    function createBind(func, bitmask, thisArg) {
 	      var isBind = bitmask & BIND_FLAG,
-	          Ctor = createCtorWrapper(func);
+	          Ctor = createCtor(func);
 	
 	      function wrapper() {
 	        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
@@ -27272,7 +29027,7 @@
 	     * @param {Function} Ctor The constructor to wrap.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createCtorWrapper(Ctor) {
+	    function createCtor(Ctor) {
 	      return function() {
 	        // Use a `switch` statement to work with class constructors. See
 	        // http://ecma-international.org/ecma-262/6.0/#sec-ecmascript-function-objects-call-thisargument-argumentslist
@@ -27302,13 +29057,12 @@
 	     *
 	     * @private
 	     * @param {Function} func The function to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper`
-	     *  for more details.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
 	     * @param {number} arity The arity of `func`.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createCurryWrapper(func, bitmask, arity) {
-	      var Ctor = createCtorWrapper(func);
+	    function createCurry(func, bitmask, arity) {
+	      var Ctor = createCtor(func);
 	
 	      function wrapper() {
 	        var length = arguments.length,
@@ -27325,8 +29079,8 @@
 	
 	        length -= holders.length;
 	        if (length < arity) {
-	          return createRecurryWrapper(
-	            func, bitmask, createHybridWrapper, wrapper.placeholder, undefined,
+	          return createRecurry(
+	            func, bitmask, createHybrid, wrapper.placeholder, undefined,
 	            args, holders, undefined, undefined, arity - length);
 	        }
 	        var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
@@ -27345,18 +29099,13 @@
 	    function createFind(findIndexFunc) {
 	      return function(collection, predicate, fromIndex) {
 	        var iterable = Object(collection);
-	        predicate = getIteratee(predicate, 3);
 	        if (!isArrayLike(collection)) {
-	          var props = keys(collection);
+	          var iteratee = getIteratee(predicate, 3);
+	          collection = keys(collection);
+	          predicate = function(key) { return iteratee(iterable[key], key, iterable); };
 	        }
-	        var index = findIndexFunc(props || collection, function(value, key) {
-	          if (props) {
-	            key = value;
-	            value = iterable[key];
-	          }
-	          return predicate(value, key, iterable);
-	        }, fromIndex);
-	        return index > -1 ? collection[props ? props[index] : index] : undefined;
+	        var index = findIndexFunc(collection, predicate, fromIndex);
+	        return index > -1 ? iterable[iteratee ? collection[index] : index] : undefined;
 	      };
 	    }
 	
@@ -27368,7 +29117,7 @@
 	     * @returns {Function} Returns the new flow function.
 	     */
 	    function createFlow(fromRight) {
-	      return rest(function(funcs) {
+	      return baseRest(function(funcs) {
 	        funcs = baseFlatten(funcs, 1);
 	
 	        var length = funcs.length,
@@ -27430,8 +29179,7 @@
 	     *
 	     * @private
 	     * @param {Function|string} func The function or method name to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper`
-	     *  for more details.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
 	     * @param {*} [thisArg] The `this` binding of `func`.
 	     * @param {Array} [partials] The arguments to prepend to those provided to
 	     *  the new function.
@@ -27444,13 +29192,13 @@
 	     * @param {number} [arity] The arity of `func`.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createHybridWrapper(func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity) {
+	    function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity) {
 	      var isAry = bitmask & ARY_FLAG,
 	          isBind = bitmask & BIND_FLAG,
 	          isBindKey = bitmask & BIND_KEY_FLAG,
 	          isCurried = bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG),
 	          isFlip = bitmask & FLIP_FLAG,
-	          Ctor = isBindKey ? undefined : createCtorWrapper(func);
+	          Ctor = isBindKey ? undefined : createCtor(func);
 	
 	      function wrapper() {
 	        var length = arguments.length,
@@ -27473,8 +29221,8 @@
 	        length -= holdersCount;
 	        if (isCurried && length < arity) {
 	          var newHolders = replaceHolders(args, placeholder);
-	          return createRecurryWrapper(
-	            func, bitmask, createHybridWrapper, wrapper.placeholder, thisArg,
+	          return createRecurry(
+	            func, bitmask, createHybrid, wrapper.placeholder, thisArg,
 	            args, newHolders, argPos, ary, arity - length
 	          );
 	        }
@@ -27491,7 +29239,7 @@
 	          args.length = ary;
 	        }
 	        if (this && this !== root && this instanceof wrapper) {
-	          fn = Ctor || createCtorWrapper(fn);
+	          fn = Ctor || createCtor(fn);
 	        }
 	        return fn.apply(thisBinding, args);
 	      }
@@ -27517,13 +29265,14 @@
 	     *
 	     * @private
 	     * @param {Function} operator The function to perform the operation.
+	     * @param {number} [defaultValue] The value used for `undefined` arguments.
 	     * @returns {Function} Returns the new mathematical operation function.
 	     */
-	    function createMathOperation(operator) {
+	    function createMathOperation(operator, defaultValue) {
 	      return function(value, other) {
 	        var result;
 	        if (value === undefined && other === undefined) {
-	          return 0;
+	          return defaultValue;
 	        }
 	        if (value !== undefined) {
 	          result = value;
@@ -27553,12 +29302,12 @@
 	     * @returns {Function} Returns the new over function.
 	     */
 	    function createOver(arrayFunc) {
-	      return rest(function(iteratees) {
+	      return baseRest(function(iteratees) {
 	        iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
 	          ? arrayMap(iteratees[0], baseUnary(getIteratee()))
-	          : arrayMap(baseFlatten(iteratees, 1, isFlattenableIteratee), baseUnary(getIteratee()));
+	          : arrayMap(baseFlatten(iteratees, 1), baseUnary(getIteratee()));
 	
-	        return rest(function(args) {
+	        return baseRest(function(args) {
 	          var thisArg = this;
 	          return arrayFunc(iteratees, function(iteratee) {
 	            return apply(iteratee, thisArg, args);
@@ -27595,16 +29344,15 @@
 	     *
 	     * @private
 	     * @param {Function} func The function to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper`
-	     *  for more details.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
 	     * @param {*} thisArg The `this` binding of `func`.
 	     * @param {Array} partials The arguments to prepend to those provided to
 	     *  the new function.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createPartialWrapper(func, bitmask, thisArg, partials) {
+	    function createPartial(func, bitmask, thisArg, partials) {
 	      var isBind = bitmask & BIND_FLAG,
-	          Ctor = createCtorWrapper(func);
+	          Ctor = createCtor(func);
 	
 	      function wrapper() {
 	        var argsIndex = -1,
@@ -27673,8 +29421,7 @@
 	     *
 	     * @private
 	     * @param {Function} func The function to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper`
-	     *  for more details.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
 	     * @param {Function} wrapFunc The function to create the `func` wrapper.
 	     * @param {*} placeholder The placeholder value.
 	     * @param {*} [thisArg] The `this` binding of `func`.
@@ -27686,7 +29433,7 @@
 	     * @param {number} [arity] The arity of `func`.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createRecurryWrapper(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
+	    function createRecurry(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
 	      var isCurry = bitmask & CURRY_FLAG,
 	          newHolders = isCurry ? holders : undefined,
 	          newHoldersRight = isCurry ? undefined : holders,
@@ -27709,7 +29456,7 @@
 	        setData(result, newData);
 	      }
 	      result.placeholder = placeholder;
-	      return result;
+	      return setWrapToString(result, func, bitmask);
 	    }
 	
 	    /**
@@ -27738,7 +29485,7 @@
 	    }
 	
 	    /**
-	     * Creates a set of `values`.
+	     * Creates a set object of `values`.
 	     *
 	     * @private
 	     * @param {Array} values The values to add to the set.
@@ -27774,7 +29521,7 @@
 	     *
 	     * @private
 	     * @param {Function|string} func The function or method name to wrap.
-	     * @param {number} bitmask The bitmask of wrapper flags.
+	     * @param {number} bitmask The bitmask flags.
 	     *  The bitmask may be composed of the following flags:
 	     *     1 - `_.bind`
 	     *     2 - `_.bindKey`
@@ -27794,7 +29541,7 @@
 	     * @param {number} [arity] The arity of `func`.
 	     * @returns {Function} Returns the new wrapped function.
 	     */
-	    function createWrapper(func, bitmask, thisArg, partials, holders, argPos, ary, arity) {
+	    function createWrap(func, bitmask, thisArg, partials, holders, argPos, ary, arity) {
 	      var isBindKey = bitmask & BIND_KEY_FLAG;
 	      if (!isBindKey && typeof func != 'function') {
 	        throw new TypeError(FUNC_ERROR_TEXT);
@@ -27837,16 +29584,16 @@
 	        bitmask &= ~(CURRY_FLAG | CURRY_RIGHT_FLAG);
 	      }
 	      if (!bitmask || bitmask == BIND_FLAG) {
-	        var result = createBaseWrapper(func, bitmask, thisArg);
+	        var result = createBind(func, bitmask, thisArg);
 	      } else if (bitmask == CURRY_FLAG || bitmask == CURRY_RIGHT_FLAG) {
-	        result = createCurryWrapper(func, bitmask, arity);
+	        result = createCurry(func, bitmask, arity);
 	      } else if ((bitmask == PARTIAL_FLAG || bitmask == (BIND_FLAG | PARTIAL_FLAG)) && !holders.length) {
-	        result = createPartialWrapper(func, bitmask, thisArg, partials);
+	        result = createPartial(func, bitmask, thisArg, partials);
 	      } else {
-	        result = createHybridWrapper.apply(undefined, newData);
+	        result = createHybrid.apply(undefined, newData);
 	      }
 	      var setter = data ? baseSetData : setData;
-	      return setter(result, newData);
+	      return setWrapToString(setter(result, newData), func, bitmask);
 	    }
 	
 	    /**
@@ -27873,7 +29620,7 @@
 	      }
 	      // Assume cyclic values are equal.
 	      var stacked = stack.get(array);
-	      if (stacked) {
+	      if (stacked && stack.get(other)) {
 	        return stacked == other;
 	      }
 	      var index = -1,
@@ -27881,6 +29628,7 @@
 	          seen = (bitmask & UNORDERED_COMPARE_FLAG) ? new SetCache : undefined;
 	
 	      stack.set(array, other);
+	      stack.set(other, array);
 	
 	      // Ignore non-index properties.
 	      while (++index < arrLength) {
@@ -27959,17 +29707,13 @@
 	
 	        case boolTag:
 	        case dateTag:
-	          // Coerce dates and booleans to numbers, dates to milliseconds and
-	          // booleans to `1` or `0` treating invalid dates coerced to `NaN` as
-	          // not equal.
-	          return +object == +other;
+	        case numberTag:
+	          // Coerce booleans to `1` or `0` and dates to milliseconds.
+	          // Invalid dates are coerced to `NaN`.
+	          return eq(+object, +other);
 	
 	        case errorTag:
 	          return object.name == other.name && object.message == other.message;
-	
-	        case numberTag:
-	          // Treat `NaN` vs. `NaN` as equal.
-	          return (object != +object) ? other != +other : object == +other;
 	
 	        case regexpTag:
 	        case stringTag:
@@ -27994,10 +29738,12 @@
 	            return stacked == other;
 	          }
 	          bitmask |= UNORDERED_COMPARE_FLAG;
-	          stack.set(object, other);
 	
 	          // Recursively compare objects (susceptible to call stack limits).
-	          return equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask, stack);
+	          stack.set(object, other);
+	          var result = equalArrays(convert(object), convert(other), equalFunc, customizer, bitmask, stack);
+	          stack['delete'](object);
+	          return result;
 	
 	        case symbolTag:
 	          if (symbolValueOf) {
@@ -28040,11 +29786,12 @@
 	      }
 	      // Assume cyclic values are equal.
 	      var stacked = stack.get(object);
-	      if (stacked) {
+	      if (stacked && stack.get(other)) {
 	        return stacked == other;
 	      }
 	      var result = true;
 	      stack.set(object, other);
+	      stack.set(other, object);
 	
 	      var skipCtor = isPartial;
 	      while (++index < objLength) {
@@ -28236,9 +29983,7 @@
 	     * @param {*} value The value to query.
 	     * @returns {null|Object} Returns the `[[Prototype]]`.
 	     */
-	    function getPrototype(value) {
-	      return nativeGetPrototype(Object(value));
-	    }
+	    var getPrototype = overArg(nativeGetPrototype, Object);
 	
 	    /**
 	     * Creates an array of the own enumerable symbol properties of `object`.
@@ -28247,16 +29992,7 @@
 	     * @param {Object} object The object to query.
 	     * @returns {Array} Returns the array of symbols.
 	     */
-	    function getSymbols(object) {
-	      // Coerce `object` to an object to avoid non-object errors in V8.
-	      // See https://bugs.chromium.org/p/v8/issues/detail?id=3443 for more details.
-	      return getOwnPropertySymbols(Object(object));
-	    }
-	
-	    // Fallback for IE < 11.
-	    if (!getOwnPropertySymbols) {
-	      getSymbols = stubArray;
-	    }
+	    var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
 	
 	    /**
 	     * Creates an array of the own and inherited enumerable symbol properties
@@ -28266,7 +30002,7 @@
 	     * @param {Object} object The object to query.
 	     * @returns {Array} Returns the array of symbols.
 	     */
-	    var getSymbolsIn = !getOwnPropertySymbols ? getSymbols : function(object) {
+	    var getSymbolsIn = !nativeGetSymbols ? getSymbols : function(object) {
 	      var result = [];
 	      while (object) {
 	        arrayPush(result, getSymbols(object));
@@ -28282,9 +30018,7 @@
 	     * @param {*} value The value to query.
 	     * @returns {string} Returns the `toStringTag`.
 	     */
-	    function getTag(value) {
-	      return objectToString.call(value);
-	    }
+	    var getTag = baseGetTag;
 	
 	    // Fallback for data views, maps, sets, and weak maps in IE 11,
 	    // for data views in Edge, and promises in Node.js.
@@ -28337,6 +30071,18 @@
 	        }
 	      }
 	      return { 'start': start, 'end': end };
+	    }
+	
+	    /**
+	     * Extracts wrapper details from the `source` body comment.
+	     *
+	     * @private
+	     * @param {string} source The source to inspect.
+	     * @returns {Array} Returns the wrapper details.
+	     */
+	    function getWrapDetails(source) {
+	      var match = source.match(reWrapDetails);
+	      return match ? match[1].split(reSplitDetails) : [];
 	    }
 	
 	    /**
@@ -28469,6 +30215,23 @@
 	    }
 	
 	    /**
+	     * Inserts wrapper `details` in a comment at the top of the `source` body.
+	     *
+	     * @private
+	     * @param {string} source The source to modify.
+	     * @returns {Array} details The details to insert.
+	     * @returns {string} Returns the modified source.
+	     */
+	    function insertWrapDetails(source, details) {
+	      var length = details.length,
+	          lastIndex = length - 1;
+	
+	      details[lastIndex] = (length > 1 ? '& ' : '') + details[lastIndex];
+	      details = details.join(length > 2 ? ', ' : ' ');
+	      return source.replace(reWrapComment, '{\n/* [wrapped with ' + details + '] */\n');
+	    }
+	
+	    /**
 	     * Checks if `value` is a flattenable `arguments` object or array.
 	     *
 	     * @private
@@ -28476,19 +30239,8 @@
 	     * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
 	     */
 	    function isFlattenable(value) {
-	      return isArray(value) || isArguments(value);
-	    }
-	
-	    /**
-	     * Checks if `value` is a flattenable array and not a `_.matchesProperty`
-	     * iteratee shorthand.
-	     *
-	     * @private
-	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
-	     */
-	    function isFlattenableIteratee(value) {
-	      return isArray(value) && !(value.length == 2 && !isFunction(value[0]));
+	      return isArray(value) || isArguments(value) ||
+	        !!(spreadableSymbol && value && value[spreadableSymbol])
 	    }
 	
 	    /**
@@ -28738,7 +30490,10 @@
 	     */
 	    function mergeDefaults(objValue, srcValue, key, object, source, stack) {
 	      if (isObject(objValue) && isObject(srcValue)) {
-	        baseMerge(objValue, srcValue, undefined, mergeDefaults, stack.set(srcValue, objValue));
+	        // Recursively merge objects and arrays (susceptible to call stack limits).
+	        stack.set(srcValue, objValue);
+	        baseMerge(objValue, srcValue, undefined, mergeDefaults, stack);
+	        stack['delete'](srcValue);
 	      }
 	      return objValue;
 	    }
@@ -28812,6 +30567,25 @@
 	    }());
 	
 	    /**
+	     * Sets the `toString` method of `wrapper` to mimic the source of `reference`
+	     * with wrapper details in a comment at the top of the source body.
+	     *
+	     * @private
+	     * @param {Function} wrapper The function to modify.
+	     * @param {Function} reference The reference function.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+	     * @returns {Function} Returns `wrapper`.
+	     */
+	    var setWrapToString = !defineProperty ? identity : function(wrapper, reference, bitmask) {
+	      var source = (reference + '');
+	      return defineProperty(wrapper, 'toString', {
+	        'configurable': true,
+	        'enumerable': false,
+	        'value': constant(insertWrapDetails(source, updateWrapDetails(getWrapDetails(source), bitmask)))
+	      });
+	    };
+	
+	    /**
 	     * Converts `string` to a property path array.
 	     *
 	     * @private
@@ -28858,6 +30632,24 @@
 	        } catch (e) {}
 	      }
 	      return '';
+	    }
+	
+	    /**
+	     * Updates wrapper `details` based on `bitmask` flags.
+	     *
+	     * @private
+	     * @returns {Array} details The details to modify.
+	     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+	     * @returns {Array} Returns `details`.
+	     */
+	    function updateWrapDetails(details, bitmask) {
+	      arrayEach(wrapFlags, function(pair) {
+	        var value = '_.' + pair[0];
+	        if ((bitmask & pair[1]) && !arrayIncludes(details, value)) {
+	          details.push(value);
+	        }
+	      });
+	      return details.sort();
 	    }
 	
 	    /**
@@ -28988,10 +30780,12 @@
 	    }
 	
 	    /**
-	     * Creates an array of unique `array` values not included in the other given
-	     * arrays using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
+	     * Creates an array of `array` values not included in the other given arrays
+	     * using [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
 	     * for equality comparisons. The order of result values is determined by the
 	     * order they occur in the first array.
+	     *
+	     * **Note:** Unlike `_.pullAll`, this method returns a new array.
 	     *
 	     * @static
 	     * @memberOf _
@@ -29006,7 +30800,7 @@
 	     * _.difference([2, 1], [2, 3]);
 	     * // => [1]
 	     */
-	    var difference = rest(function(array, values) {
+	    var difference = baseRest(function(array, values) {
 	      return isArrayLikeObject(array)
 	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
 	        : [];
@@ -29018,14 +30812,15 @@
 	     * by which they're compared. Result values are chosen from the first array.
 	     * The iteratee is invoked with one argument: (value).
 	     *
+	     * **Note:** Unlike `_.pullAllBy`, this method returns a new array.
+	     *
 	     * @static
 	     * @memberOf _
 	     * @since 4.0.0
 	     * @category Array
 	     * @param {Array} array The array to inspect.
 	     * @param {...Array} [values] The values to exclude.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {Array} Returns the new array of filtered values.
 	     * @example
 	     *
@@ -29036,13 +30831,13 @@
 	     * _.differenceBy([{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }], 'x');
 	     * // => [{ 'x': 2 }]
 	     */
-	    var differenceBy = rest(function(array, values) {
+	    var differenceBy = baseRest(function(array, values) {
 	      var iteratee = last(values);
 	      if (isArrayLikeObject(iteratee)) {
 	        iteratee = undefined;
 	      }
 	      return isArrayLikeObject(array)
-	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), getIteratee(iteratee))
+	        ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true), getIteratee(iteratee, 2))
 	        : [];
 	    });
 	
@@ -29051,6 +30846,8 @@
 	     * which is invoked to compare elements of `array` to `values`. Result values
 	     * are chosen from the first array. The comparator is invoked with two arguments:
 	     * (arrVal, othVal).
+	     *
+	     * **Note:** Unlike `_.pullAllWith`, this method returns a new array.
 	     *
 	     * @static
 	     * @memberOf _
@@ -29067,7 +30864,7 @@
 	     * _.differenceWith(objects, [{ 'x': 1, 'y': 2 }], _.isEqual);
 	     * // => [{ 'x': 2, 'y': 1 }]
 	     */
-	    var differenceWith = rest(function(array, values) {
+	    var differenceWith = baseRest(function(array, values) {
 	      var comparator = last(values);
 	      if (isArrayLikeObject(comparator)) {
 	        comparator = undefined;
@@ -29156,8 +30953,7 @@
 	     * @since 3.0.0
 	     * @category Array
 	     * @param {Array} array The array to query.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @returns {Array} Returns the slice of `array`.
 	     * @example
 	     *
@@ -29198,7 +30994,7 @@
 	     * @since 3.0.0
 	     * @category Array
 	     * @param {Array} array The array to query.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the slice of `array`.
 	     * @example
@@ -29280,7 +31076,7 @@
 	     * @since 1.1.0
 	     * @category Array
 	     * @param {Array} array The array to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @param {number} [fromIndex=0] The index to search from.
 	     * @returns {number} Returns the index of the found element, else `-1`.
@@ -29328,7 +31124,7 @@
 	     * @since 2.0.0
 	     * @category Array
 	     * @param {Array} array The array to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @param {number} [fromIndex=array.length-1] The index to search from.
 	     * @returns {number} Returns the index of the found element, else `-1`.
@@ -29449,8 +31245,8 @@
 	     * @returns {Object} Returns the new object.
 	     * @example
 	     *
-	     * _.fromPairs([['fred', 30], ['barney', 40]]);
-	     * // => { 'fred': 30, 'barney': 40 }
+	     * _.fromPairs([['a', 1], ['b', 2]]);
+	     * // => { 'a': 1, 'b': 2 }
 	     */
 	    function fromPairs(pairs) {
 	      var index = -1,
@@ -29556,7 +31352,7 @@
 	     * _.intersection([2, 1], [2, 3]);
 	     * // => [2]
 	     */
-	    var intersection = rest(function(arrays) {
+	    var intersection = baseRest(function(arrays) {
 	      var mapped = arrayMap(arrays, castArrayLikeObject);
 	      return (mapped.length && mapped[0] === arrays[0])
 	        ? baseIntersection(mapped)
@@ -29574,8 +31370,7 @@
 	     * @since 4.0.0
 	     * @category Array
 	     * @param {...Array} [arrays] The arrays to inspect.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {Array} Returns the new array of intersecting values.
 	     * @example
 	     *
@@ -29586,7 +31381,7 @@
 	     * _.intersectionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 	     * // => [{ 'x': 1 }]
 	     */
-	    var intersectionBy = rest(function(arrays) {
+	    var intersectionBy = baseRest(function(arrays) {
 	      var iteratee = last(arrays),
 	          mapped = arrayMap(arrays, castArrayLikeObject);
 	
@@ -29596,7 +31391,7 @@
 	        mapped.pop();
 	      }
 	      return (mapped.length && mapped[0] === arrays[0])
-	        ? baseIntersection(mapped, getIteratee(iteratee))
+	        ? baseIntersection(mapped, getIteratee(iteratee, 2))
 	        : [];
 	    });
 	
@@ -29621,7 +31416,7 @@
 	     * _.intersectionWith(objects, others, _.isEqual);
 	     * // => [{ 'x': 1, 'y': 2 }]
 	     */
-	    var intersectionWith = rest(function(arrays) {
+	    var intersectionWith = baseRest(function(arrays) {
 	      var comparator = last(arrays),
 	          mapped = arrayMap(arrays, castArrayLikeObject);
 	
@@ -29709,7 +31504,7 @@
 	        ) + 1;
 	      }
 	      if (value !== value) {
-	        return indexOfNaN(array, index - 1, true);
+	        return baseFindIndex(array, baseIsNaN, index - 1, true);
 	      }
 	      while (index--) {
 	        if (array[index] === value) {
@@ -29767,7 +31562,7 @@
 	     * console.log(array);
 	     * // => ['b', 'b']
 	     */
-	    var pull = rest(pullAll);
+	    var pull = baseRest(pullAll);
 	
 	    /**
 	     * This method is like `_.pull` except that it accepts an array of values to remove.
@@ -29808,7 +31603,7 @@
 	     * @category Array
 	     * @param {Array} array The array to modify.
 	     * @param {Array} values The values to remove.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {Array} Returns `array`.
 	     * @example
@@ -29821,7 +31616,7 @@
 	     */
 	    function pullAllBy(array, values, iteratee) {
 	      return (array && array.length && values && values.length)
-	        ? basePullAll(array, values, getIteratee(iteratee))
+	        ? basePullAll(array, values, getIteratee(iteratee, 2))
 	        : array;
 	    }
 	
@@ -29878,7 +31673,7 @@
 	     * console.log(pulled);
 	     * // => ['b', 'd']
 	     */
-	    var pullAt = rest(function(array, indexes) {
+	    var pullAt = baseRest(function(array, indexes) {
 	      indexes = baseFlatten(indexes, 1);
 	
 	      var length = array ? array.length : 0,
@@ -29904,7 +31699,7 @@
 	     * @since 2.0.0
 	     * @category Array
 	     * @param {Array} array The array to modify.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the new array of removed elements.
 	     * @example
@@ -30032,7 +31827,7 @@
 	     * @category Array
 	     * @param {Array} array The sorted array to inspect.
 	     * @param {*} value The value to evaluate.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {number} Returns the index at which `value` should be inserted
 	     *  into `array`.
@@ -30048,7 +31843,7 @@
 	     * // => 0
 	     */
 	    function sortedIndexBy(array, value, iteratee) {
-	      return baseSortedIndexBy(array, value, getIteratee(iteratee));
+	      return baseSortedIndexBy(array, value, getIteratee(iteratee, 2));
 	    }
 	
 	    /**
@@ -30111,7 +31906,7 @@
 	     * @category Array
 	     * @param {Array} array The sorted array to inspect.
 	     * @param {*} value The value to evaluate.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {number} Returns the index at which `value` should be inserted
 	     *  into `array`.
@@ -30127,7 +31922,7 @@
 	     * // => 1
 	     */
 	    function sortedLastIndexBy(array, value, iteratee) {
-	      return baseSortedIndexBy(array, value, getIteratee(iteratee), true);
+	      return baseSortedIndexBy(array, value, getIteratee(iteratee, 2), true);
 	    }
 	
 	    /**
@@ -30196,7 +31991,7 @@
 	     */
 	    function sortedUniqBy(array, iteratee) {
 	      return (array && array.length)
-	        ? baseSortedUniq(array, getIteratee(iteratee))
+	        ? baseSortedUniq(array, getIteratee(iteratee, 2))
 	        : [];
 	    }
 	
@@ -30296,7 +32091,7 @@
 	     * @since 3.0.0
 	     * @category Array
 	     * @param {Array} array The array to query.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the slice of `array`.
 	     * @example
@@ -30338,7 +32133,7 @@
 	     * @since 3.0.0
 	     * @category Array
 	     * @param {Array} array The array to query.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the slice of `array`.
 	     * @example
@@ -30386,14 +32181,15 @@
 	     * _.union([2], [1, 2]);
 	     * // => [2, 1]
 	     */
-	    var union = rest(function(arrays) {
+	    var union = baseRest(function(arrays) {
 	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true));
 	    });
 	
 	    /**
 	     * This method is like `_.union` except that it accepts `iteratee` which is
 	     * invoked for each element of each `arrays` to generate the criterion by
-	     * which uniqueness is computed. The iteratee is invoked with one argument:
+	     * which uniqueness is computed. Result values are chosen from the first
+	     * array in which the value occurs. The iteratee is invoked with one argument:
 	     * (value).
 	     *
 	     * @static
@@ -30401,7 +32197,7 @@
 	     * @since 4.0.0
 	     * @category Array
 	     * @param {...Array} [arrays] The arrays to inspect.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {Array} Returns the new array of combined values.
 	     * @example
@@ -30413,17 +32209,18 @@
 	     * _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 	     * // => [{ 'x': 1 }, { 'x': 2 }]
 	     */
-	    var unionBy = rest(function(arrays) {
+	    var unionBy = baseRest(function(arrays) {
 	      var iteratee = last(arrays);
 	      if (isArrayLikeObject(iteratee)) {
 	        iteratee = undefined;
 	      }
-	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), getIteratee(iteratee));
+	      return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), getIteratee(iteratee, 2));
 	    });
 	
 	    /**
 	     * This method is like `_.union` except that it accepts `comparator` which
-	     * is invoked to compare elements of `arrays`. The comparator is invoked
+	     * is invoked to compare elements of `arrays`. Result values are chosen from
+	     * the first array in which the value occurs. The comparator is invoked
 	     * with two arguments: (arrVal, othVal).
 	     *
 	     * @static
@@ -30441,7 +32238,7 @@
 	     * _.unionWith(objects, others, _.isEqual);
 	     * // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
 	     */
-	    var unionWith = rest(function(arrays) {
+	    var unionWith = baseRest(function(arrays) {
 	      var comparator = last(arrays);
 	      if (isArrayLikeObject(comparator)) {
 	        comparator = undefined;
@@ -30482,7 +32279,7 @@
 	     * @since 4.0.0
 	     * @category Array
 	     * @param {Array} array The array to inspect.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {Array} Returns the new duplicate free array.
 	     * @example
@@ -30496,7 +32293,7 @@
 	     */
 	    function uniqBy(array, iteratee) {
 	      return (array && array.length)
-	        ? baseUniq(array, getIteratee(iteratee))
+	        ? baseUniq(array, getIteratee(iteratee, 2))
 	        : [];
 	    }
 	
@@ -30538,11 +32335,11 @@
 	     * @returns {Array} Returns the new array of regrouped elements.
 	     * @example
 	     *
-	     * var zipped = _.zip(['fred', 'barney'], [30, 40], [true, false]);
-	     * // => [['fred', 30, true], ['barney', 40, false]]
+	     * var zipped = _.zip(['a', 'b'], [1, 2], [true, false]);
+	     * // => [['a', 1, true], ['b', 2, false]]
 	     *
 	     * _.unzip(zipped);
-	     * // => [['fred', 'barney'], [30, 40], [true, false]]
+	     * // => [['a', 'b'], [1, 2], [true, false]]
 	     */
 	    function unzip(array) {
 	      if (!(array && array.length)) {
@@ -30599,6 +32396,8 @@
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
 	     * for equality comparisons.
 	     *
+	     * **Note:** Unlike `_.pull`, this method returns a new array.
+	     *
 	     * @static
 	     * @memberOf _
 	     * @since 0.1.0
@@ -30612,7 +32411,7 @@
 	     * _.without([2, 1, 2, 3], 1, 2);
 	     * // => [3]
 	     */
-	    var without = rest(function(array, values) {
+	    var without = baseRest(function(array, values) {
 	      return isArrayLikeObject(array)
 	        ? baseDifference(array, values)
 	        : [];
@@ -30636,7 +32435,7 @@
 	     * _.xor([2, 1], [2, 3]);
 	     * // => [1, 3]
 	     */
-	    var xor = rest(function(arrays) {
+	    var xor = baseRest(function(arrays) {
 	      return baseXor(arrayFilter(arrays, isArrayLikeObject));
 	    });
 	
@@ -30651,7 +32450,7 @@
 	     * @since 4.0.0
 	     * @category Array
 	     * @param {...Array} [arrays] The arrays to inspect.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee invoked per element.
 	     * @returns {Array} Returns the new array of filtered values.
 	     * @example
@@ -30663,12 +32462,12 @@
 	     * _.xorBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
 	     * // => [{ 'x': 2 }]
 	     */
-	    var xorBy = rest(function(arrays) {
+	    var xorBy = baseRest(function(arrays) {
 	      var iteratee = last(arrays);
 	      if (isArrayLikeObject(iteratee)) {
 	        iteratee = undefined;
 	      }
-	      return baseXor(arrayFilter(arrays, isArrayLikeObject), getIteratee(iteratee));
+	      return baseXor(arrayFilter(arrays, isArrayLikeObject), getIteratee(iteratee, 2));
 	    });
 	
 	    /**
@@ -30691,7 +32490,7 @@
 	     * _.xorWith(objects, others, _.isEqual);
 	     * // => [{ 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
 	     */
-	    var xorWith = rest(function(arrays) {
+	    var xorWith = baseRest(function(arrays) {
 	      var comparator = last(arrays);
 	      if (isArrayLikeObject(comparator)) {
 	        comparator = undefined;
@@ -30712,10 +32511,10 @@
 	     * @returns {Array} Returns the new array of grouped elements.
 	     * @example
 	     *
-	     * _.zip(['fred', 'barney'], [30, 40], [true, false]);
-	     * // => [['fred', 30, true], ['barney', 40, false]]
+	     * _.zip(['a', 'b'], [1, 2], [true, false]);
+	     * // => [['a', 1, true], ['b', 2, false]]
 	     */
-	    var zip = rest(unzip);
+	    var zip = baseRest(unzip);
 	
 	    /**
 	     * This method is like `_.fromPairs` except that it accepts two arrays,
@@ -30775,7 +32574,7 @@
 	     * });
 	     * // => [111, 222]
 	     */
-	    var zipWith = rest(function(arrays) {
+	    var zipWith = baseRest(function(arrays) {
 	      var length = arrays.length,
 	          iteratee = length > 1 ? arrays[length - 1] : undefined;
 	
@@ -30891,7 +32690,7 @@
 	     * _(object).at(['a[0].b.c', 'a[1]']).value();
 	     * // => [3, 4]
 	     */
-	    var wrapperAt = rest(function(paths) {
+	    var wrapperAt = baseRest(function(paths) {
 	      paths = baseFlatten(paths, 1);
 	      var length = paths.length,
 	          start = length ? paths[0] : 0,
@@ -31144,7 +32943,7 @@
 	     * @since 0.5.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee to transform keys.
 	     * @returns {Object} Returns the composed aggregate object.
 	     * @example
@@ -31170,7 +32969,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
 	     * @returns {boolean} Returns `true` if all elements pass the predicate check,
@@ -31210,12 +33009,14 @@
 	     * `predicate` returns truthy for. The predicate is invoked with three
 	     * arguments: (value, index|key, collection).
 	     *
+	     * **Note:** Unlike `_.remove`, this method returns a new array.
+	     *
 	     * @static
 	     * @memberOf _
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the new filtered array.
 	     * @see _.reject
@@ -31256,7 +33057,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @param {number} [fromIndex=0] The index to search from.
 	     * @returns {*} Returns the matched element, else `undefined`.
@@ -31294,7 +33095,7 @@
 	     * @since 2.0.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
+	     * @param {Function} [predicate=_.identity]
 	     *  The function invoked per iteration.
 	     * @param {number} [fromIndex=collection.length-1] The index to search from.
 	     * @returns {*} Returns the matched element, else `undefined`.
@@ -31317,7 +33118,7 @@
 	     * @since 4.0.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the new flattened array.
 	     * @example
@@ -31342,7 +33143,7 @@
 	     * @since 4.7.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The function invoked per iteration.
 	     * @returns {Array} Returns the new flattened array.
 	     * @example
@@ -31367,7 +33168,7 @@
 	     * @since 4.7.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The function invoked per iteration.
 	     * @param {number} [depth=1] The maximum recursion depth.
 	     * @returns {Array} Returns the new flattened array.
@@ -31457,7 +33258,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee to transform keys.
 	     * @returns {Object} Returns the composed aggregate object.
 	     * @example
@@ -31501,10 +33302,10 @@
 	     * _.includes([1, 2, 3], 1, 2);
 	     * // => false
 	     *
-	     * _.includes({ 'user': 'fred', 'age': 40 }, 'fred');
+	     * _.includes({ 'a': 1, 'b': 2 }, 1);
 	     * // => true
 	     *
-	     * _.includes('pebbles', 'eb');
+	     * _.includes('abcd', 'bc');
 	     * // => true
 	     */
 	    function includes(collection, value, fromIndex, guard) {
@@ -31523,8 +33324,8 @@
 	    /**
 	     * Invokes the method at `path` of each element in `collection`, returning
 	     * an array of the results of each invoked method. Any additional arguments
-	     * are provided to each invoked method. If `methodName` is a function, it's
-	     * invoked for and `this` bound to, each element in `collection`.
+	     * are provided to each invoked method. If `path` is a function, it's invoked
+	     * for, and `this` bound to, each element in `collection`.
 	     *
 	     * @static
 	     * @memberOf _
@@ -31543,7 +33344,7 @@
 	     * _.invokeMap([123, 456], String.prototype.split, '');
 	     * // => [['1', '2', '3'], ['4', '5', '6']]
 	     */
-	    var invokeMap = rest(function(collection, path, args) {
+	    var invokeMap = baseRest(function(collection, path, args) {
 	      var index = -1,
 	          isFunc = typeof path == 'function',
 	          isProp = isKey(path),
@@ -31567,7 +33368,7 @@
 	     * @since 4.0.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
+	     * @param {Function} [iteratee=_.identity]
 	     *  The iteratee to transform keys.
 	     * @returns {Object} Returns the composed aggregate object.
 	     * @example
@@ -31608,8 +33409,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [iteratee=_.identity] The function invoked per iteration.
 	     * @returns {Array} Returns the new mapped array.
 	     * @example
 	     *
@@ -31691,8 +33491,7 @@
 	     * @since 3.0.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @returns {Array} Returns the array of grouped elements.
 	     * @example
 	     *
@@ -31803,8 +33602,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @returns {Array} Returns the new filtered array.
 	     * @see _.filter
 	     * @example
@@ -31831,10 +33629,7 @@
 	     */
 	    function reject(collection, predicate) {
 	      var func = isArray(collection) ? arrayFilter : baseFilter;
-	      predicate = getIteratee(predicate, 3);
-	      return func(collection, function(value, index, collection) {
-	        return !predicate(value, index, collection);
-	      });
+	      return func(collection, negate(getIteratee(predicate, 3)));
 	    }
 	
 	    /**
@@ -31967,8 +33762,7 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
 	     * @returns {boolean} Returns `true` if any element passes the predicate check,
 	     *  else `false`.
@@ -32013,8 +33807,8 @@
 	     * @since 0.1.0
 	     * @category Collection
 	     * @param {Array|Object} collection The collection to iterate over.
-	     * @param {...(Array|Array[]|Function|Function[]|Object|Object[]|string|string[])}
-	     *  [iteratees=[_.identity]] The iteratees to sort by.
+	     * @param {...(Function|Function[])} [iteratees=[_.identity]]
+	     *  The iteratees to sort by.
 	     * @returns {Array} Returns the new sorted array.
 	     * @example
 	     *
@@ -32036,7 +33830,7 @@
 	     * });
 	     * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
 	     */
-	    var sortBy = rest(function(collection, iteratees) {
+	    var sortBy = baseRest(function(collection, iteratees) {
 	      if (collection == null) {
 	        return [];
 	      }
@@ -32046,11 +33840,7 @@
 	      } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
 	        iteratees = [iteratees[0]];
 	      }
-	      iteratees = (iteratees.length == 1 && isArray(iteratees[0]))
-	        ? iteratees[0]
-	        : baseFlatten(iteratees, 1, isFlattenableIteratee);
-	
-	      return baseOrderBy(collection, iteratees, []);
+	      return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
 	    });
 	
 	    /*------------------------------------------------------------------------*/
@@ -32133,7 +33923,7 @@
 	    function ary(func, n, guard) {
 	      n = guard ? undefined : n;
 	      n = (func && n == null) ? func.length : n;
-	      return createWrapper(func, ARY_FLAG, undefined, undefined, undefined, undefined, n);
+	      return createWrap(func, ARY_FLAG, undefined, undefined, undefined, undefined, n);
 	    }
 	
 	    /**
@@ -32151,7 +33941,7 @@
 	     * @example
 	     *
 	     * jQuery(element).on('click', _.before(5, addContactToList));
-	     * // => allows adding up to 4 contacts to the list
+	     * // => Allows adding up to 4 contacts to the list.
 	     */
 	    function before(n, func) {
 	      var result;
@@ -32190,9 +33980,9 @@
 	     * @returns {Function} Returns the new bound function.
 	     * @example
 	     *
-	     * var greet = function(greeting, punctuation) {
+	     * function greet(greeting, punctuation) {
 	     *   return greeting + ' ' + this.user + punctuation;
-	     * };
+	     * }
 	     *
 	     * var object = { 'user': 'fred' };
 	     *
@@ -32205,13 +33995,13 @@
 	     * bound('hi');
 	     * // => 'hi fred!'
 	     */
-	    var bind = rest(function(func, thisArg, partials) {
+	    var bind = baseRest(function(func, thisArg, partials) {
 	      var bitmask = BIND_FLAG;
 	      if (partials.length) {
 	        var holders = replaceHolders(partials, getHolder(bind));
 	        bitmask |= PARTIAL_FLAG;
 	      }
-	      return createWrapper(func, bitmask, thisArg, partials, holders);
+	      return createWrap(func, bitmask, thisArg, partials, holders);
 	    });
 	
 	    /**
@@ -32259,13 +34049,13 @@
 	     * bound('hi');
 	     * // => 'hiya fred!'
 	     */
-	    var bindKey = rest(function(object, key, partials) {
+	    var bindKey = baseRest(function(object, key, partials) {
 	      var bitmask = BIND_FLAG | BIND_KEY_FLAG;
 	      if (partials.length) {
 	        var holders = replaceHolders(partials, getHolder(bindKey));
 	        bitmask |= PARTIAL_FLAG;
 	      }
-	      return createWrapper(key, bitmask, object, partials, holders);
+	      return createWrap(key, bitmask, object, partials, holders);
 	    });
 	
 	    /**
@@ -32311,7 +34101,7 @@
 	     */
 	    function curry(func, arity, guard) {
 	      arity = guard ? undefined : arity;
-	      var result = createWrapper(func, CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
+	      var result = createWrap(func, CURRY_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
 	      result.placeholder = curry.placeholder;
 	      return result;
 	    }
@@ -32356,7 +34146,7 @@
 	     */
 	    function curryRight(func, arity, guard) {
 	      arity = guard ? undefined : arity;
-	      var result = createWrapper(func, CURRY_RIGHT_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
+	      var result = createWrap(func, CURRY_RIGHT_FLAG, undefined, undefined, undefined, undefined, undefined, arity);
 	      result.placeholder = curryRight.placeholder;
 	      return result;
 	    }
@@ -32494,6 +34284,9 @@
 	      }
 	
 	      function cancel() {
+	        if (timerId !== undefined) {
+	          clearTimeout(timerId);
+	        }
 	        lastInvokeTime = 0;
 	        lastArgs = lastCallTime = lastThis = timerId = undefined;
 	      }
@@ -32548,7 +34341,7 @@
 	     * }, 'deferred');
 	     * // => Logs 'deferred' after one or more milliseconds.
 	     */
-	    var defer = rest(function(func, args) {
+	    var defer = baseRest(function(func, args) {
 	      return baseDelay(func, 1, args);
 	    });
 	
@@ -32571,7 +34364,7 @@
 	     * }, 1000, 'later');
 	     * // => Logs 'later' after one second.
 	     */
-	    var delay = rest(function(func, wait, args) {
+	    var delay = baseRest(function(func, wait, args) {
 	      return baseDelay(func, toNumber(wait) || 0, args);
 	    });
 	
@@ -32594,7 +34387,7 @@
 	     * // => ['d', 'c', 'b', 'a']
 	     */
 	    function flip(func) {
-	      return createWrapper(func, FLIP_FLAG);
+	      return createWrap(func, FLIP_FLAG);
 	    }
 	
 	    /**
@@ -32689,7 +34482,14 @@
 	        throw new TypeError(FUNC_ERROR_TEXT);
 	      }
 	      return function() {
-	        return !predicate.apply(this, arguments);
+	        var args = arguments;
+	        switch (args.length) {
+	          case 0: return !predicate.call(this);
+	          case 1: return !predicate.call(this, args[0]);
+	          case 2: return !predicate.call(this, args[0], args[1]);
+	          case 3: return !predicate.call(this, args[0], args[1], args[2]);
+	        }
+	        return !predicate.apply(this, args);
 	      };
 	    }
 	
@@ -32709,23 +34509,22 @@
 	     * var initialize = _.once(createApplication);
 	     * initialize();
 	     * initialize();
-	     * // `initialize` invokes `createApplication` once
+	     * // => `createApplication` is invoked once
 	     */
 	    function once(func) {
 	      return before(2, func);
 	    }
 	
 	    /**
-	     * Creates a function that invokes `func` with arguments transformed by
-	     * corresponding `transforms`.
+	     * Creates a function that invokes `func` with its arguments transformed.
 	     *
 	     * @static
 	     * @since 4.0.0
 	     * @memberOf _
 	     * @category Function
 	     * @param {Function} func The function to wrap.
-	     * @param {...(Array|Array[]|Function|Function[]|Object|Object[]|string|string[])}
-	     *  [transforms[_.identity]] The functions to transform.
+	     * @param {...(Function|Function[])} [transforms=[_.identity]]
+	     *  The argument transforms.
 	     * @returns {Function} Returns the new function.
 	     * @example
 	     *
@@ -32747,13 +34546,13 @@
 	     * func(10, 5);
 	     * // => [100, 10]
 	     */
-	    var overArgs = rest(function(func, transforms) {
+	    var overArgs = baseRest(function(func, transforms) {
 	      transforms = (transforms.length == 1 && isArray(transforms[0]))
 	        ? arrayMap(transforms[0], baseUnary(getIteratee()))
-	        : arrayMap(baseFlatten(transforms, 1, isFlattenableIteratee), baseUnary(getIteratee()));
+	        : arrayMap(baseFlatten(transforms, 1), baseUnary(getIteratee()));
 	
 	      var funcsLength = transforms.length;
-	      return rest(function(args) {
+	      return baseRest(function(args) {
 	        var index = -1,
 	            length = nativeMin(args.length, funcsLength);
 	
@@ -32784,9 +34583,9 @@
 	     * @returns {Function} Returns the new partially applied function.
 	     * @example
 	     *
-	     * var greet = function(greeting, name) {
+	     * function greet(greeting, name) {
 	     *   return greeting + ' ' + name;
-	     * };
+	     * }
 	     *
 	     * var sayHelloTo = _.partial(greet, 'hello');
 	     * sayHelloTo('fred');
@@ -32797,9 +34596,9 @@
 	     * greetFred('hi');
 	     * // => 'hi fred'
 	     */
-	    var partial = rest(function(func, partials) {
+	    var partial = baseRest(function(func, partials) {
 	      var holders = replaceHolders(partials, getHolder(partial));
-	      return createWrapper(func, PARTIAL_FLAG, undefined, partials, holders);
+	      return createWrap(func, PARTIAL_FLAG, undefined, partials, holders);
 	    });
 	
 	    /**
@@ -32821,9 +34620,9 @@
 	     * @returns {Function} Returns the new partially applied function.
 	     * @example
 	     *
-	     * var greet = function(greeting, name) {
+	     * function greet(greeting, name) {
 	     *   return greeting + ' ' + name;
-	     * };
+	     * }
 	     *
 	     * var greetFred = _.partialRight(greet, 'fred');
 	     * greetFred('hi');
@@ -32834,9 +34633,9 @@
 	     * sayHelloTo('fred');
 	     * // => 'hello fred'
 	     */
-	    var partialRight = rest(function(func, partials) {
+	    var partialRight = baseRest(function(func, partials) {
 	      var holders = replaceHolders(partials, getHolder(partialRight));
-	      return createWrapper(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
+	      return createWrap(func, PARTIAL_RIGHT_FLAG, undefined, partials, holders);
 	    });
 	
 	    /**
@@ -32861,8 +34660,8 @@
 	     * rearged('b', 'c', 'a')
 	     * // => ['a', 'b', 'c']
 	     */
-	    var rearg = rest(function(func, indexes) {
-	      return createWrapper(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
+	    var rearg = baseRest(function(func, indexes) {
+	      return createWrap(func, REARG_FLAG, undefined, undefined, undefined, baseFlatten(indexes, 1));
 	    });
 	
 	    /**
@@ -32894,29 +34693,8 @@
 	      if (typeof func != 'function') {
 	        throw new TypeError(FUNC_ERROR_TEXT);
 	      }
-	      start = nativeMax(start === undefined ? (func.length - 1) : toInteger(start), 0);
-	      return function() {
-	        var args = arguments,
-	            index = -1,
-	            length = nativeMax(args.length - start, 0),
-	            array = Array(length);
-	
-	        while (++index < length) {
-	          array[index] = args[start + index];
-	        }
-	        switch (start) {
-	          case 0: return func.call(this, array);
-	          case 1: return func.call(this, args[0], array);
-	          case 2: return func.call(this, args[0], args[1], array);
-	        }
-	        var otherArgs = Array(start + 1);
-	        index = -1;
-	        while (++index < start) {
-	          otherArgs[index] = args[index];
-	        }
-	        otherArgs[start] = array;
-	        return apply(func, this, otherArgs);
-	      };
+	      start = start === undefined ? start : toInteger(start);
+	      return baseRest(func, start);
 	    }
 	
 	    /**
@@ -32958,7 +34736,7 @@
 	        throw new TypeError(FUNC_ERROR_TEXT);
 	      }
 	      start = start === undefined ? 0 : nativeMax(toInteger(start), 0);
-	      return rest(function(args) {
+	      return baseRest(function(args) {
 	        var array = args[start],
 	            otherArgs = castSlice(args, 0, start);
 	
@@ -33048,10 +34826,10 @@
 	    }
 	
 	    /**
-	     * Creates a function that provides `value` to the wrapper function as its
-	     * first argument. Any additional arguments provided to the function are
-	     * appended to those provided to the wrapper function. The wrapper is invoked
-	     * with the `this` binding of the created function.
+	     * Creates a function that provides `value` to `wrapper` as its first
+	     * argument. Any additional arguments provided to the function are appended
+	     * to those provided to the `wrapper`. The wrapper is invoked with the `this`
+	     * binding of the created function.
 	     *
 	     * @static
 	     * @memberOf _
@@ -33237,6 +35015,32 @@
 	    }
 	
 	    /**
+	     * Checks if `object` conforms to `source` by invoking the predicate properties
+	     * of `source` with the corresponding property values of `object`. This method
+	     * is equivalent to a `_.conforms` function when `source` is partially applied.
+	     *
+	     * @static
+	     * @memberOf _
+	     * @since 4.14.0
+	     * @category Lang
+	     * @param {Object} object The object to inspect.
+	     * @param {Object} source The object of property predicates to conform to.
+	     * @returns {boolean} Returns `true` if `object` conforms, else `false`.
+	     * @example
+	     *
+	     * var object = { 'a': 1, 'b': 2 };
+	     *
+	     * _.conformsTo(object, { 'b': function(n) { return n > 1; } });
+	     * // => true
+	     *
+	     * _.conformsTo(object, { 'b': function(n) { return n > 2; } });
+	     * // => false
+	     */
+	    function conformsTo(object, source) {
+	      return source == null || baseConformsTo(object, source, keys(source));
+	    }
+	
+	    /**
 	     * Performs a
 	     * [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
 	     * comparison between two values to determine if they are equivalent.
@@ -33250,8 +35054,8 @@
 	     * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
 	     * @example
 	     *
-	     * var object = { 'user': 'fred' };
-	     * var other = { 'user': 'fred' };
+	     * var object = { 'a': 1 };
+	     * var other = { 'a': 1 };
 	     *
 	     * _.eq(object, object);
 	     * // => true
@@ -33332,7 +35136,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
+	     * @returns {boolean} Returns `true` if `value` is an `arguments` object,
 	     *  else `false`.
 	     * @example
 	     *
@@ -33354,11 +35158,9 @@
 	     * @static
 	     * @memberOf _
 	     * @since 0.1.0
-	     * @type {Function}
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is an array, else `false`.
 	     * @example
 	     *
 	     * _.isArray([1, 2, 3]);
@@ -33383,8 +35185,7 @@
 	     * @since 4.3.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is an array buffer, else `false`.
 	     * @example
 	     *
 	     * _.isArrayBuffer(new ArrayBuffer(2));
@@ -33393,9 +35194,7 @@
 	     * _.isArrayBuffer(new Array(2));
 	     * // => false
 	     */
-	    function isArrayBuffer(value) {
-	      return isObjectLike(value) && objectToString.call(value) == arrayBufferTag;
-	    }
+	    var isArrayBuffer = nodeIsArrayBuffer ? baseUnary(nodeIsArrayBuffer) : baseIsArrayBuffer;
 	
 	    /**
 	     * Checks if `value` is array-like. A value is considered array-like if it's
@@ -33463,8 +35262,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a boolean, else `false`.
 	     * @example
 	     *
 	     * _.isBoolean(false);
@@ -33495,9 +35293,7 @@
 	     * _.isBuffer(new Uint8Array(2));
 	     * // => false
 	     */
-	    var isBuffer = !Buffer ? stubFalse : function(value) {
-	      return value instanceof Buffer;
-	    };
+	    var isBuffer = nativeIsBuffer || stubFalse;
 	
 	    /**
 	     * Checks if `value` is classified as a `Date` object.
@@ -33507,8 +35303,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a date object, else `false`.
 	     * @example
 	     *
 	     * _.isDate(new Date);
@@ -33517,9 +35312,7 @@
 	     * _.isDate('Mon April 23 2012');
 	     * // => false
 	     */
-	    function isDate(value) {
-	      return isObjectLike(value) && objectToString.call(value) == dateTag;
-	    }
+	    var isDate = nodeIsDate ? baseUnary(nodeIsDate) : baseIsDate;
 	
 	    /**
 	     * Checks if `value` is likely a DOM element.
@@ -33616,8 +35409,8 @@
 	     *  else `false`.
 	     * @example
 	     *
-	     * var object = { 'user': 'fred' };
-	     * var other = { 'user': 'fred' };
+	     * var object = { 'a': 1 };
+	     * var other = { 'a': 1 };
 	     *
 	     * _.isEqual(object, other);
 	     * // => true
@@ -33734,8 +35527,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a function, else `false`.
 	     * @example
 	     *
 	     * _.isFunction(_);
@@ -33880,8 +35672,7 @@
 	     * @since 4.3.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a map, else `false`.
 	     * @example
 	     *
 	     * _.isMap(new Map);
@@ -33890,9 +35681,7 @@
 	     * _.isMap(new WeakMap);
 	     * // => false
 	     */
-	    function isMap(value) {
-	      return isObjectLike(value) && getTag(value) == mapTag;
-	    }
+	    var isMap = nodeIsMap ? baseUnary(nodeIsMap) : baseIsMap;
 	
 	    /**
 	     * Performs a partial deep comparison between `object` and `source` to
@@ -33910,12 +35699,12 @@
 	     * @returns {boolean} Returns `true` if `object` is a match, else `false`.
 	     * @example
 	     *
-	     * var object = { 'user': 'fred', 'age': 40 };
+	     * var object = { 'a': 1, 'b': 2 };
 	     *
-	     * _.isMatch(object, { 'age': 40 });
+	     * _.isMatch(object, { 'b': 2 });
 	     * // => true
 	     *
-	     * _.isMatch(object, { 'age': 36 });
+	     * _.isMatch(object, { 'b': 1 });
 	     * // => false
 	     */
 	    function isMatch(object, source) {
@@ -33997,13 +35786,13 @@
 	    /**
 	     * Checks if `value` is a pristine native function.
 	     *
-	     * **Note:** This method can't reliably detect native functions in the
-	     * presence of the `core-js` package because `core-js` circumvents this kind
-	     * of detection. Despite multiple requests, the `core-js` maintainer has made
-	     * it clear: any attempt to fix the detection will be obstructed. As a result,
-	     * we're left with little choice but to throw an error. Unfortunately, this
-	     * also affects packages, like [babel-polyfill](https://www.npmjs.com/package/babel-polyfill),
-	     * which rely on `core-js`.
+	     * **Note:** This method can't reliably detect native functions in the presence
+	     * of the core-js package because core-js circumvents this kind of detection.
+	     * Despite multiple requests, the core-js maintainer has made it clear: any
+	     * attempt to fix the detection will be obstructed. As a result, we're left
+	     * with little choice but to throw an error. Unfortunately, this also affects
+	     * packages, like [babel-polyfill](https://www.npmjs.com/package/babel-polyfill),
+	     * which rely on core-js.
 	     *
 	     * @static
 	     * @memberOf _
@@ -34022,7 +35811,7 @@
 	     */
 	    function isNative(value) {
 	      if (isMaskable(value)) {
-	        throw new Error('This method is not supported with `core-js`. Try https://github.com/es-shims.');
+	        throw new Error('This method is not supported with core-js. Try https://github.com/es-shims.');
 	      }
 	      return baseIsNative(value);
 	    }
@@ -34083,8 +35872,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a number, else `false`.
 	     * @example
 	     *
 	     * _.isNumber(3);
@@ -34155,8 +35943,7 @@
 	     * @since 0.1.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a regexp, else `false`.
 	     * @example
 	     *
 	     * _.isRegExp(/abc/);
@@ -34165,9 +35952,7 @@
 	     * _.isRegExp('/abc/');
 	     * // => false
 	     */
-	    function isRegExp(value) {
-	      return isObject(value) && objectToString.call(value) == regexpTag;
-	    }
+	    var isRegExp = nodeIsRegExp ? baseUnary(nodeIsRegExp) : baseIsRegExp;
 	
 	    /**
 	     * Checks if `value` is a safe integer. An integer is safe if it's an IEEE-754
@@ -34209,8 +35994,7 @@
 	     * @since 4.3.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a set, else `false`.
 	     * @example
 	     *
 	     * _.isSet(new Set);
@@ -34219,9 +36003,7 @@
 	     * _.isSet(new WeakSet);
 	     * // => false
 	     */
-	    function isSet(value) {
-	      return isObjectLike(value) && getTag(value) == setTag;
-	    }
+	    var isSet = nodeIsSet ? baseUnary(nodeIsSet) : baseIsSet;
 	
 	    /**
 	     * Checks if `value` is classified as a `String` primitive or object.
@@ -34231,8 +36013,7 @@
 	     * @memberOf _
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a string, else `false`.
 	     * @example
 	     *
 	     * _.isString('abc');
@@ -34254,8 +36035,7 @@
 	     * @since 4.0.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
 	     * @example
 	     *
 	     * _.isSymbol(Symbol.iterator);
@@ -34277,8 +36057,7 @@
 	     * @since 3.0.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
 	     * @example
 	     *
 	     * _.isTypedArray(new Uint8Array);
@@ -34287,10 +36066,7 @@
 	     * _.isTypedArray([]);
 	     * // => false
 	     */
-	    function isTypedArray(value) {
-	      return isObjectLike(value) &&
-	        isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
-	    }
+	    var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
 	
 	    /**
 	     * Checks if `value` is `undefined`.
@@ -34321,8 +36097,7 @@
 	     * @since 4.3.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a weak map, else `false`.
 	     * @example
 	     *
 	     * _.isWeakMap(new WeakMap);
@@ -34343,8 +36118,7 @@
 	     * @since 4.3.0
 	     * @category Lang
 	     * @param {*} value The value to check.
-	     * @returns {boolean} Returns `true` if `value` is correctly classified,
-	     *  else `false`.
+	     * @returns {boolean} Returns `true` if `value` is a weak set, else `false`.
 	     * @example
 	     *
 	     * _.isWeakSet(new WeakSet);
@@ -34693,18 +36467,18 @@
 	     * @example
 	     *
 	     * function Foo() {
-	     *   this.c = 3;
+	     *   this.a = 1;
 	     * }
 	     *
 	     * function Bar() {
-	     *   this.e = 5;
+	     *   this.c = 3;
 	     * }
 	     *
-	     * Foo.prototype.d = 4;
-	     * Bar.prototype.f = 6;
+	     * Foo.prototype.b = 2;
+	     * Bar.prototype.d = 4;
 	     *
-	     * _.assign({ 'a': 1 }, new Foo, new Bar);
-	     * // => { 'a': 1, 'c': 3, 'e': 5 }
+	     * _.assign({ 'a': 0 }, new Foo, new Bar);
+	     * // => { 'a': 1, 'c': 3 }
 	     */
 	    var assign = createAssigner(function(object, source) {
 	      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
@@ -34736,18 +36510,18 @@
 	     * @example
 	     *
 	     * function Foo() {
-	     *   this.b = 2;
+	     *   this.a = 1;
 	     * }
 	     *
 	     * function Bar() {
-	     *   this.d = 4;
+	     *   this.c = 3;
 	     * }
 	     *
-	     * Foo.prototype.c = 3;
-	     * Bar.prototype.e = 5;
+	     * Foo.prototype.b = 2;
+	     * Bar.prototype.d = 4;
 	     *
-	     * _.assignIn({ 'a': 1 }, new Foo, new Bar);
-	     * // => { 'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5 }
+	     * _.assignIn({ 'a': 0 }, new Foo, new Bar);
+	     * // => { 'a': 1, 'b': 2, 'c': 3, 'd': 4 }
 	     */
 	    var assignIn = createAssigner(function(object, source) {
 	      if (nonEnumShadows || isPrototype(source) || isArrayLike(source)) {
@@ -34841,7 +36615,7 @@
 	     * _.at(object, ['a[0].b.c', 'a[1]']);
 	     * // => [3, 4]
 	     */
-	    var at = rest(function(object, paths) {
+	    var at = baseRest(function(object, paths) {
 	      return baseAt(object, baseFlatten(paths, 1));
 	    });
 	
@@ -34902,10 +36676,10 @@
 	     * @see _.defaultsDeep
 	     * @example
 	     *
-	     * _.defaults({ 'user': 'barney' }, { 'age': 36 }, { 'user': 'fred' });
-	     * // => { 'user': 'barney', 'age': 36 }
+	     * _.defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 });
+	     * // => { 'a': 1, 'b': 2 }
 	     */
-	    var defaults = rest(function(args) {
+	    var defaults = baseRest(function(args) {
 	      args.push(undefined, assignInDefaults);
 	      return apply(assignInWith, undefined, args);
 	    });
@@ -34926,11 +36700,10 @@
 	     * @see _.defaults
 	     * @example
 	     *
-	     * _.defaultsDeep({ 'user': { 'name': 'barney' } }, { 'user': { 'name': 'fred', 'age': 36 } });
-	     * // => { 'user': { 'name': 'barney', 'age': 36 } }
-	     *
+	     * _.defaultsDeep({ 'a': { 'b': 2 } }, { 'a': { 'b': 1, 'c': 3 } });
+	     * // => { 'a': { 'b': 2, 'c': 3 } }
 	     */
-	    var defaultsDeep = rest(function(args) {
+	    var defaultsDeep = baseRest(function(args) {
 	      args.push(undefined, mergeDefaults);
 	      return apply(mergeWith, undefined, args);
 	    });
@@ -34944,8 +36717,7 @@
 	     * @since 1.1.0
 	     * @category Object
 	     * @param {Object} object The object to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @returns {string|undefined} Returns the key of the matched element,
 	     *  else `undefined`.
 	     * @example
@@ -34984,8 +36756,7 @@
 	     * @since 2.0.0
 	     * @category Object
 	     * @param {Object} object The object to search.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [predicate=_.identity] The function invoked per iteration.
 	     * @returns {string|undefined} Returns the key of the matched element,
 	     *  else `undefined`.
 	     * @example
@@ -35199,7 +36970,7 @@
 	
 	    /**
 	     * Gets the value at `path` of `object`. If the resolved value is
-	     * `undefined`, the `defaultValue` is used in its place.
+	     * `undefined`, the `defaultValue` is returned in its place.
 	     *
 	     * @static
 	     * @memberOf _
@@ -35322,8 +37093,7 @@
 	     * @since 4.1.0
 	     * @category Object
 	     * @param {Object} object The object to invert.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {Object} Returns the new inverted object.
 	     * @example
 	     *
@@ -35363,7 +37133,7 @@
 	     * _.invoke(object, 'a[0].b.c.slice', 1, 3);
 	     * // => [2, 3]
 	     */
-	    var invoke = rest(baseInvoke);
+	    var invoke = baseRest(baseInvoke);
 	
 	    /**
 	     * Creates an array of the own enumerable property names of `object`.
@@ -35467,8 +37237,7 @@
 	     * @since 3.8.0
 	     * @category Object
 	     * @param {Object} object The object to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [iteratee=_.identity] The function invoked per iteration.
 	     * @returns {Object} Returns the new mapped object.
 	     * @see _.mapValues
 	     * @example
@@ -35499,8 +37268,7 @@
 	     * @since 2.4.0
 	     * @category Object
 	     * @param {Object} object The object to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The function invoked per iteration.
+	     * @param {Function} [iteratee=_.identity] The function invoked per iteration.
 	     * @returns {Object} Returns the new mapped object.
 	     * @see _.mapKeys
 	     * @example
@@ -35547,16 +37315,16 @@
 	     * @returns {Object} Returns `object`.
 	     * @example
 	     *
-	     * var users = {
-	     *   'data': [{ 'user': 'barney' }, { 'user': 'fred' }]
+	     * var object = {
+	     *   'a': [{ 'b': 2 }, { 'd': 4 }]
 	     * };
 	     *
-	     * var ages = {
-	     *   'data': [{ 'age': 36 }, { 'age': 40 }]
+	     * var other = {
+	     *   'a': [{ 'c': 3 }, { 'e': 5 }]
 	     * };
 	     *
-	     * _.merge(users, ages);
-	     * // => { 'data': [{ 'user': 'barney', 'age': 36 }, { 'user': 'fred', 'age': 40 }] }
+	     * _.merge(object, other);
+	     * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
 	     */
 	    var merge = createAssigner(function(object, source, srcIndex) {
 	      baseMerge(object, source, srcIndex);
@@ -35587,18 +37355,11 @@
 	     *   }
 	     * }
 	     *
-	     * var object = {
-	     *   'fruits': ['apple'],
-	     *   'vegetables': ['beet']
-	     * };
-	     *
-	     * var other = {
-	     *   'fruits': ['banana'],
-	     *   'vegetables': ['carrot']
-	     * };
+	     * var object = { 'a': [1], 'b': [2] };
+	     * var other = { 'a': [3], 'b': [4] };
 	     *
 	     * _.mergeWith(object, other, customizer);
-	     * // => { 'fruits': ['apple', 'banana'], 'vegetables': ['beet', 'carrot'] }
+	     * // => { 'a': [1, 3], 'b': [2, 4] }
 	     */
 	    var mergeWith = createAssigner(function(object, source, srcIndex, customizer) {
 	      baseMerge(object, source, srcIndex, customizer);
@@ -35623,7 +37384,7 @@
 	     * _.omit(object, ['a', 'c']);
 	     * // => { 'b': '2' }
 	     */
-	    var omit = rest(function(object, props) {
+	    var omit = baseRest(function(object, props) {
 	      if (object == null) {
 	        return {};
 	      }
@@ -35642,8 +37403,7 @@
 	     * @since 4.0.0
 	     * @category Object
 	     * @param {Object} object The source object.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per property.
+	     * @param {Function} [predicate=_.identity] The function invoked per property.
 	     * @returns {Object} Returns the new object.
 	     * @example
 	     *
@@ -35653,10 +37413,7 @@
 	     * // => { 'b': '2' }
 	     */
 	    function omitBy(object, predicate) {
-	      predicate = getIteratee(predicate);
-	      return basePickBy(object, function(value, key) {
-	        return !predicate(value, key);
-	      });
+	      return pickBy(object, negate(getIteratee(predicate)));
 	    }
 	
 	    /**
@@ -35676,7 +37433,7 @@
 	     * _.pick(object, ['a', 'c']);
 	     * // => { 'a': 1, 'c': 3 }
 	     */
-	    var pick = rest(function(object, props) {
+	    var pick = baseRest(function(object, props) {
 	      return object == null ? {} : basePick(object, arrayMap(baseFlatten(props, 1), toKey));
 	    });
 	
@@ -35689,8 +37446,7 @@
 	     * @since 4.0.0
 	     * @category Object
 	     * @param {Object} object The source object.
-	     * @param {Array|Function|Object|string} [predicate=_.identity]
-	     *  The function invoked per property.
+	     * @param {Function} [predicate=_.identity] The function invoked per property.
 	     * @returns {Object} Returns the new object.
 	     * @example
 	     *
@@ -35700,7 +37456,7 @@
 	     * // => { 'a': 1, 'c': 3 }
 	     */
 	    function pickBy(object, predicate) {
-	      return object == null ? {} : basePickBy(object, getIteratee(predicate));
+	      return object == null ? {} : basePickBy(object, getAllKeysIn(object), getIteratee(predicate));
 	    }
 	
 	    /**
@@ -36325,8 +38081,9 @@
 	        ? length
 	        : baseClamp(toInteger(position), 0, length);
 	
+	      var end = position;
 	      position -= target.length;
-	      return position >= 0 && string.indexOf(target, position) == position;
+	      return position >= 0 && string.slice(position, end) == target;
 	    }
 	
 	    /**
@@ -36774,7 +38531,8 @@
 	    function startsWith(string, target, position) {
 	      string = toString(string);
 	      position = baseClamp(toInteger(position), 0, string.length);
-	      return string.lastIndexOf(baseToString(target), position) == position;
+	      target = baseToString(target);
+	      return string.slice(position, position + target.length) == target;
 	    }
 	
 	    /**
@@ -37357,7 +39115,7 @@
 	     *   elements = [];
 	     * }
 	     */
-	    var attempt = rest(function(func, args) {
+	    var attempt = baseRest(function(func, args) {
 	      try {
 	        return apply(func, undefined, args);
 	      } catch (e) {
@@ -37382,16 +39140,16 @@
 	     *
 	     * var view = {
 	     *   'label': 'docs',
-	     *   'onClick': function() {
+	     *   'click': function() {
 	     *     console.log('clicked ' + this.label);
 	     *   }
 	     * };
 	     *
-	     * _.bindAll(view, ['onClick']);
-	     * jQuery(element).on('click', view.onClick);
+	     * _.bindAll(view, ['click']);
+	     * jQuery(element).on('click', view.click);
 	     * // => Logs 'clicked docs' when clicked.
 	     */
-	    var bindAll = rest(function(object, methodNames) {
+	    var bindAll = baseRest(function(object, methodNames) {
 	      arrayEach(baseFlatten(methodNames, 1), function(key) {
 	        key = toKey(key);
 	        object[key] = bind(object[key], object);
@@ -37416,7 +39174,7 @@
 	     * var func = _.cond([
 	     *   [_.matches({ 'a': 1 }),           _.constant('matches A')],
 	     *   [_.conforms({ 'b': _.isNumber }), _.constant('matches B')],
-	     *   [_.constant(true),                _.constant('no match')]
+	     *   [_.stubTrue,                      _.constant('no match')]
 	     * ]);
 	     *
 	     * func({ 'a': 1, 'b': 2 });
@@ -37439,7 +39197,7 @@
 	        return [toIteratee(pair[0]), pair[1]];
 	      });
 	
-	      return rest(function(args) {
+	      return baseRest(function(args) {
 	        var index = -1;
 	        while (++index < length) {
 	          var pair = pairs[index];
@@ -37463,13 +39221,13 @@
 	     * @returns {Function} Returns the new spec function.
 	     * @example
 	     *
-	     * var users = [
-	     *   { 'user': 'barney', 'age': 36 },
-	     *   { 'user': 'fred',   'age': 40 }
+	     * var objects = [
+	     *   { 'a': 2, 'b': 1 },
+	     *   { 'a': 1, 'b': 2 }
 	     * ];
 	     *
-	     * _.filter(users, _.conforms({ 'age': function(n) { return n > 38; } }));
-	     * // => [{ 'user': 'fred', 'age': 40 }]
+	     * _.filter(objects, _.conforms({ 'b': function(n) { return n > 1; } }));
+	     * // => [{ 'a': 1, 'b': 2 }]
 	     */
 	    function conforms(source) {
 	      return baseConforms(baseClone(source, true));
@@ -37501,6 +39259,30 @@
 	    }
 	
 	    /**
+	     * Checks `value` to determine whether a default value should be returned in
+	     * its place. The `defaultValue` is returned if `value` is `NaN`, `null`,
+	     * or `undefined`.
+	     *
+	     * @static
+	     * @memberOf _
+	     * @since 4.14.0
+	     * @category Util
+	     * @param {*} value The value to check.
+	     * @param {*} defaultValue The default value.
+	     * @returns {*} Returns the resolved value.
+	     * @example
+	     *
+	     * _.defaultTo(1, 10);
+	     * // => 1
+	     *
+	     * _.defaultTo(undefined, 10);
+	     * // => 10
+	     */
+	    function defaultTo(value, defaultValue) {
+	      return (value == null || value !== value) ? defaultValue : value;
+	    }
+	
+	    /**
 	     * Creates a function that returns the result of invoking the given functions
 	     * with the `this` binding of the created function, where each successive
 	     * invocation is supplied the return value of the previous.
@@ -37509,7 +39291,7 @@
 	     * @memberOf _
 	     * @since 3.0.0
 	     * @category Util
-	     * @param {...(Function|Function[])} [funcs] Functions to invoke.
+	     * @param {...(Function|Function[])} [funcs] The functions to invoke.
 	     * @returns {Function} Returns the new composite function.
 	     * @see _.flowRight
 	     * @example
@@ -37532,7 +39314,7 @@
 	     * @since 3.0.0
 	     * @memberOf _
 	     * @category Util
-	     * @param {...(Function|Function[])} [funcs] Functions to invoke.
+	     * @param {...(Function|Function[])} [funcs] The functions to invoke.
 	     * @returns {Function} Returns the new composite function.
 	     * @see _.flow
 	     * @example
@@ -37548,7 +39330,7 @@
 	    var flowRight = createFlow(true);
 	
 	    /**
-	     * This method returns the first argument given to it.
+	     * This method returns the first argument it receives.
 	     *
 	     * @static
 	     * @since 0.1.0
@@ -37558,7 +39340,7 @@
 	     * @returns {*} Returns `value`.
 	     * @example
 	     *
-	     * var object = { 'user': 'fred' };
+	     * var object = { 'a': 1 };
 	     *
 	     * console.log(_.identity(object) === object);
 	     * // => true
@@ -37629,13 +39411,13 @@
 	     * @returns {Function} Returns the new spec function.
 	     * @example
 	     *
-	     * var users = [
-	     *   { 'user': 'barney', 'age': 36, 'active': true },
-	     *   { 'user': 'fred',   'age': 40, 'active': false }
+	     * var objects = [
+	     *   { 'a': 1, 'b': 2, 'c': 3 },
+	     *   { 'a': 4, 'b': 5, 'c': 6 }
 	     * ];
 	     *
-	     * _.filter(users, _.matches({ 'age': 40, 'active': false }));
-	     * // => [{ 'user': 'fred', 'age': 40, 'active': false }]
+	     * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
+	     * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
 	     */
 	    function matches(source) {
 	      return baseMatches(baseClone(source, true));
@@ -37657,13 +39439,13 @@
 	     * @returns {Function} Returns the new spec function.
 	     * @example
 	     *
-	     * var users = [
-	     *   { 'user': 'barney' },
-	     *   { 'user': 'fred' }
+	     * var objects = [
+	     *   { 'a': 1, 'b': 2, 'c': 3 },
+	     *   { 'a': 4, 'b': 5, 'c': 6 }
 	     * ];
 	     *
-	     * _.find(users, _.matchesProperty('user', 'fred'));
-	     * // => { 'user': 'fred' }
+	     * _.find(objects, _.matchesProperty('a', 4));
+	     * // => { 'a': 4, 'b': 5, 'c': 6 }
 	     */
 	    function matchesProperty(path, srcValue) {
 	      return baseMatchesProperty(path, baseClone(srcValue, true));
@@ -37693,7 +39475,7 @@
 	     * _.map(objects, _.method(['a', 'b']));
 	     * // => [2, 1]
 	     */
-	    var method = rest(function(path, args) {
+	    var method = baseRest(function(path, args) {
 	      return function(object) {
 	        return baseInvoke(object, path, args);
 	      };
@@ -37722,7 +39504,7 @@
 	     * _.map([['a', '2'], ['c', '0']], _.methodOf(object));
 	     * // => [2, 0]
 	     */
-	    var methodOf = rest(function(object, args) {
+	    var methodOf = baseRest(function(object, args) {
 	      return function(path) {
 	        return baseInvoke(object, path, args);
 	      };
@@ -37821,7 +39603,7 @@
 	    }
 	
 	    /**
-	     * A method that returns `undefined`.
+	     * This method returns `undefined`.
 	     *
 	     * @static
 	     * @memberOf _
@@ -37858,7 +39640,7 @@
 	     */
 	    function nthArg(n) {
 	      n = toInteger(n);
-	      return rest(function(args) {
+	      return baseRest(function(args) {
 	        return baseNth(args, n);
 	      });
 	    }
@@ -37871,8 +39653,8 @@
 	     * @memberOf _
 	     * @since 4.0.0
 	     * @category Util
-	     * @param {...(Array|Array[]|Function|Function[]|Object|Object[]|string|string[])}
-	     *  [iteratees=[_.identity]] The iteratees to invoke.
+	     * @param {...(Function|Function[])} [iteratees=[_.identity]]
+	     *  The iteratees to invoke.
 	     * @returns {Function} Returns the new function.
 	     * @example
 	     *
@@ -37891,8 +39673,8 @@
 	     * @memberOf _
 	     * @since 4.0.0
 	     * @category Util
-	     * @param {...(Array|Array[]|Function|Function[]|Object|Object[]|string|string[])}
-	     *  [predicates=[_.identity]] The predicates to check.
+	     * @param {...(Function|Function[])} [predicates=[_.identity]]
+	     *  The predicates to check.
 	     * @returns {Function} Returns the new function.
 	     * @example
 	     *
@@ -37917,8 +39699,8 @@
 	     * @memberOf _
 	     * @since 4.0.0
 	     * @category Util
-	     * @param {...(Array|Array[]|Function|Function[]|Object|Object[]|string|string[])}
-	     *  [predicates=[_.identity]] The predicates to check.
+	     * @param {...(Function|Function[])} [predicates=[_.identity]]
+	     *  The predicates to check.
 	     * @returns {Function} Returns the new function.
 	     * @example
 	     *
@@ -38070,7 +39852,7 @@
 	    var rangeRight = createRange(true);
 	
 	    /**
-	     * A method that returns a new empty array.
+	     * This method returns a new empty array.
 	     *
 	     * @static
 	     * @memberOf _
@@ -38092,7 +39874,7 @@
 	    }
 	
 	    /**
-	     * A method that returns `false`.
+	     * This method returns `false`.
 	     *
 	     * @static
 	     * @memberOf _
@@ -38109,7 +39891,7 @@
 	    }
 	
 	    /**
-	     * A method that returns a new empty object.
+	     * This method returns a new empty object.
 	     *
 	     * @static
 	     * @memberOf _
@@ -38131,7 +39913,7 @@
 	    }
 	
 	    /**
-	     * A method that returns an empty string.
+	     * This method returns an empty string.
 	     *
 	     * @static
 	     * @memberOf _
@@ -38148,7 +39930,7 @@
 	    }
 	
 	    /**
-	     * A method that returns `true`.
+	     * This method returns `true`.
 	     *
 	     * @static
 	     * @memberOf _
@@ -38266,7 +40048,7 @@
 	     */
 	    var add = createMathOperation(function(augend, addend) {
 	      return augend + addend;
-	    });
+	    }, 0);
 	
 	    /**
 	     * Computes `number` rounded up to `precision`.
@@ -38308,7 +40090,7 @@
 	     */
 	    var divide = createMathOperation(function(dividend, divisor) {
 	      return dividend / divisor;
-	    });
+	    }, 1);
 	
 	    /**
 	     * Computes `number` rounded down to `precision`.
@@ -38367,8 +40149,7 @@
 	     * @since 4.0.0
 	     * @category Math
 	     * @param {Array} array The array to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {*} Returns the maximum value.
 	     * @example
 	     *
@@ -38383,7 +40164,7 @@
 	     */
 	    function maxBy(array, iteratee) {
 	      return (array && array.length)
-	        ? baseExtremum(array, getIteratee(iteratee), baseGt)
+	        ? baseExtremum(array, getIteratee(iteratee, 2), baseGt)
 	        : undefined;
 	    }
 	
@@ -38415,8 +40196,7 @@
 	     * @since 4.7.0
 	     * @category Math
 	     * @param {Array} array The array to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {number} Returns the mean.
 	     * @example
 	     *
@@ -38430,7 +40210,7 @@
 	     * // => 5
 	     */
 	    function meanBy(array, iteratee) {
-	      return baseMean(array, getIteratee(iteratee));
+	      return baseMean(array, getIteratee(iteratee, 2));
 	    }
 	
 	    /**
@@ -38467,8 +40247,7 @@
 	     * @since 4.0.0
 	     * @category Math
 	     * @param {Array} array The array to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {*} Returns the minimum value.
 	     * @example
 	     *
@@ -38483,7 +40262,7 @@
 	     */
 	    function minBy(array, iteratee) {
 	      return (array && array.length)
-	        ? baseExtremum(array, getIteratee(iteratee), baseLt)
+	        ? baseExtremum(array, getIteratee(iteratee, 2), baseLt)
 	        : undefined;
 	    }
 	
@@ -38504,7 +40283,7 @@
 	     */
 	    var multiply = createMathOperation(function(multiplier, multiplicand) {
 	      return multiplier * multiplicand;
-	    });
+	    }, 1);
 	
 	    /**
 	     * Computes `number` rounded to `precision`.
@@ -38546,7 +40325,7 @@
 	     */
 	    var subtract = createMathOperation(function(minuend, subtrahend) {
 	      return minuend - subtrahend;
-	    });
+	    }, 0);
 	
 	    /**
 	     * Computes the sum of the values in `array`.
@@ -38578,8 +40357,7 @@
 	     * @since 4.0.0
 	     * @category Math
 	     * @param {Array} array The array to iterate over.
-	     * @param {Array|Function|Object|string} [iteratee=_.identity]
-	     *  The iteratee invoked per element.
+	     * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
 	     * @returns {number} Returns the sum.
 	     * @example
 	     *
@@ -38594,7 +40372,7 @@
 	     */
 	    function sumBy(array, iteratee) {
 	      return (array && array.length)
-	        ? baseSum(array, getIteratee(iteratee))
+	        ? baseSum(array, getIteratee(iteratee, 2))
 	        : 0;
 	    }
 	
@@ -38773,7 +40551,9 @@
 	    lodash.cloneDeep = cloneDeep;
 	    lodash.cloneDeepWith = cloneDeepWith;
 	    lodash.cloneWith = cloneWith;
+	    lodash.conformsTo = conformsTo;
 	    lodash.deburr = deburr;
+	    lodash.defaultTo = defaultTo;
 	    lodash.divide = divide;
 	    lodash.endsWith = endsWith;
 	    lodash.eq = eq;
@@ -39014,7 +40794,7 @@
 	      return this.reverse().find(predicate);
 	    };
 	
-	    LazyWrapper.prototype.invokeMap = rest(function(path, args) {
+	    LazyWrapper.prototype.invokeMap = baseRest(function(path, args) {
 	      if (typeof path == 'function') {
 	        return new LazyWrapper(this);
 	      }
@@ -39024,10 +40804,7 @@
 	    });
 	
 	    LazyWrapper.prototype.reject = function(predicate) {
-	      predicate = getIteratee(predicate, 3);
-	      return this.filter(function(value) {
-	        return !predicate(value);
-	      });
+	      return this.filter(negate(getIteratee(predicate)));
 	    };
 	
 	    LazyWrapper.prototype.slice = function(start, end) {
@@ -39131,7 +40908,7 @@
 	      }
 	    });
 	
-	    realNames[createHybridWrapper(undefined, BIND_KEY_FLAG).name] = [{
+	    realNames[createHybrid(undefined, BIND_KEY_FLAG).name] = [{
 	      'name': 'wrapper',
 	      'func': undefined
 	    }];
@@ -39150,6 +40927,9 @@
 	    lodash.prototype.reverse = wrapperReverse;
 	    lodash.prototype.toJSON = lodash.prototype.valueOf = lodash.prototype.value = wrapperValue;
 	
+	    // Add lazy aliases.
+	    lodash.prototype.first = lodash.prototype.head;
+	
 	    if (iteratorSymbol) {
 	      lodash.prototype[iteratorSymbol] = wrapperToIterator;
 	    }
@@ -39161,22 +40941,21 @@
 	  // Export lodash.
 	  var _ = runInContext();
 	
-	  // Expose Lodash on the free variable `window` or `self` when available so it's
-	  // globally accessible, even when bundled with Browserify, Webpack, etc. This
-	  // also prevents errors in cases where Lodash is loaded by a script tag in the
-	  // presence of an AMD loader. See http://requirejs.org/docs/errors.html#mismatch
-	  // for more details. Use `_.noConflict` to remove Lodash from the global object.
-	  (freeSelf || {})._ = _;
-	
-	  // Some AMD build optimizers like r.js check for condition patterns like the following:
+	  // Some AMD build optimizers, like r.js, check for condition patterns like:
 	  if (true) {
+	    // Expose Lodash on the global object to prevent errors when Lodash is
+	    // loaded by a script tag in the presence of an AMD loader.
+	    // See http://requirejs.org/docs/errors.html#mismatch for more details.
+	    // Use `_.noConflict` to remove Lodash from the global object.
+	    root._ = _;
+	
 	    // Define as an anonymous module so, through path mapping, it can be
 	    // referenced as the "underscore" module.
 	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
 	      return _;
 	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
-	  // Check for `exports` after `define` in case a build optimizer adds an `exports` object.
+	  // Check for `exports` after `define` in case a build optimizer adds it.
 	  else if (freeModule) {
 	    // Export for Node.js.
 	    (freeModule.exports = _)._ = _;
@@ -39189,10 +40968,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(199)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(201)(module)))
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -39208,7 +40987,7 @@
 
 
 /***/ },
-/* 200 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39227,23 +41006,25 @@
 	};
 	var React = __webpack_require__(1);
 	var react_redux_1 = __webpack_require__(172);
-	var actions_1 = __webpack_require__(201);
-	var Form_1 = __webpack_require__(202);
-	var form_ts_1 = __webpack_require__(197);
+	var actions_1 = __webpack_require__(203);
+	var Form_1 = __webpack_require__(204);
+	var Visualization_1 = __webpack_require__(208);
+	var form_ts_1 = __webpack_require__(198);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: 'https://github.com/jhuleatt/hyperfocal/tree/master'}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, this.props.formProperties, {setFocalLength: this.props.setFocalLength, setAperture: this.props.setAperture, setSubjectDistance: this.props.setSubjectDistance}))));
+	        return (React.createElement("div", null, React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: 'https://github.com/jhuleatt/hyperfocal/tree/master'}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, this.props.formProperties, {setFocalLength: this.props.setFocalLength, setAperture: this.props.setAperture, setSubjectDistance: this.props.setSubjectDistance, setCameraMake: this.props.setCameraMake, setCameraModel: this.props.setCameraModel})), React.createElement(Visualization_1.default, __assign({}, this.props.visualizationProperties))));
 	    };
 	    return App;
 	}(React.Component));
 	exports.App = App;
 	var mapStateToProps = function (state) {
 	    return {
-	        formProperties: new form_ts_1.FormProperties(state.cameraOptions, state.camera.name, state.focalLength, state.aperture, state.subjectDistance)
+	        formProperties: new form_ts_1.FormProperties(state.cameraOptions, state.focalLength, state.aperture, state.subjectDistance, state.camera),
+	        visualizationProperties: new form_ts_1.VizProperties(state.camera, state.focalLength, state.aperture, state.subjectDistance)
 	    };
 	};
 	var mapDispatchToProps = function (dispatch) {
@@ -39256,6 +41037,12 @@
 	        },
 	        setSubjectDistance: function (distance) {
 	            dispatch(actions_1.setSubjectDistance(distance));
+	        },
+	        setCameraMake: function (make) {
+	            dispatch(actions_1.setCameraMake(make));
+	        },
+	        setCameraModel: function (model) {
+	            dispatch(actions_1.setCameraModel(model));
 	        }
 	    };
 	};
@@ -39264,11 +41051,11 @@
 
 
 /***/ },
-/* 201 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var redux_1 = __webpack_require__(196);
+	var redux_1 = __webpack_require__(197);
 	function setFocalLength(focalLength) {
 	    var action = {
 	        type: redux_1.ActionTypes.SetFocalLength,
@@ -39293,10 +41080,26 @@
 	    return action;
 	}
 	exports.setSubjectDistance = setSubjectDistance;
+	function setCameraMake(make) {
+	    var action = {
+	        type: redux_1.ActionTypes.SetMake,
+	        payload: make
+	    };
+	    return action;
+	}
+	exports.setCameraMake = setCameraMake;
+	function setCameraModel(model) {
+	    var action = {
+	        type: redux_1.ActionTypes.SetModel,
+	        payload: model
+	    };
+	    return action;
+	}
+	exports.setCameraModel = setCameraModel;
 
 
 /***/ },
-/* 202 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39314,15 +41117,18 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var Select_1 = __webpack_require__(203);
-	var LabeledInput_1 = __webpack_require__(204);
+	var Select_1 = __webpack_require__(205);
+	var LabeledInput_1 = __webpack_require__(207);
+	var form_1 = __webpack_require__(198);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, this.props.cameraTypes.makeSelectProperties())), React.createElement(LabeledInput_1.default, {label: 'focal length', value: this.props.selectedFocalLength + '', onChange: this.props.setFocalLength}), React.createElement(LabeledInput_1.default, {label: 'aperture', value: this.props.selectedFStop + '', onChange: this.props.setAperture}), React.createElement(LabeledInput_1.default, {label: 'subject distance', value: this.props.subjectDistance + '', onChange: this.props.setSubjectDistance})));
+	        var cameraMakes = new form_1.SelectProperties(this.props.cameraTypes.getCameraMakes(), this.props.selectedCamera.make);
+	        var cameraModels = new form_1.SelectProperties(this.props.cameraTypes.getCameraModels(this.props.selectedCamera.make), this.props.selectedCamera.model);
+	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, cameraMakes, {onChange: this.props.setCameraMake})), React.createElement(Select_1.default, __assign({}, cameraModels, {onChange: this.props.setCameraModel})), React.createElement(LabeledInput_1.default, {label: 'focal length', value: this.props.selectedFocalLength + '', onChange: this.props.setFocalLength}), React.createElement(LabeledInput_1.default, {label: 'aperture', value: this.props.selectedFStop + '', onChange: this.props.setAperture}), React.createElement(LabeledInput_1.default, {label: 'subject distance', value: this.props.subjectDistance + '', onChange: this.props.setSubjectDistance})));
 	    };
 	    return App;
 	}(React.Component));
@@ -39331,7 +41137,7 @@
 
 
 /***/ },
-/* 203 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39341,14 +41147,20 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
+	var reactHelpers_1 = __webpack_require__(206);
 	var Select = (function (_super) {
 	    __extends(Select, _super);
 	    function Select() {
+	        var _this = this;
 	        _super.apply(this, arguments);
+	        this.valueChange = function (e) {
+	            var newValue = reactHelpers_1.unwrapEvent(e);
+	            _this.props.onChange(newValue);
+	        };
 	    }
 	    Select.prototype.render = function () {
-	        return (React.createElement("select", {value: this.props.value, onChange: this.props.onChange}, this.props.values.map(function (val) {
-	            return React.createElement("option", {value: val.value, key: val.value}, val.display);
+	        return (React.createElement("select", {value: this.props.value, onChange: this.valueChange}, this.props.values.map(function (val, key) {
+	            return React.createElement("option", {value: val.value, key: key}, val.display);
 	        })));
 	    };
 	    return Select;
@@ -39358,7 +41170,18 @@
 
 
 /***/ },
-/* 204 */
+/* 206 */
+/***/ function(module, exports) {
+
+	"use strict";
+	exports.unwrapEvent = function (event) {
+	    var eventElement = event.target;
+	    return eventElement.value;
+	};
+
+
+/***/ },
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39368,14 +41191,14 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
+	var reactHelpers_1 = __webpack_require__(206);
 	var LabeledInput = (function (_super) {
 	    __extends(LabeledInput, _super);
 	    function LabeledInput() {
 	        var _this = this;
 	        _super.apply(this, arguments);
 	        this.valueChange = function (e) {
-	            var eventElement = e.target;
-	            var newValue = eventElement.value;
+	            var newValue = reactHelpers_1.unwrapEvent(e);
 	            _this.props.onChange(newValue);
 	        };
 	    }
@@ -39386,6 +41209,48 @@
 	}(React.Component));
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = LabeledInput;
+
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var React = __webpack_require__(1);
+	var calculations_ts_1 = __webpack_require__(209);
+	var Visualization = (function (_super) {
+	    __extends(Visualization, _super);
+	    function Visualization() {
+	        _super.apply(this, arguments);
+	    }
+	    Visualization.prototype.render = function () {
+	        var hyperfocalDistance = calculations_ts_1.calculateHyperfocal(this.props.focalLength, this.props.aperture, this.props.camera.confusion);
+	        return (React.createElement("div", null, React.createElement("div", null, React.createElement("h3", null, "Your Selections"), React.createElement("p", null, this.props.camera.prettyPrint()), React.createElement("p", null, this.props.focalLength), React.createElement("p", null, this.props.aperture), React.createElement("p", null, this.props.subjectDistance)), React.createElement("div", null, React.createElement("h3", null, "Hyperfocal Distance"), React.createElement("p", null, hyperfocalDistance, " mm"))));
+	    };
+	    return Visualization;
+	}(React.Component));
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = Visualization;
+
+
+/***/ },
+/* 209 */
+/***/ function(module, exports) {
+
+	/*
+	 * Big thank you to http://www.dofmaster.com/equations.html for the formulas
+	 */
+	"use strict";
+	function calculateHyperfocal(focalLengthMM, fNumber, confusionMM) {
+	    return ((focalLengthMM ^ 2) / (fNumber * confusionMM)) + focalLengthMM;
+	}
+	exports.calculateHyperfocal = calculateHyperfocal;
+	;
 
 
 /***/ }
