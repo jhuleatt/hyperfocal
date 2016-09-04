@@ -4,6 +4,7 @@
   "description": "A hyperfocal distance calculator using typescript and react",
   "main": "./dist/bundle.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jeff Huleatt",
