@@ -95,7 +95,7 @@ export function stopLoading(): Action {
 }
 
 function getModelsHelper(make: string): Promise<any> {
-  return fetch(`http://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Models/${make}.json`);
+  return fetch(`https://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Models/${make}.json`);
 }
 
 export function initialize(): Function {
@@ -103,7 +103,7 @@ export function initialize(): Function {
 
   return (dispatch: Function) => {
     dispatch(setProgress(10));
-    return fetch('http://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Makes.json')
+    return fetch('https://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Makes.json')
     .then(function(response) {
       dispatch(setProgress(40));
       return response.json();
