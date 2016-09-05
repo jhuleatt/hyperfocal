@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SelectProperties} from '../models/form';
+import {SelectProperties} from '../models/select';
 import { unwrapEvent } from '../util/reactHelpers';
 
 export default class Select extends React.Component<SelectProperties, {}> {
@@ -9,14 +9,14 @@ export default class Select extends React.Component<SelectProperties, {}> {
     }
 
     render() {
-        return (
-            <select value={this.props.value} onChange={this.valueChange}>
-              {
-                this.props.values.map((val, key) => {
-                  return <option value={val.value} key={key}>{val.display}</option>;
-                })
-              }
-            </select>
-        );
+      return (
+          <select value={this.props.value} onChange={this.valueChange}>
+            {
+              this.props.values.map((val, key) => {
+                return <option value={val.value} key={key}>{val.display}</option>;
+              })
+            }
+          </select>
+      );
     }
 }

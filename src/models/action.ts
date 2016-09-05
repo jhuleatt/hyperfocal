@@ -1,12 +1,16 @@
-import * as formTypes from './form';
-
 export enum ActionTypes {
   SetCameraOptions,
   SetFocalLength,
   SetAperture,
   SetSubjectDistance,
   SetMake,
-  SetModel
+  SetModel,
+  StartLoading,
+  StopLoading,
+  SetProgress,
+  InitializeFinished,
+  SetMakes,
+  SetModels
 }
 
 export interface Action {
@@ -28,20 +32,4 @@ export interface ActionObject extends Action {
 
 export interface ActionArr extends Action {
   payload: Array<any>;
-}
-
-export class State {
-  cameraOptions: formTypes.CameraTypeList;
-  focalLength: number;
-  aperture: number;
-  subjectDistance: number;
-  camera: formTypes.CameraDetails;
-
-  constructor() {
-    this.cameraOptions = new formTypes.CameraTypeList();
-    this.focalLength = 50;
-    this.aperture = 11;
-    this.subjectDistance = 3000;
-    this.camera = this.cameraOptions.findCameraDetails('Nikon', '');
-  }
 }

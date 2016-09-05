@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {InputProperties} from '../models/form';
+import {InputProperties} from '../models/input';
 import { unwrapEvent } from '../util/reactHelpers';
 
 export default class LabeledInput extends React.Component<InputProperties, {}> {

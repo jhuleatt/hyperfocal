@@ -5,11 +5,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { reducer } from './reducers/rootReducer';
 import App from './components/App';
-import { State } from './models/redux';
+import { Initializing } from './models/state';
 
-let store = createStore(
+const initialState: Initializing = {progress: 0};
+
+const store = createStore(
                 reducer,
-                new State(),
+                initialState,
                 applyMiddleware(thunkMiddleware)
             );
 
