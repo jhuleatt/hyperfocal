@@ -59,6 +59,8 @@ const mapStateToProps = (state: StateModel): Object => {
 
         return props;
     } else {
+        const toMM: Function = (distance: number): number => convertToMM(state.distanceUnit, distance);
+        const fromMM: Function = (distance: number): number => convertFromMM(state.distanceUnit, distance);
         const props = {
             formProperties: {
                 cameraMakeSelectOptions: {
@@ -71,7 +73,8 @@ const mapStateToProps = (state: StateModel): Object => {
                 },
                 selectedFocalLength: state.focalLength,
                 selectedFStop: state.aperture,
-                subjectDistance: convertFromMM(state.distanceUnit, state.subjectDistanceMM)
+                subjectDistance: fromMM(state.subjectDistanceMM),
+                distanceUnitDisplayName: state.distanceUnit === Unit.Feet ? 'ft' : 'm'
             },
             visualizationProperties: {
                 cameraMake: state.selectedMake,
@@ -79,8 +82,8 @@ const mapStateToProps = (state: StateModel): Object => {
                 confusion: state.selectedModel.confusion,
                 focalLength: state.focalLength,
                 aperture: state.aperture,
-                subjectDistance: convertFromMM(state.distanceUnit, state.subjectDistanceMM),
-                hyperfocalDistance: calculateHyperfocal(state.focalLength, state.aperture, state.selectedModel.confusion),
+                subjectDistance: fromMM(state.subjectDistanceMM),
+                hyperfocalDistance: fromMM(calculateHyperfocal(state.focalLength, state.aperture, state.selectedModel.confusion)),
                 distanceUnitDisplayName: state.distanceUnit === Unit.Feet ? 'ft' : 'm'
             }
         };

@@ -12,7 +12,7 @@ export default class App extends React.Component<FormProperties, {}> {
                 <Select {...this.props.cameraModelSelectOptions} onChange={this.props.setCameraModel}/>
                 <LabeledInput label='focal length (mm)' value={this.props.selectedFocalLength + ''} onChange={this.props.setFocalLength} />
                 <LabeledInput label='aperture f/' value={this.props.selectedFStop + ''} onChange={this.props.setAperture} />
-                <LabeledInput label='subject distance (mm)' value={this.props.subjectDistance + ''} onChange={this.props.setSubjectDistance} />
+                <LabeledInput label={`subject distance (${this.props.distanceUnitDisplayName})`} value={this.props.subjectDistance + ''} onChange={this.props.setSubjectDistance} />
             </div>
         );
     }

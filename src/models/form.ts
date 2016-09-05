@@ -11,4 +11,5 @@ export interface FormProperties {
   setSubjectDistance: Function;
   setCameraMake: Function;
   setCameraModel: Function;
+  distanceUnitDisplayName: string;
 }

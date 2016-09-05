@@ -1,6 +1,7 @@
 import { State } from '../models/state';
 import { CameraModel } from '../models/camera';
 import {Action, ActionTypes} from '../models/action';
+import {convertToMM} from '../util/calculations';
 import * as _ from 'lodash';
 
 function verifyNumber(input: string): boolean {
@@ -22,7 +23,7 @@ export function hyperfocalReducer(state: State, action: Action): State {
       break;
     case ActionTypes.SetSubjectDistance:
       if (verifyNumber(action.payload)) {
-        state.subjectDistanceMM = action.payload;
+        state.subjectDistanceMM = convertToMM(state.distanceUnit, action.payload);
       }
       break;
     case ActionTypes.SetMake:
