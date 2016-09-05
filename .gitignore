@@ -10,3 +10,4 @@ SSH_KEY.pub
 deploy_key
 
 deploy_key.pub
+npm-debug.log
