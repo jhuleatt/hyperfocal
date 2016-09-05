@@ -40192,13 +40192,13 @@
 	}
 	exports.stopLoading = stopLoading;
 	function getModelsHelper(make) {
-	    return fetch("http://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Models/" + make + ".json");
+	    return fetch("https://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Models/" + make + ".json");
 	}
 	function initialize() {
 	    var makes;
 	    return function (dispatch) {
 	        dispatch(setProgress(10));
-	        return fetch('http://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Makes.json')
+	        return fetch('https://raw.githubusercontent.com/jhuleatt/hyperfocal/master/data/Makes.json')
 	            .then(function (response) {
 	            dispatch(setProgress(40));
 	            return response.json();
