@@ -9,6 +9,7 @@ export enum ActionTypes {
   StopLoading,
   SetProgress,
   InitializeFinished,
+  SetDistanceUnit,
   SetMakes,
   SetModels
 }
@@ -28,6 +29,10 @@ export interface ActionString extends Action {
 
 export interface ActionObject extends Action {
   payload: Object;
+}
+
+export interface ActionEnum extends Action {
+  payload: number;
 }
 
 export interface ActionArr extends Action {

@@ -5,8 +5,7 @@ import {convertToMM} from '../util/calculations';
 import * as _ from 'lodash';
 
 function verifyNumber(input: string): boolean {
-  return true;
-  // return /^\d+$/.test(input);
+  return input.length === 0 || /^(\d|\.)+$/.test(input);
 };
 
 export function hyperfocalReducer(state: State, action: Action): State {
@@ -23,7 +22,7 @@ export function hyperfocalReducer(state: State, action: Action): State {
       break;
     case ActionTypes.SetSubjectDistance:
       if (verifyNumber(action.payload)) {
-        state.subjectDistanceMM = convertToMM(state.distanceUnit, action.payload);
+        state.subjectDistance = action.payload;
       }
       break;
     case ActionTypes.SetMake:
@@ -40,6 +39,9 @@ export function hyperfocalReducer(state: State, action: Action): State {
       break;
     case ActionTypes.SetModels:
       state.cameraModels = action.payload;
+      break;
+    case ActionTypes.SetDistanceUnit:
+      state.distanceUnit = Number(action.payload);
       break;
     case ActionTypes.SetMakes:
       state.cameraMakes = action.payload;

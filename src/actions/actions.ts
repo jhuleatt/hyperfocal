@@ -1,4 +1,12 @@
-import {Action, ActionNumeric, ActionString, ActionTypes, ActionObject, ActionArr} from '../models/action';
+import {
+  Action,
+  ActionNumeric,
+  ActionString,
+  ActionTypes,
+  ActionObject,
+  ActionArr,
+  ActionEnum
+} from '../models/action';
 import {CameraModel} from '../models/camera';
 import {Unit} from '../models/units';
 import {State} from '../models/state';
@@ -76,6 +84,15 @@ export function setProgress(progress: number): ActionNumeric {
   return action;
 }
 
+export function setDistanceUnit(newUnit: Unit): ActionEnum {
+  const action: ActionEnum = {
+    type: ActionTypes.SetDistanceUnit,
+    payload: newUnit
+  };
+
+  return action;
+}
+
 export function startLoading(): Action {
   const action: Action = {
     type: ActionTypes.StartLoading,
@@ -124,10 +141,20 @@ export function initialize(): Function {
         cameraModels: models,
         selectedMake: makes[0],
         selectedModel: models[0],
+        distanceUnits: [
+          {
+            display: 'feet',
+            value: Unit.Feet
+          },
+          {
+            display: 'meters',
+            value: Unit.Meters
+          }
+        ],
         distanceUnit: Unit.Feet,
         focalLength: 35,
-        aperture: 1.8,
-        subjectDistanceMM: 3048,
+        aperture: '1.8',
+        subjectDistance: '10',
         isLoading: false
       }));
     })

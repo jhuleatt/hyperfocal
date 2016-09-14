@@ -1,15 +1,27 @@
-import { SelectProperties } from './select';
+import { SelectValues } from './select';
+import { Unit, DescriptiveUnit } from './units';
 
 export interface FormProperties {
-  cameraMakeSelectOptions: SelectProperties;
-  cameraModelSelectOptions: SelectProperties;
+  values: FormValues;
+  actions: FormActions;
+}
+
+export interface FormValues {
+  cameraMakeSelectValues: SelectValues;
+  cameraModelSelectValues: SelectValues;
+  distanceUnitSelectValues: DescriptiveUnit[];
+  selectedDistanceUnit: Unit;
   selectedFocalLength: number;
-  selectedFStop: number;
-  subjectDistance: number;
+  selectedFStop: string;
+  subjectDistance: string;
+  distanceUnitDisplayName: string;
+}
+
+export interface FormActions {
   setFocalLength: Function;
   setAperture: Function;
   setSubjectDistance: Function;
   setCameraMake: Function;
   setCameraModel: Function;
-  distanceUnitDisplayName: string;
+  setDistanceUnit: Function;
 }

@@ -3,7 +3,8 @@ import {
 } from './camera';
 
 import {
-  Unit
+  Unit,
+  DescriptiveUnit
 } from './units';
 
 export interface Initializing {
@@ -18,8 +19,9 @@ export interface State {
   selectedMake: string;
   selectedModel: CameraModel;
   distanceUnit: Unit;
+  distanceUnits: DescriptiveUnit[];
   focalLength: number;
-  aperture: number;
-  subjectDistanceMM: number;
+  aperture: string;
+  subjectDistance: string;
   isLoading: boolean;
 }
