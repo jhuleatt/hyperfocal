@@ -51,7 +51,7 @@
 	var redux_1 = __webpack_require__(179);
 	var redux_thunk_1 = __webpack_require__(196);
 	var rootReducer_1 = __webpack_require__(197);
-	var App_1 = __webpack_require__(205);
+	var App_1 = __webpack_require__(203);
 	var initialState = { progress: 0 };
 	var store = redux_1.createStore(rootReducer_1.reducer, initialState, redux_1.applyMiddleware(redux_thunk_1.default));
 	react_dom_1.render(React.createElement(react_redux_1.Provider, {store: store}, React.createElement(App_1.default, null)), document.getElementById('example'));
@@ -23066,7 +23066,7 @@
 	"use strict";
 	var progress_1 = __webpack_require__(198);
 	var hyperfocal_1 = __webpack_require__(200);
-	var _ = __webpack_require__(203);
+	var _ = __webpack_require__(201);
 	var initialState = {
 	    progress: 0
 	};
@@ -23124,8 +23124,9 @@
 	    ActionTypes[ActionTypes["StopLoading"] = 7] = "StopLoading";
 	    ActionTypes[ActionTypes["SetProgress"] = 8] = "SetProgress";
 	    ActionTypes[ActionTypes["InitializeFinished"] = 9] = "InitializeFinished";
-	    ActionTypes[ActionTypes["SetMakes"] = 10] = "SetMakes";
-	    ActionTypes[ActionTypes["SetModels"] = 11] = "SetModels";
+	    ActionTypes[ActionTypes["SetDistanceUnit"] = 10] = "SetDistanceUnit";
+	    ActionTypes[ActionTypes["SetMakes"] = 11] = "SetMakes";
+	    ActionTypes[ActionTypes["SetModels"] = 12] = "SetModels";
 	})(exports.ActionTypes || (exports.ActionTypes = {}));
 	var ActionTypes = exports.ActionTypes;
 
@@ -23136,11 +23137,9 @@
 
 	"use strict";
 	var action_1 = __webpack_require__(199);
-	var calculations_1 = __webpack_require__(201);
-	var _ = __webpack_require__(203);
+	var _ = __webpack_require__(201);
 	function verifyNumber(input) {
-	    return true;
-	    // return /^\d+$/.test(input);
+	    return input.length === 0 || /^(\d|\.)+$/.test(input);
 	}
 	;
 	function hyperfocalReducer(state, action) {
@@ -23157,7 +23156,7 @@
 	            break;
 	        case action_1.ActionTypes.SetSubjectDistance:
 	            if (verifyNumber(action.payload)) {
-	                state.subjectDistanceMM = calculations_1.convertToMM(state.distanceUnit, action.payload);
+	                state.subjectDistance = action.payload;
 	            }
 	            break;
 	        case action_1.ActionTypes.SetMake:
@@ -23175,6 +23174,9 @@
 	        case action_1.ActionTypes.SetModels:
 	            state.cameraModels = action.payload;
 	            break;
+	        case action_1.ActionTypes.SetDistanceUnit:
+	            state.distanceUnit = Number(action.payload);
+	            break;
 	        case action_1.ActionTypes.SetMakes:
 	            state.cameraMakes = action.payload;
 	            break;
@@ -23186,55 +23188,6 @@
 
 /***/ },
 /* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var units_1 = __webpack_require__(202);
-	function getConversionFactor(unit) {
-	    var conversionFactor;
-	    if (unit === units_1.Unit.Feet) {
-	        conversionFactor = 0.00328084;
-	    }
-	    else if (unit === units_1.Unit.Meters) {
-	        conversionFactor = .001;
-	    }
-	    return conversionFactor;
-	}
-	function convertFromMM(unit, distance) {
-	    return distance * getConversionFactor(unit);
-	}
-	exports.convertFromMM = convertFromMM;
-	function convertToMM(unit, distance) {
-	    return distance / getConversionFactor(unit);
-	}
-	exports.convertToMM = convertToMM;
-	/*
-	 * Big thank you to http://www.dofmaster.com/equations.html for the formulas
-	 */
-	function square(value) {
-	    return value * value;
-	}
-	function calculateHyperfocal(focalLengthMM, fNumber, confusionMM) {
-	    return (square(focalLengthMM) / (fNumber * confusionMM)) + focalLengthMM;
-	}
-	exports.calculateHyperfocal = calculateHyperfocal;
-	;
-
-
-/***/ },
-/* 202 */
-/***/ function(module, exports) {
-
-	"use strict";
-	(function (Unit) {
-	    Unit[Unit["Feet"] = 0] = "Feet";
-	    Unit[Unit["Meters"] = 1] = "Meters";
-	})(exports.Unit || (exports.Unit = {}));
-	var Unit = exports.Unit;
-
-
-/***/ },
-/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -39971,10 +39924,10 @@
 	  }
 	}.call(this));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(204)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(202)(module)))
 
 /***/ },
-/* 204 */
+/* 202 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -39990,7 +39943,7 @@
 
 
 /***/ },
-/* 205 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40009,11 +39962,11 @@
 	};
 	var React = __webpack_require__(1);
 	var react_redux_1 = __webpack_require__(172);
-	var actions_1 = __webpack_require__(206);
-	var Form_1 = __webpack_require__(208);
-	var Visualization_1 = __webpack_require__(212);
-	var units_1 = __webpack_require__(202);
-	var calculations_1 = __webpack_require__(201);
+	var actions_1 = __webpack_require__(204);
+	var Form_1 = __webpack_require__(207);
+	var Visualization_1 = __webpack_require__(211);
+	var units_1 = __webpack_require__(205);
+	var calculations_1 = __webpack_require__(212);
 	function isInitializing(x) {
 	    return typeof x.progress === 'number';
 	}
@@ -40027,11 +39980,22 @@
 	        this.props.initialize();
 	    };
 	    App.prototype.render = function () {
+	        var formProps = {
+	            values: this.props.formProperties,
+	            actions: {
+	                setFocalLength: this.props.setFocalLength,
+	                setAperture: this.props.setAperture,
+	                setSubjectDistance: this.props.setSubjectDistance,
+	                setCameraMake: this.props.setCameraMake,
+	                setCameraModel: this.props.setCameraModel,
+	                setDistanceUnit: this.props.setDistanceUnit
+	            }
+	        };
 	        if (this.props.isInitializing === true) {
 	            return (React.createElement("h1", null, "INITIALIZING ", this.props.progress, " %"));
 	        }
 	        else {
-	            return (React.createElement("div", null, React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: 'https://github.com/jhuleatt/hyperfocal/tree/master'}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, this.props.formProperties, {setFocalLength: this.props.setFocalLength, setAperture: this.props.setAperture, setSubjectDistance: this.props.setSubjectDistance, setCameraMake: this.props.setCameraMake, setCameraModel: this.props.setCameraModel})), React.createElement(Visualization_1.default, __assign({}, this.props.visualizationProperties))));
+	            return (React.createElement("div", null, React.createElement("p", null, "The source can be found on ", React.createElement("a", {href: 'https://github.com/jhuleatt/hyperfocal/tree/master'}, "github"), ". Check it out!"), React.createElement(Form_1.default, __assign({}, formProps)), React.createElement(Visualization_1.default, __assign({}, this.props.visualizationProperties))));
 	        }
 	    };
 	    return App;
@@ -40047,32 +40011,36 @@
 	    }
 	    else {
 	        var toMM = function (distance) { return calculations_1.convertToMM(state.distanceUnit, distance); };
-	        var fromMM = function (distance) { return calculations_1.convertFromMM(state.distanceUnit, distance); };
-	        var props = {
-	            formProperties: {
-	                cameraMakeSelectOptions: {
-	                    values: state.cameraMakes.map(function (make) { return ({ value: make, display: make }); }),
-	                    value: state.selectedMake,
-	                },
-	                cameraModelSelectOptions: {
-	                    values: state.cameraModels.map(function (model) { return ({ value: model.model, display: model.model }); }),
-	                    value: state.selectedModel.model,
-	                },
-	                selectedFocalLength: state.focalLength,
-	                selectedFStop: state.aperture,
-	                subjectDistance: fromMM(state.subjectDistanceMM),
-	                distanceUnitDisplayName: state.distanceUnit === units_1.Unit.Feet ? 'ft' : 'm'
+	        var fromMM = function (distance) { return calculations_1.convertFromMM(state.distanceUnit, distance).toFixed(2); };
+	        var formProperties = {
+	            cameraMakeSelectValues: {
+	                values: state.cameraMakes.map(function (make) { return ({ value: make, display: make }); }),
+	                value: state.selectedMake
 	            },
-	            visualizationProperties: {
-	                cameraMake: state.selectedMake,
-	                cameraModel: state.selectedModel.model,
-	                confusion: state.selectedModel.confusion,
-	                focalLength: state.focalLength,
-	                aperture: state.aperture,
-	                subjectDistance: fromMM(state.subjectDistanceMM),
-	                hyperfocalDistance: fromMM(calculations_1.calculateHyperfocal(state.focalLength, state.aperture, state.selectedModel.confusion)),
-	                distanceUnitDisplayName: state.distanceUnit === units_1.Unit.Feet ? 'ft' : 'm'
-	            }
+	            cameraModelSelectValues: {
+	                values: state.cameraModels.map(function (model) { return ({ value: model.model, display: model.model }); }),
+	                value: state.selectedModel.model
+	            },
+	            distanceUnitSelectValues: state.distanceUnits,
+	            selectedDistanceUnit: state.distanceUnit,
+	            selectedFocalLength: state.focalLength,
+	            selectedFStop: state.aperture,
+	            subjectDistance: state.subjectDistance,
+	            distanceUnitDisplayName: state.distanceUnit === units_1.Unit.Feet ? 'ft' : 'm'
+	        };
+	        var visualizationProperties = {
+	            cameraMake: state.selectedMake,
+	            cameraModel: state.selectedModel.model,
+	            confusion: state.selectedModel.confusion,
+	            focalLength: state.focalLength,
+	            aperture: Number(state.aperture),
+	            subjectDistance: Number(state.subjectDistance),
+	            hyperfocalDistance: fromMM(calculations_1.calculateHyperfocal(state.focalLength, Number(state.aperture), state.selectedModel.confusion)),
+	            distanceUnitDisplayName: state.distanceUnit === units_1.Unit.Feet ? 'ft' : 'm'
+	        };
+	        var props = {
+	            formProperties: formProperties,
+	            visualizationProperties: visualizationProperties
 	        };
 	        return props;
 	    }
@@ -40094,6 +40062,9 @@
 	        setCameraModel: function (model) {
 	            dispatch(actions_1.setCameraModel(model));
 	        },
+	        setDistanceUnit: function (newUnit) {
+	            dispatch(actions_1.setDistanceUnit(newUnit));
+	        },
 	        initialize: function () {
 	            dispatch(actions_1.initialize());
 	        }
@@ -40104,13 +40075,13 @@
 
 
 /***/ },
-/* 206 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var action_1 = __webpack_require__(199);
-	var units_1 = __webpack_require__(202);
-	__webpack_require__(207);
+	var units_1 = __webpack_require__(205);
+	__webpack_require__(206);
 	function setModels(models) {
 	    var action = {
 	        type: action_1.ActionTypes.SetModels,
@@ -40175,6 +40146,14 @@
 	    return action;
 	}
 	exports.setProgress = setProgress;
+	function setDistanceUnit(newUnit) {
+	    var action = {
+	        type: action_1.ActionTypes.SetDistanceUnit,
+	        payload: newUnit
+	    };
+	    return action;
+	}
+	exports.setDistanceUnit = setDistanceUnit;
 	function startLoading() {
 	    var action = {
 	        type: action_1.ActionTypes.StartLoading,
@@ -40217,10 +40196,20 @@
 	                cameraModels: models,
 	                selectedMake: makes[0],
 	                selectedModel: models[0],
+	                distanceUnits: [
+	                    {
+	                        display: 'feet',
+	                        value: units_1.Unit.Feet
+	                    },
+	                    {
+	                        display: 'meters',
+	                        value: units_1.Unit.Meters
+	                    }
+	                ],
 	                distanceUnit: units_1.Unit.Feet,
 	                focalLength: 35,
-	                aperture: 1.8,
-	                subjectDistanceMM: 3048,
+	                aperture: '1.8',
+	                subjectDistance: '10',
 	                isLoading: false
 	            }));
 	        })
@@ -40251,7 +40240,19 @@
 
 
 /***/ },
-/* 207 */
+/* 205 */
+/***/ function(module, exports) {
+
+	"use strict";
+	(function (Unit) {
+	    Unit[Unit["Feet"] = 0] = "Feet";
+	    Unit[Unit["Meters"] = 1] = "Meters";
+	})(exports.Unit || (exports.Unit = {}));
+	var Unit = exports.Unit;
+
+
+/***/ },
+/* 206 */
 /***/ function(module, exports) {
 
 	(function(self) {
@@ -40690,7 +40691,7 @@
 
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40708,15 +40709,41 @@
 	    return t;
 	};
 	var React = __webpack_require__(1);
-	var Select_1 = __webpack_require__(209);
-	var LabeledInput_1 = __webpack_require__(211);
+	var Select_1 = __webpack_require__(208);
+	var LabeledInput_1 = __webpack_require__(210);
 	var App = (function (_super) {
 	    __extends(App, _super);
 	    function App() {
 	        _super.apply(this, arguments);
 	    }
 	    App.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, this.props.cameraMakeSelectOptions, {onChange: this.props.setCameraMake})), React.createElement(Select_1.default, __assign({}, this.props.cameraModelSelectOptions, {onChange: this.props.setCameraModel})), React.createElement(LabeledInput_1.default, {label: 'focal length (mm)', value: this.props.selectedFocalLength + '', onChange: this.props.setFocalLength}), React.createElement(LabeledInput_1.default, {label: 'aperture f/', value: this.props.selectedFStop + '', onChange: this.props.setAperture}), React.createElement(LabeledInput_1.default, {label: "subject distance (" + this.props.distanceUnitDisplayName + ")", value: this.props.subjectDistance + '', onChange: this.props.setSubjectDistance})));
+	        var cameraMakeSelectOptions = {
+	            values: this.props.values.cameraMakeSelectValues,
+	            actions: {
+	                onChange: this.props.actions.setCameraMake
+	            }
+	        };
+	        var cameraModelSelectOptions = {
+	            values: this.props.values.cameraModelSelectValues,
+	            actions: {
+	                onChange: this.props.actions.setCameraModel
+	            }
+	        };
+	        var distanceUnitSelectOptions = {
+	            values: {
+	                value: this.props.values.selectedDistanceUnit,
+	                values: this.props.values.distanceUnitSelectValues.map(function (unitDescription) {
+	                    return {
+	                        value: unitDescription.value,
+	                        display: unitDescription.display
+	                    };
+	                })
+	            },
+	            actions: {
+	                onChange: this.props.actions.setDistanceUnit
+	            }
+	        };
+	        return (React.createElement("div", null, React.createElement(Select_1.default, __assign({}, cameraMakeSelectOptions)), React.createElement(Select_1.default, __assign({}, cameraModelSelectOptions)), React.createElement(LabeledInput_1.default, {label: 'focal length (mm)', value: this.props.values.selectedFocalLength + '', onChange: this.props.actions.setFocalLength}), React.createElement(LabeledInput_1.default, {label: 'aperture f/', value: this.props.values.selectedFStop + '', onChange: this.props.actions.setAperture}), React.createElement(LabeledInput_1.default, {label: "subject distance (" + this.props.values.distanceUnitDisplayName + ")", value: this.props.values.subjectDistance + '', onChange: this.props.actions.setSubjectDistance}), React.createElement(Select_1.default, __assign({}, distanceUnitSelectOptions))));
 	    };
 	    return App;
 	}(React.Component));
@@ -40725,7 +40752,7 @@
 
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40735,7 +40762,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var reactHelpers_1 = __webpack_require__(210);
+	var reactHelpers_1 = __webpack_require__(209);
 	var Select = (function (_super) {
 	    __extends(Select, _super);
 	    function Select() {
@@ -40743,11 +40770,11 @@
 	        _super.apply(this, arguments);
 	        this.valueChange = function (e) {
 	            var newValue = reactHelpers_1.unwrapEvent(e);
-	            _this.props.onChange(newValue);
+	            _this.props.actions.onChange(newValue);
 	        };
 	    }
 	    Select.prototype.render = function () {
-	        return (React.createElement("select", {value: this.props.value, onChange: this.valueChange}, this.props.values.map(function (val, key) {
+	        return (React.createElement("select", {value: this.props.values.value, onChange: this.valueChange}, this.props.values.values.map(function (val, key) {
 	            return React.createElement("option", {value: val.value, key: key}, val.display);
 	        })));
 	    };
@@ -40758,7 +40785,7 @@
 
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40769,7 +40796,7 @@
 
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40779,7 +40806,7 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var reactHelpers_1 = __webpack_require__(210);
+	var reactHelpers_1 = __webpack_require__(209);
 	var LabeledInput = (function (_super) {
 	    __extends(LabeledInput, _super);
 	    function LabeledInput() {
@@ -40800,7 +40827,7 @@
 
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40822,6 +40849,54 @@
 	}(React.Component));
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Visualization;
+
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var units_1 = __webpack_require__(205);
+	/**
+	 * Like Math.round but takes an argument for precision
+	 */
+	function round(num, precision) {
+	    var factor = Math.pow(10, precision);
+	    var shiftedNum = num * factor;
+	    var numRoundedToPrecision = Math.round(shiftedNum);
+	    var roundedNum = numRoundedToPrecision / factor;
+	    return roundedNum;
+	}
+	exports.round = round;
+	function getConversionFactor(unit) {
+	    var conversionFactor;
+	    if (unit === units_1.Unit.Feet) {
+	        conversionFactor = 0.00328084;
+	    }
+	    else if (unit === units_1.Unit.Meters) {
+	        conversionFactor = .001;
+	    }
+	    return conversionFactor;
+	}
+	function convertFromMM(unit, distance) {
+	    return distance * getConversionFactor(unit);
+	}
+	exports.convertFromMM = convertFromMM;
+	function convertToMM(unit, distance) {
+	    return distance / getConversionFactor(unit);
+	}
+	exports.convertToMM = convertToMM;
+	/*
+	 * Big thank you to http://www.dofmaster.com/equations.html for the formulas
+	 */
+	function square(value) {
+	    return value * value;
+	}
+	function calculateHyperfocal(focalLengthMM, fNumber, confusionMM) {
+	    return (square(focalLengthMM) / (fNumber * confusionMM)) + focalLengthMM;
+	}
+	exports.calculateHyperfocal = calculateHyperfocal;
+	;
 
 
 /***/ }
